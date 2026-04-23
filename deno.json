@@ -1,0 +1,27 @@
+{
+  "name": "@dldc/hono-ui",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./mod.ts"
+  },
+  "imports": {
+    "hono": "jsr:@hono/hono@^4.12.14"
+  },
+  "tasks": {
+    "bump": "deno run -A jsr:@mys/bump@1",
+    "deps:outdated": "deno outdated",
+    "deps:update": "deno outdated --update --latest --interactive",
+    "check": "deno fmt --check . && deno lint . && deno check **/*.ts"
+  },
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-explicit-any"
+      ]
+    }
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}
