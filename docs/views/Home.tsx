@@ -3,7 +3,7 @@ import { Html, Paper, UniversalLayout, utility } from "../../mod.ts";
 
 export function Home() {
   return (
-    <Html>
+    <Html title="Hono UI - Docs">
       <UniversalLayout
         header="Hono UI Doc"
         class={css`

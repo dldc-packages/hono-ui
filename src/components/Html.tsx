@@ -6,9 +6,10 @@ import * as tokens from "../../src/tokens.ts";
 
 export type HtmlProps = PropsWithChildren<{
   heads?: Child;
+  title: string;
 }>;
 
-export function Html({ children, heads }: HtmlProps): JSX.Element {
+export function Html({ children, title, heads }: HtmlProps): JSX.Element {
   const htmlClassName = css`
     height: 100%;
     background: ${tokens.c("neutral.950")};
@@ -25,7 +26,7 @@ export function Html({ children, heads }: HtmlProps): JSX.Element {
           href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📜</text></svg>`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hono UI - Docs</title>
+        <title>{title}</title>
         <Style>{globalStyles}</Style>
         {heads}
       </head>
