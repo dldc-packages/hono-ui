@@ -1,16 +1,34 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@hono/hono@^4.12.14": "4.12.14"
+    "jsr:@dldc/css-builder@^1.5.0": "1.5.0",
+    "jsr:@hono/hono@^4.12.14": "4.12.14",
+    "npm:type-fest@^5.6.0": "5.6.0"
   },
   "jsr": {
+    "@dldc/css-builder@1.5.0": {
+      "integrity": "2e70b80abb55e2d594f2093046ed7ff17fb836da8f380007b9347043286a944f"
+    },
     "@hono/hono@4.12.14": {
       "integrity": "4eedba4b53f27c8e0db683d515e11ec3b88b8fdc1748e229cd7988d243ca018d"
     }
   },
+  "npm": {
+    "tagged-tag@1.0.0": {
+      "integrity": "sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng=="
+    },
+    "type-fest@5.6.0": {
+      "integrity": "sha512-8ZiHFm91orbSAe2PSAiSVBVko18pbhbiB3U9GglSzF/zCGkR+rxpHx6sEMCUm4kxY4LjDIUGgCfUMtwfZfjfUA==",
+      "dependencies": [
+        "tagged-tag"
+      ]
+    }
+  },
   "workspace": {
     "dependencies": [
-      "jsr:@hono/hono@^4.12.14"
+      "jsr:@dldc/css-builder@^1.5.0",
+      "jsr:@hono/hono@^4.12.14",
+      "npm:type-fest@^5.6.0"
     ]
   }
 }
