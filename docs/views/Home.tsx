@@ -1,9 +1,20 @@
 import { css } from "hono/css";
+import { Fragment } from "hono/jsx";
 import { Html, Paper, UniversalLayout, utility } from "../../mod.ts";
 
 export function Home() {
   return (
-    <Html title="Hono UI - Docs">
+    <Html
+      title="Hono UI - Docs"
+      heads={
+        <Fragment>
+          <link
+            rel="icon"
+            href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📜</text></svg>`}
+          />
+        </Fragment>
+      }
+    >
       <UniversalLayout
         header="Hono UI Doc"
         class={css`
