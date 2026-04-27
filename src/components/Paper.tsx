@@ -12,7 +12,7 @@ export type PaperProps = Merge<JSX.IntrinsicElements["div"], {
 
 export function Paper({ children, rounded = 2, style: styleProp, class: classProp, ...rest }: PaperProps): JSX.Element {
   const className = css`
-    corner-shape: superellipse(1.5);
+    ${utility.cornerSuperellipse()};
     border-width: 0.5px;
     border-color: ${utility.opacity(tokens.c("white"), 10)};
     ${utility.bg("neutral.900")};
