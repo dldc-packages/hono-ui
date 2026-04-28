@@ -38,7 +38,7 @@ export function Select({
   `;
 
   return (
-    <div class={wrapperClassName} style={style}>
+    <div class={wrapperClassName} style={style} data-group-item="true">
       <select class={selectClassName} disabled={disabled} {...rest}>
         {children}
       </select>

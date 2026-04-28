@@ -29,7 +29,7 @@ export function Button({
   const className = getButtonClassName(disabled, classProp);
 
   return (
-    <button type={type} class={className} disabled={disabled} style={style} {...rest}>
+    <button type={type} class={className} disabled={disabled} style={style} data-group-item="true" {...rest}>
       {children}
     </button>
   );

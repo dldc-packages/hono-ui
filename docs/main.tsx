@@ -37,6 +37,14 @@ function getNameFromRoute(route: string): string {
     .join(" ");
 }
 
+function toPascalCase(value: string): string {
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join("");
+}
+
 function pickComponent(module: PageModule, fileName: string): FC | null {
   if (module.default) {
     return module.default;
@@ -44,7 +52,7 @@ function pickComponent(module: PageModule, fileName: string): FC | null {
 
   const stem = fileName.replace(/\.tsx$/, "");
   const suffix = "PageContent";
-  const expected = stem === "index" ? "HomePageContent" : `${stem.slice(0, 1).toUpperCase()}${stem.slice(1)}${suffix}`;
+  const expected = stem === "index" ? "HomePageContent" : `${toPascalCase(stem)}${suffix}`;
 
   const value = (module as Record<string, unknown>)[expected];
   return typeof value === "function" ? (value as FC) : null;

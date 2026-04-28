@@ -27,7 +27,7 @@ export function Input({
   const inputClassName = getInputFieldClassName();
 
   return (
-    <div class={wrapperClassName} style={style}>
+    <div class={wrapperClassName} style={style} data-group-item="true">
       <input class={inputClassName} disabled={disabled} {...rest} />
     </div>
   );

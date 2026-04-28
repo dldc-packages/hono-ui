@@ -29,6 +29,7 @@ export function ButtonLink({
       onclick={disabled ? (e: Event) => e.preventDefault() : undefined}
       aria-disabled={disabled ? "true" : undefined}
       style={style}
+      data-group-item="true"
       {...rest}
     >
       {children}

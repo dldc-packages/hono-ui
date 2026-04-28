@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@dldc/css-builder@^1.5.0": "1.5.0",
     "jsr:@hono/hono@^4.12.14": "4.12.14",
+    "npm:lucide-static@^1.11.0": "1.11.0",
     "npm:type-fest@^5.6.0": "5.6.0"
   },
   "jsr": {
@@ -14,6 +15,9 @@
     }
   },
   "npm": {
+    "lucide-static@1.11.0": {
+      "integrity": "sha512-+1S3QkfaDJnjTG7Gif6562COLU36bRgJkkb3r0goDfEprRwaRh/ivbIll37DUppmN1TDeGUgPib/BxaRXn3S6A=="
+    },
     "tagged-tag@1.0.0": {
       "integrity": "sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng=="
     },
@@ -28,6 +32,7 @@
     "dependencies": [
       "jsr:@dldc/css-builder@^1.5.0",
       "jsr:@hono/hono@^4.12.14",
+      "npm:lucide-static@^1.11.0",
       "npm:type-fest@^5.6.0"
     ]
   }
