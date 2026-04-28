@@ -3,7 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
 
-export function getInputClassName(disabled?: boolean, classProp?: string, error?: boolean) {
+export function getInputClassName(disabled?: boolean, classProp?: string, error?: boolean, readOnly?: boolean) {
   const baseClassName = css`
     display: inline-flex;
     flex-direction: row;
@@ -95,7 +95,27 @@ export function getInputClassName(disabled?: boolean, classProp?: string, error?
     }
   `;
 
-  return cx(baseClassName, disabled ? disabledClass : undefined, !disabled && error ? errorClass : undefined, classProp);
+  const readOnlyClass = css`
+    background-color: ${utility.opacity(tokens.c("black"), 18)};
+
+    &:hover,
+    &:focus-within {
+      background-color: ${utility.opacity(tokens.c("black"), 18)};
+      color: ${tokens.c("neutral.200")};
+    }
+
+    &:focus-within::after {
+      border-color: ${utility.opacity(tokens.c("neutral.300"), 20)};
+    }
+  `;
+
+  return cx(
+    baseClassName,
+    disabled ? disabledClass : undefined,
+    !disabled && !error && readOnly ? readOnlyClass : undefined,
+    !disabled && error ? errorClass : undefined,
+    classProp,
+  );
 }
 
 export function getInputFieldClassName() {
@@ -122,6 +142,11 @@ export function getInputFieldClassName() {
 
     &:disabled::placeholder {
       color: ${utility.opacity(tokens.c("white"), 15)};
+    }
+
+    &:read-only {
+      cursor: default;
+      caret-color: transparent;
     }
   `;
 }

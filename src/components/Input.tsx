@@ -18,6 +18,7 @@ export type InputProps = Merge<
 
 export function Input({
   disabled,
+  readOnly,
   error,
   size = 8,
   style: styleProp,
@@ -25,12 +26,18 @@ export function Input({
   ...rest
 }: InputProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
-  const wrapperClassName = getInputClassName(disabled, classProp, error);
+  const wrapperClassName = getInputClassName(disabled, classProp, error, readOnly);
   const inputClassName = getInputFieldClassName();
 
   return (
     <div class={wrapperClassName} style={style} data-group-item="true">
-      <input class={inputClassName} disabled={disabled} aria-invalid={error ? "true" : undefined} {...rest} />
+      <input
+        class={inputClassName}
+        disabled={disabled}
+        readOnly={readOnly}
+        aria-invalid={error ? "true" : undefined}
+        {...rest}
+      />
     </div>
   );
 }
