@@ -3,7 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
 
-export function getInputClassName(disabled?: boolean, classProp?: string, error?: boolean, readOnly?: boolean) {
+export function getInputClassName(disabled?: boolean, classProp?: string | Promise<string>, error?: boolean, readOnly?: boolean) {
   const baseClassName = css`
     display: inline-flex;
     flex-direction: row;

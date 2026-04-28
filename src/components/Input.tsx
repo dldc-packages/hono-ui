@@ -8,7 +8,6 @@ export type InputSharedProps = {
   error?: boolean;
   size?: number;
   style?: CSSProperties;
-  class?: string;
 };
 
 export type InputProps = Merge<
