@@ -1,5 +1,5 @@
 import { css } from "hono/css";
-import { Button, ButtonLink, InlineGroup, Input, Paper, Select, utility } from "../../mod.ts";
+import { Button, ButtonLike, ButtonLink, InlineGroup, Input, Paper, Select, utility } from "../../mod.ts";
 
 const pageClassName = css`
   ${utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })};
@@ -27,9 +27,9 @@ export function InlineGroupsPageContent() {
       <section class={sectionClassName}>
         <p class={subtitleClassName}>Action cluster</p>
         <InlineGroup>
-          <Button>Secondary</Button>
-          <Button>Primary</Button>
-          <Button>Danger</Button>
+          <ButtonLike variant="secondary">Secondary</ButtonLike>
+          <ButtonLike variant="primary">Primary</ButtonLike>
+          <ButtonLike variant="danger">Danger</ButtonLike>
         </InlineGroup>
       </section>
 
@@ -76,13 +76,13 @@ export function InlineGroupsPageContent() {
       <section class={sectionClassName}>
         <p class={subtitleClassName}>Same group with larger size</p>
         <InlineGroup>
-          <Button size={10}>Prev</Button>
+          <ButtonLike size={10}>Prev</ButtonLike>
           <Select size={10} defaultValue="10">
             <option value="10">10 per page</option>
             <option value="25">25 per page</option>
             <option value="50">50 per page</option>
           </Select>
-          <Button size={10}>Next</Button>
+          <ButtonLike size={10}>Next</ButtonLike>
         </InlineGroup>
       </section>
 

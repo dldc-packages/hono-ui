@@ -1,5 +1,5 @@
 import { css } from "hono/css";
-import { Button, ButtonLink, Paper, utility } from "../../mod.ts";
+import { Button, ButtonLike, ButtonLink, Paper, utility } from "../../mod.ts";
 
 export function ButtonsPageContent() {
   const rowClassName = css`
@@ -78,6 +78,26 @@ export function ButtonsPageContent() {
           <ButtonLink href="/" variant="secondary">Secondary link</ButtonLink>
           <ButtonLink href="/" variant="primary">Primary link</ButtonLink>
           <ButtonLink href="/" variant="danger">Danger link</ButtonLink>
+        </div>
+      </section>
+
+      <section
+        class={css`
+          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
+        `}
+      >
+        <p
+          class={css`
+            ${utility.textSize("lg")};
+          `}
+        >
+          ButtonLike (div) variants
+        </p>
+        <div class={rowClassName}>
+          <ButtonLike variant="secondary">Secondary div</ButtonLike>
+          <ButtonLike variant="primary">Primary div</ButtonLike>
+          <ButtonLike variant="danger">Danger div</ButtonLike>
+          <ButtonLike variant="primary" disabled>Disabled div</ButtonLike>
         </div>
       </section>
     </Paper>

@@ -9,6 +9,7 @@ export function getButtonClassName(
   disabled?: boolean,
   classProp?: string | Promise<string>,
   variant: ButtonVariant = "secondary",
+  interactive = true,
 ) {
   const baseClassName = css`
     display: inline-flex;
@@ -17,7 +18,7 @@ export function getButtonClassName(
     outline: none;
     position: relative;
     ${utility.cornerShape.superellipse};
-    background-color: ${utility.opacity(tokens.c("white"), 5)};
+    background-color: var(--button-bg);
     border-radius: calc(var(--button-size) / 4);
     min-height: var(--button-size);
     --button-padding: calc(max(round(down, -0.74 + 0.36 * (var(--button-size) / 0.25rem), 0.25)) * 0.25rem);
@@ -26,13 +27,8 @@ export function getButtonClassName(
     font-size: calc(var(--button-content-size) * 0.8);
     padding-left: calc(var(--button-padding) * 1.5);
     padding-right: calc(var(--button-padding) * 1.5);
-    color: ${tokens.c("neutral.200")};
+    color: var(--button-fg);
     gap: var(--button-padding);
-
-    &:hover {
-      background-color: ${utility.opacity(tokens.c("white"), 10)};
-      color: ${tokens.c("neutral.100")};
-    }
 
     /* Used for focus and highlight border */
     &::after {
@@ -53,35 +49,38 @@ export function getButtonClassName(
       position: absolute;
       inset: 0;
       border-width: 0.5px;
-      border-color: ${utility.opacity(tokens.c("white"), 10)};
+      border-color: var(--button-border);
     }
   `;
 
-  const primaryClass = css`
-    background-color: ${tokens.c("blue.700")};
-    color: ${tokens.c("white")};
+  const variantClasses: Record<ButtonVariant, string | Promise<string>> = {
+    secondary: css`
+      --button-bg: ${utility.opacity(tokens.c("white"), 5)};
+      --button-fg: ${tokens.c("neutral.200")};
+      --button-bg-hover: ${utility.opacity(tokens.c("white"), 10)};
+      --button-fg-hover: ${tokens.c("neutral.100")};
+      --button-border: ${utility.opacity(tokens.c("white"), 10)};
+    `,
+    primary: css`
+      --button-bg: ${tokens.c("blue.700")};
+      --button-fg: ${tokens.c("white")};
+      --button-bg-hover: ${tokens.c("blue.600")};
+      --button-fg-hover: ${tokens.c("white")};
+      --button-border: ${utility.opacity(tokens.c("blue.400"), 40)};
+    `,
+    danger: css`
+      --button-bg: ${tokens.c("red.700")};
+      --button-fg: ${tokens.c("white")};
+      --button-bg-hover: ${tokens.c("red.600")};
+      --button-fg-hover: ${tokens.c("white")};
+      --button-border: ${utility.opacity(tokens.c("red.400"), 40)};
+    `,
+  };
 
+  const interactiveClass = css`
     &:hover {
-      background-color: ${tokens.c("blue.600")};
-      color: ${tokens.c("white")};
-    }
-
-    &::before {
-      border-color: ${utility.opacity(tokens.c("blue.400"), 40)};
-    }
-  `;
-
-  const dangerClass = css`
-    background-color: ${tokens.c("red.700")};
-    color: ${tokens.c("white")};
-
-    &:hover {
-      background-color: ${tokens.c("red.600")};
-      color: ${tokens.c("white")};
-    }
-
-    &::before {
-      border-color: ${utility.opacity(tokens.c("red.400"), 40)};
+      background-color: var(--button-bg-hover);
+      color: var(--button-fg-hover);
     }
   `;
 
@@ -90,9 +89,9 @@ export function getButtonClassName(
     cursor: not-allowed;
   `;
 
-  const variantClass = variant === "primary" ? primaryClass : variant === "danger" ? dangerClass : undefined;
+  const variantClass = variantClasses[variant];
 
-  return cx(baseClassName, variantClass, disabled ? disabledClass : undefined, classProp);
+  return cx(baseClassName, interactive ? interactiveClass : undefined, variantClass, disabled ? disabledClass : undefined, classProp);
 }
 
 export function getButtonStyle(size: number, styleProp?: CSSProperties): CSSProperties {
