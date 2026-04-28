@@ -7,7 +7,6 @@ export type ButtonSharedProps = {
   disabled?: boolean;
   size?: number;
   style?: CSSProperties;
-  class?: string;
 };
 
 export type ButtonProps = Merge<

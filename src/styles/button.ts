@@ -3,7 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
 
-export function getButtonClassName(disabled?: boolean, classProp?: string) {
+export function getButtonClassName(disabled?: boolean, classProp?: string | Promise<string>) {
   const baseClassName = css`
     display: inline-flex;
     flex-direction: row;

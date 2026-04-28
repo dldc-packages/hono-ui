@@ -11,7 +11,7 @@ export function getInputClassName(disabled?: boolean, classProp?: string) {
     outline: none;
     position: relative;
     ${utility.cornerSuperellipse()};
-    background-color: ${utility.opacity(tokens.c("black"), 15)};
+    background-color: ${utility.opacity(tokens.c("black"), 20)};
     border-radius: calc(var(--input-size) / 4);
     min-height: var(--input-size);
     --input-padding: calc(max(round(down, -0.74 + 0.36 * (var(--input-size) / 0.25rem), 0.25)) * 0.25rem);
