@@ -28,6 +28,8 @@ export function TabsGroup({
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     border-radius: var(--tabs-group-rounded);
     ${utility.cornerShape.superellipse};
     padding: var(--tabs-group-padding);
@@ -35,6 +37,11 @@ export function TabsGroup({
     border-width: 0.5px;
     border-color: ${utility.opacity(tokens.c("white"), 10)};
     ${utility.bg("neutral.900")};
+
+    /* Keep scroll behavior but hide native horizontal scrollbar UI */
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     /* Keep tabs on one row while allowing horizontal scroll */
     & > * {

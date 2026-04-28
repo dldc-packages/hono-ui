@@ -7,6 +7,12 @@ import * as tokens from "../tokens.ts";
 export type IconProps = Merge<
   Omit<JSX.IntrinsicElements["span"], "dangerouslySetInnerHTML" | "children">,
   {
+    /**
+     * Raw SVG markup.
+     *
+     * This value is rendered with dangerouslySetInnerHTML, so it must come
+     * from a trusted and sanitized source.
+     */
     icon: string;
     size?: number;
     style?: CSSProperties;

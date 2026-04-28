@@ -7,9 +7,10 @@ import * as tokens from "../../src/tokens.ts";
 export type HtmlProps = PropsWithChildren<{
   heads?: Child;
   title: string;
+  lang?: string;
 }>;
 
-export function Html({ children, title, heads }: HtmlProps): JSX.Element {
+export function Html({ children, title, heads, lang = "en" }: HtmlProps): JSX.Element {
   const htmlClassName = css`
     height: 100%;
     background: ${tokens.c("neutral.950")};
@@ -18,7 +19,7 @@ export function Html({ children, title, heads }: HtmlProps): JSX.Element {
   `;
 
   return (
-    <html lang="fr" class={htmlClassName}>
+    <html lang={lang} class={htmlClassName}>
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

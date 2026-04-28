@@ -8,6 +8,7 @@ export type TitleProps = Merge<
   JSX.IntrinsicElements["h1"],
   {
     href?: string;
+    /** @deprecated Use href instead. */
     heref?: string;
     linkProps?: Omit<JSX.IntrinsicElements["a"], "href">;
   }

@@ -3,7 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
 
-export function getInputClassName(disabled?: boolean, classProp?: string) {
+export function getInputClassName(disabled?: boolean, classProp?: string, error?: boolean) {
   const baseClassName = css`
     display: inline-flex;
     flex-direction: row;
@@ -78,7 +78,24 @@ export function getInputClassName(disabled?: boolean, classProp?: string) {
     }
   `;
 
-  return cx(baseClassName, disabled ? disabledClass : undefined, classProp);
+  const errorClass = css`
+    background-color: ${utility.opacity(tokens.c("red.950"), 30)};
+
+    &:hover,
+    &:focus-within {
+      background-color: ${utility.opacity(tokens.c("red.950"), 20)};
+    }
+
+    &::before {
+      border-color: ${utility.opacity(tokens.c("red.500"), 60)};
+    }
+
+    &:focus-within::after {
+      border-color: ${utility.opacity(tokens.c("red.300"), 70)};
+    }
+  `;
+
+  return cx(baseClassName, disabled ? disabledClass : undefined, !disabled && error ? errorClass : undefined, classProp);
 }
 
 export function getInputFieldClassName() {

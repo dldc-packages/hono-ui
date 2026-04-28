@@ -5,6 +5,7 @@ import { getInputClassName, getInputFieldClassName, getInputStyle } from "../sty
 
 export type InputSharedProps = {
   disabled?: boolean;
+  error?: boolean;
   size?: number;
   style?: CSSProperties;
   class?: string;
@@ -17,18 +18,19 @@ export type InputProps = Merge<
 
 export function Input({
   disabled,
+  error,
   size = 8,
   style: styleProp,
   class: classProp,
   ...rest
 }: InputProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
-  const wrapperClassName = getInputClassName(disabled, classProp);
+  const wrapperClassName = getInputClassName(disabled, classProp, error);
   const inputClassName = getInputFieldClassName();
 
   return (
     <div class={wrapperClassName} style={style} data-group-item="true">
-      <input class={inputClassName} disabled={disabled} {...rest} />
+      <input class={inputClassName} disabled={disabled} aria-invalid={error ? "true" : undefined} {...rest} />
     </div>
   );
 }
