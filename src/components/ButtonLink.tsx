@@ -14,13 +14,14 @@ export function ButtonLink({
   href,
   children,
   disabled,
+  variant = "secondary",
   size = 8,
   style: styleProp,
   class: classProp,
   ...rest
 }: ButtonLinkProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const className = getButtonClassName(disabled, classProp);
+  const className = getButtonClassName(disabled, classProp, variant);
 
   return (
     <a

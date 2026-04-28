@@ -12,13 +12,14 @@ export type SelectProps = Merge<
 export function Select({
   children,
   disabled,
+  variant = "secondary",
   size = 8,
   style: styleProp,
   class: classProp,
   ...rest
 }: SelectProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const wrapperClassName = getButtonClassName(disabled, classProp);
+  const wrapperClassName = getButtonClassName(disabled, classProp, variant);
 
   const selectClassName = css`
     appearance: auto;

@@ -27,18 +27,18 @@ export function InlineGroupsPageContent() {
       <section class={sectionClassName}>
         <p class={subtitleClassName}>Action cluster</p>
         <InlineGroup>
-          <Button>New</Button>
-          <Button>Duplicate</Button>
-          <Button disabled>Delete</Button>
+          <Button>Secondary</Button>
+          <Button>Primary</Button>
+          <Button>Danger</Button>
         </InlineGroup>
       </section>
 
       <section class={sectionClassName}>
         <p class={subtitleClassName}>Navigation mix with links</p>
         <InlineGroup>
-          <ButtonLink href="/">Overview</ButtonLink>
-          <ButtonLink href="/buttons">Components</ButtonLink>
-          <ButtonLink href="/inputs">Examples</ButtonLink>
+          <ButtonLink href="/" variant="primary">Overview</ButtonLink>
+          <ButtonLink href="/buttons" variant="primary">Components</ButtonLink>
+          <ButtonLink href="/inputs" variant="primary">Examples</ButtonLink>
         </InlineGroup>
       </section>
 
@@ -51,7 +51,25 @@ export function InlineGroupsPageContent() {
             <option value="code">Code</option>
           </Select>
           <Input placeholder="Search..." />
-          <Button>Go</Button>
+          <Button variant="primary">Go</Button>
+        </InlineGroup>
+      </section>
+
+      <section class={sectionClassName}>
+        <p class={subtitleClassName}>Variant select group</p>
+        <InlineGroup>
+          <Select defaultValue="draft">
+            <option value="draft">Draft</option>
+            <option value="pending">Pending</option>
+          </Select>
+          <Select defaultValue="active">
+            <option value="active">Active</option>
+            <option value="published">Published</option>
+          </Select>
+          <Select defaultValue="archived">
+            <option value="archived">Archived</option>
+            <option value="deleted">Deleted</option>
+          </Select>
         </InlineGroup>
       </section>
 

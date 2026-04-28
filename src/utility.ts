@@ -29,7 +29,10 @@ export const textSize = (size: tokens.TextSizeKey): string =>
 export const fontWeight = (weight: tokens.FontWeightKey): string => `font-weight: ${tokens.fontWeight[weight].var}`;
 
 export const opacity = (colorVar: string, value: number): string => `color-mix(in oklab, ${colorVar} ${value.toFixed()}%, transparent)`;
-export const cornerSuperellipse = (): string => "corner-shape: superellipse(1.5)";
+export const cornerShape = {
+  superellipse: "corner-shape: superellipse(1.5)",
+  inherits: "corner-shape: inherit",
+};
 
 export interface FlexConfig {
   direction?: "row" | "column";

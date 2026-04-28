@@ -10,7 +10,7 @@ export function getInputClassName(disabled?: boolean, classProp?: string) {
     align-items: center;
     outline: none;
     position: relative;
-    ${utility.cornerSuperellipse()};
+    ${utility.cornerShape.superellipse};
     background-color: ${utility.opacity(tokens.c("black"), 20)};
     border-radius: calc(var(--input-size) / 4);
     min-height: var(--input-size);
@@ -32,6 +32,7 @@ export function getInputClassName(disabled?: boolean, classProp?: string) {
     /* Used for focus and highlight border */
     &::after {
       border-radius: inherit;
+      ${utility.cornerShape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;
@@ -47,6 +48,7 @@ export function getInputClassName(disabled?: boolean, classProp?: string) {
     &::before {
       display: block;
       border-radius: inherit;
+      ${utility.cornerShape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;

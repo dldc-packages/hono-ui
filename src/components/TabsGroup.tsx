@@ -29,7 +29,7 @@ export function TabsGroup({
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     border-radius: var(--tabs-group-rounded);
-    ${utility.cornerSuperellipse()};
+    ${utility.cornerShape.superellipse};
     padding: var(--tabs-group-padding);
     gap: var(--tabs-group-padding);
     border-width: 0.5px;
