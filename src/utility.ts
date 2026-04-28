@@ -64,3 +64,5 @@ export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {
     ${padding !== undefined ? `padding: ${tokens.x(padding)};` : ""}
   `;
 };
+
+export const fontFamily = (font: tokens.FontKey): string => `font-family: ${tokens.font[font].var}`;
