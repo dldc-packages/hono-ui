@@ -1,5 +1,6 @@
 import { css } from "hono/css";
-import { Button, ButtonLike, ButtonLink, Paper, utility } from "../../mod.ts";
+import { House } from "lucide-static";
+import { Button, ButtonLike, ButtonLink, Icon, Paper, utility } from "../../mod.ts";
 
 export function ButtonsPageContent() {
   const rowClassName = css`
@@ -37,7 +38,10 @@ export function ButtonsPageContent() {
           Button variants
         </p>
         <div class={rowClassName}>
-          <Button variant="secondary">Secondary</Button>
+          <Button variant="secondary">
+            <Icon icon={House} />
+            Secondary
+          </Button>
           <Button variant="primary">Primary</Button>
           <Button variant="danger">Danger</Button>
         </div>

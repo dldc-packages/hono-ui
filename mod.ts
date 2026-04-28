@@ -5,6 +5,7 @@ export * from "./src/components/Button.tsx";
 export * from "./src/components/ButtonLike.tsx";
 export * from "./src/components/ButtonLink.tsx";
 export * from "./src/components/Html.tsx";
+export * from "./src/components/Icon.tsx";
 export * from "./src/components/InlineGroup.tsx";
 export * from "./src/components/Input.tsx";
 export * from "./src/components/Link.tsx";
