@@ -65,7 +65,7 @@ export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {
   `;
 };
 
-export const srOnly = `
+export const srOnly: string = `
   position: absolute;
   width: 1px;
   height: 1px;
