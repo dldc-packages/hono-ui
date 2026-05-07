@@ -65,6 +65,9 @@ export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {
   `;
 };
 
+export const flexGrow = (value: number): string => `flex-grow: ${value}`;
+export const flexShrink = (value: number): string => `flex-shrink: ${value}`;
+
 export const srOnly: string = `
   position: absolute;
   width: 1px;
