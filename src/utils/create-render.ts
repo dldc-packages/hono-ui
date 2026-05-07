@@ -1,4 +1,4 @@
-import { cloneElement, createElement, isValidElement, type JSXNode, type ReactNode } from "hono/jsx";
+import { cloneElement, createElement, isValidElement, type ReactElement, type ReactNode } from "hono/jsx";
 import { mergeProps } from "./merge-props.ts";
 
 /**
@@ -16,23 +16,23 @@ export function createRender(
   Component: string | Function,
   props?: Record<string, any> | ReactNode,
   defaultProps?: Record<string, any>,
-): JSXNode {
+): ReactElement {
   if (props == null || (typeof props === "object" && "then" in props)) {
-    return createElement(Component, defaultProps as any);
+    return createElement(Component, defaultProps as any) as ReactElement;
   }
   if (isValidElement(props)) {
     const element = props;
     if (defaultProps) {
       const mergedProps = mergeProps(defaultProps, element.props);
-      return cloneElement(element, mergedProps);
+      return cloneElement(element, mergedProps) as ReactElement;
     }
-    return element;
+    return element as ReactElement;
   }
   if (typeof props !== "object" || isIterable(props)) {
-    return createElement(Component, defaultProps as any, props as any);
+    return createElement(Component, defaultProps as any, props as any) as ReactElement;
   }
   const mergedProps = defaultProps ? mergeProps(defaultProps, props) : props;
-  return createElement(Component, mergedProps);
+  return createElement(Component, mergedProps) as ReactElement;
 }
 
 function isIterable(obj: any): obj is Iterable<any> {
