@@ -65,4 +65,16 @@ export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {
   `;
 };
 
+export const srOnly = `
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
 export const fontFamily = (font: tokens.FontKey): string => `font-family: ${tokens.font[font].var}`;
