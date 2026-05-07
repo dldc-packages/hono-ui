@@ -21,14 +21,12 @@ export function createRender(
   defaultProps?: Record<string, any>,
 ): JSX.Element {
   if (props == null) {
-    console.log("null");
     return createElementWithChildren(Component, defaultProps as any) as any;
   }
   if (typeof props === "string") {
     return createElementWithChildren(props, defaultProps as any) as any;
   }
   if (isValidElement(props)) {
-    console.log("isValidElement");
     const element = props;
     if (defaultProps) {
       const mergedProps = mergeProps(defaultProps, element.props);
