@@ -1,14 +1,16 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { tokens } from "../../mod.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type UniversalLayoutProps = Merge<JSX.IntrinsicElements["div"], {
   style?: CSSProperties;
+  inlines?: Inlines;
 }>;
 
-export function UniversalLayout({ children, class: classProp, ...rest }: UniversalLayoutProps): JSX.Element {
+export function UniversalLayout({ children, class: classProp, inlines, ...rest }: UniversalLayoutProps): JSX.Element {
   const wrapperClassName = css`
     min-height: 100dvh;
     display: grid;
@@ -34,7 +36,7 @@ export function UniversalLayout({ children, class: classProp, ...rest }: Univers
 
   return (
     <div class={wrapperClassName}>
-      <div class={cx(contentClassName, classProp)} {...rest}>
+      <div class={mergeInlines(inlines, contentClassName, classProp)} {...rest}>
         {children}
       </div>
     </div>

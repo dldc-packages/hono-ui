@@ -2,11 +2,12 @@ import { css } from "hono/css";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { getInputClassName, getInputStyle } from "../styles/input.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 import type { InputSharedProps } from "./Input.tsx";
 
 export type TextareaProps = Merge<
   JSX.IntrinsicElements["textarea"],
-  InputSharedProps
+  InputSharedProps & { inlines?: Inlines }
 >;
 
 export function Textarea({
@@ -16,6 +17,7 @@ export function Textarea({
   rows = 4,
   style: styleProp,
   class: classProp,
+  inlines,
   ...rest
 }: TextareaProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
@@ -50,7 +52,7 @@ export function Textarea({
   `;
 
   return (
-    <div class={wrapperClassName} style={style} data-group-item="true">
+    <div class={mergeInlines(inlines, wrapperClassName, classProp)} style={style} data-group-item="true">
       <textarea
         class={textareaClassName}
         disabled={disabled}

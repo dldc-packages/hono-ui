@@ -1,15 +1,17 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type TabsGroupProps = Merge<JSX.IntrinsicElements["div"], {
   rounded?: number;
   padding?: number;
   gap?: number;
   style?: CSSProperties;
+  inlines?: Inlines;
 }>;
 
 export function TabsGroup({
@@ -18,6 +20,7 @@ export function TabsGroup({
   padding = 1.5,
   style: styleProp,
   class: classProp,
+  inlines,
   ...rest
 }: TabsGroupProps): JSX.Element {
   const className = css`
@@ -57,7 +60,7 @@ export function TabsGroup({
   };
 
   return (
-    <div class={cx(className, classProp)} style={style} {...rest}>
+    <div class={mergeInlines(inlines, className, classProp)} style={style} {...rest}>
       {children}
     </div>
   );

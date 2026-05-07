@@ -1,8 +1,9 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as tokens from "../tokens.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type IconProps = Merge<
   Omit<JSX.IntrinsicElements["span"], "dangerouslySetInnerHTML" | "children">,
@@ -16,6 +17,7 @@ export type IconProps = Merge<
     icon: string;
     size?: number;
     style?: CSSProperties;
+    inlines?: Inlines;
   }
 >;
 
@@ -24,6 +26,7 @@ export function Icon({
   size,
   style: styleProp,
   class: classProp,
+  inlines,
   ...rest
 }: IconProps): JSX.Element {
   const className = css`
@@ -50,7 +53,7 @@ export function Icon({
 
   return (
     <span
-      class={cx(className, classProp)}
+      class={mergeInlines(inlines, className, classProp)}
       style={style}
       dangerouslySetInnerHTML={{ __html: icon }}
       aria-hidden="true"

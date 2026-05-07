@@ -1,14 +1,16 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { PropsWithChildren } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as utility from "../utility.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type TabLinkProps = Merge<
   Omit<JSX.IntrinsicElements["a"], "href">,
   {
     active: boolean;
     link: string;
+    inlines?: Inlines;
   }
 >;
 
@@ -17,6 +19,7 @@ export function TabLink({
   link,
   children,
   class: classProp,
+  inlines,
   ...rest
 }: PropsWithChildren<TabLinkProps>): JSX.Element {
   const baseClassName = css`
@@ -51,7 +54,7 @@ export function TabLink({
     <a
       href={link}
       aria-current={active ? "page" : undefined}
-      class={cx(baseClassName, active ? activeClassName : undefined, classProp)}
+      class={mergeInlines(inlines, baseClassName, active ? activeClassName : undefined, classProp)}
       {...rest}
     >
       {children}

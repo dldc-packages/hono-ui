@@ -1,8 +1,9 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as utility from "../utility.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 import { Label, type LabelProps } from "./Label.tsx";
 
 export type FormFieldProps = Merge<
@@ -16,6 +17,7 @@ export type FormFieldProps = Merge<
     errorId?: string;
     required?: boolean;
     size?: number;
+    inlines?: Inlines;
     labelProps?: Omit<LabelProps, "children" | "htmlFor" | "required" | "hint" | "size">;
   }
 >;
@@ -29,6 +31,7 @@ export function FormField({
   errorId,
   required,
   size = 8,
+  inlines,
   labelProps,
   children,
   class: classProp,
@@ -57,7 +60,7 @@ export function FormField({
   const resolvedErrorId = error ? (errorId ?? `${id}-error`) : undefined;
 
   return (
-    <div class={cx(className, classProp)} {...rest}>
+    <div class={mergeInlines(inlines, className, classProp)} {...rest}>
       <Label htmlFor={id} required={required} hint={undefined} size={size} {...labelProps}>
         {label}
       </Label>

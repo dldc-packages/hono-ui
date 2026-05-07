@@ -1,8 +1,9 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { PropsWithChildren } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { textColor, textSize } from "../utility.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type TitleProps = Merge<
   JSX.IntrinsicElements["h1"],
@@ -11,6 +12,7 @@ export type TitleProps = Merge<
     /** @deprecated Use href instead. */
     heref?: string;
     linkProps?: Omit<JSX.IntrinsicElements["a"], "href">;
+    inlines?: Inlines;
   }
 >;
 
@@ -20,6 +22,7 @@ export function Title({
   linkProps,
   children,
   class: classProp,
+  inlines,
   ...rest
 }: PropsWithChildren<TitleProps>): JSX.Element {
   const link = href ?? heref;
@@ -41,7 +44,7 @@ export function Title({
   `;
 
   return (
-    <h1 class={cx(titleClassName, classProp)} {...rest}>
+    <h1 class={mergeInlines(inlines, titleClassName, classProp)} {...rest}>
       {link
         ? (
           <a href={link} class={linkClassName} {...linkProps}>

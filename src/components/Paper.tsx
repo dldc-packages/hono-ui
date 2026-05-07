@@ -1,16 +1,18 @@
-import { css, cx } from "hono/css";
+import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
+import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type PaperProps = Merge<JSX.IntrinsicElements["div"], {
   rounded?: number;
   style?: CSSProperties;
+  inlines?: Inlines;
 }>;
 
-export function Paper({ children, rounded = 2, style: styleProp, class: classProp, ...rest }: PaperProps): JSX.Element {
+export function Paper({ children, rounded = 2, style: styleProp, class: classProp, inlines, ...rest }: PaperProps): JSX.Element {
   const className = css`
     ${utility.cornerShape.superellipse};
     border-width: 0.5px;
@@ -25,7 +27,7 @@ export function Paper({ children, rounded = 2, style: styleProp, class: classPro
   };
 
   return (
-    <div class={cx(className, classProp)} style={style} {...rest}>
+    <div class={mergeInlines(inlines, className, classProp)} style={style} {...rest}>
       {children}
     </div>
   );
