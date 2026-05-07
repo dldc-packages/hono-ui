@@ -18,6 +18,7 @@ export type IconProps = Merge<
     size?: number;
     style?: CSSProperties;
     inlines?: Inlines;
+    color?: string;
   }
 >;
 
@@ -27,6 +28,7 @@ export function Icon({
   style: styleProp,
   class: classProp,
   inlines,
+  color,
   ...rest
 }: IconProps): JSX.Element {
   const className = css`
@@ -35,19 +37,20 @@ export function Icon({
     justify-content: center;
     width: var(--icon-size, var(--button-content-size, ${tokens.x(5)}));
     height: var(--icon-size, var(--button-content-size, ${tokens.x(5)}));
+    color: var(--icon-color, inherit);
     line-height: 0;
-    color: inherit;
 
     & > svg {
       width: 100%;
       height: 100%;
       display: block;
-      color: currentColor;
+      color: var(--icon-color, currentColor);
     }
   `;
 
   const style: CSSProperties = {
     ...(size !== undefined ? { ["--icon-size"]: tokens.x(size) } : {}),
+    ...(color !== undefined ? { ["--icon-color"]: color } : {}),
     ...styleProp,
   };
 
