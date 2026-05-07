@@ -1,4 +1,5 @@
-import { cloneElement, createElement, isValidElement, type ReactElement, type ReactNode } from "hono/jsx";
+import { createElement, isValidElement } from "hono/jsx";
+import type { JSX } from "hono/jsx/jsx-runtime";
 import { mergeProps } from "./merge-props.ts";
 
 /**
@@ -14,28 +15,34 @@ import { mergeProps } from "./merge-props.ts";
 export function createRender(
   // deno-lint-ignore ban-types
   Component: string | Function,
-  props?: Record<string, any> | ReactNode,
+  props?: Record<string, any> | JSX.Element,
   defaultProps?: Record<string, any>,
-): ReactElement {
+): JSX.Element {
   if (props == null || (typeof props === "object" && "then" in props)) {
-    return createElement(Component, defaultProps as any) as ReactElement;
+    return createElementWithChildren(Component, defaultProps as any) as any;
   }
   if (isValidElement(props)) {
     const element = props;
     if (defaultProps) {
       const mergedProps = mergeProps(defaultProps, element.props);
-      return cloneElement(element, mergedProps) as ReactElement;
+      return createElementWithChildren(element as any, mergedProps) as any;
     }
-    return element as ReactElement;
+    return element as any;
   }
   if (typeof props !== "object" || isIterable(props)) {
-    return createElement(Component, defaultProps as any, props as any) as ReactElement;
+    return createElementWithChildren(Component, defaultProps as any) as any;
   }
   const mergedProps = defaultProps ? mergeProps(defaultProps, props) : props;
-  return createElement(Component, mergedProps) as ReactElement;
+  return createElementWithChildren(Component, mergedProps) as any;
 }
 
 function isIterable(obj: any): obj is Iterable<any> {
   if (obj == null) return false;
   return typeof obj[Symbol.iterator] === "function";
+}
+
+// deno-lint-ignore ban-types
+function createElementWithChildren(Component: string | Function, props: Record<string, any>): JSX.Element {
+  const { children, ...rest } = props;
+  return createElement(Component, rest as any, ...(Array.isArray(children) ? children : [children])) as any;
 }

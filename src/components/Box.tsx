@@ -1,17 +1,21 @@
-import type { JSXNode, ReactElement } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { type Inlines, mergeInlines } from "../utils.ts";
 import { createRender } from "../utils/create-render.ts";
 
-export type BoxProps = Merge<JSX.IntrinsicElements["div"], { inlines?: Inlines; render?: ReactElement }>;
+export type BoxProps = Merge<JSX.IntrinsicElements["div"], { inlines?: Inlines; render?: JSX.Element }>;
 
 export function Box({
   class: classProp,
   inlines,
   render,
   ...rest
-}: BoxProps): JSXNode {
+}: BoxProps): JSX.Element {
+  console.log(createRender("div", render, {
+    class: mergeInlines(inlines, classProp),
+    ...rest,
+  }));
+
   return createRender("div", render, {
     class: mergeInlines(inlines, classProp),
     ...rest,
