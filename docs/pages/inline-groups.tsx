@@ -1,49 +1,32 @@
-import { css } from "hono/css";
-import { Button, ButtonLike, ButtonLink, InlineGroup, Input, Paper, Select, utility } from "../../mod.ts";
-
-const pageClassName = css`
-  ${utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })};
-`;
-
-const sectionClassName = css`
-  ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-`;
-
-const subtitleClassName = css`
-  ${utility.textSize("lg")};
-`;
+import { Button, ButtonLike, ButtonLink, InlineGroup, Input, Paper, Select, Stack, Typography } from "../../mod.ts";
 
 export function InlineGroupsPageContent() {
   return (
-    <Paper class={pageClassName}>
-      <p
-        class={css`
-          ${utility.textSize("2xl")};
-        `}
-      >
+    <Paper flexDirection="column" gap={4} padding={3} align="start">
+      <Typography textSize="2xl">
         Inline Group
-      </p>
+      </Typography>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Action cluster</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Action cluster</Typography>
         <InlineGroup>
           <ButtonLike variant="secondary">Secondary</ButtonLike>
           <ButtonLike variant="primary">Primary</ButtonLike>
           <ButtonLike variant="danger">Danger</ButtonLike>
         </InlineGroup>
-      </section>
+      </Stack>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Navigation mix with links</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Navigation mix with links</Typography>
         <InlineGroup>
           <ButtonLink href="/" variant="primary">Overview</ButtonLink>
           <ButtonLink href="/buttons" variant="primary">Components</ButtonLink>
           <ButtonLink href="/inputs" variant="primary">Examples</ButtonLink>
         </InlineGroup>
-      </section>
+      </Stack>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Input and action</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Input and action</Typography>
         <InlineGroup>
           <Select defaultValue="all">
             <option value="all">All</option>
@@ -53,10 +36,10 @@ export function InlineGroupsPageContent() {
           <Input placeholder="Search..." />
           <Button variant="primary">Go</Button>
         </InlineGroup>
-      </section>
+      </Stack>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Variant select group</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Variant select group</Typography>
         <InlineGroup>
           <Select defaultValue="draft">
             <option value="draft">Draft</option>
@@ -71,10 +54,10 @@ export function InlineGroupsPageContent() {
             <option value="deleted">Deleted</option>
           </Select>
         </InlineGroup>
-      </section>
+      </Stack>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Same group with larger size</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Same group with larger size</Typography>
         <InlineGroup>
           <ButtonLike size={10}>Prev</ButtonLike>
           <Select size={10} defaultValue="10">
@@ -84,10 +67,10 @@ export function InlineGroupsPageContent() {
           </Select>
           <ButtonLike size={10}>Next</ButtonLike>
         </InlineGroup>
-      </section>
+      </Stack>
 
-      <section class={sectionClassName}>
-        <p class={subtitleClassName}>Wrapping group</p>
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">Wrapping group</Typography>
         <InlineGroup wrap>
           <Button>One</Button>
           <Button>Two</Button>
@@ -96,7 +79,7 @@ export function InlineGroupsPageContent() {
           <Button>Five</Button>
           <Button>Six</Button>
         </InlineGroup>
-      </section>
+      </Stack>
     </Paper>
   );
 }

@@ -1,38 +1,17 @@
-import { css } from "hono/css";
-import { Paper, Select, utility } from "../../mod.ts";
+import { Paper, Select, Stack, Typography } from "../../mod.ts";
 
 export function SelectsPageContent() {
-  const rowClassName = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  `;
-
   return (
-    <Paper inlines={[utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })]}>
-      <p
-        class={css`
-          ${utility.textSize("2xl")};
-        `}
-      >
+    <Paper flexDirection="column" gap={4} padding={3} align="start">
+      <Typography textSize="2xl">
         Select
-      </p>
+      </Typography>
 
-      <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack direction="column" render={<section />} gap={2} align="start">
+        <Typography textSize="lg">
           Select variants
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <Select name="variant-secondary" variant="secondary" defaultValue="secondary">
             <option value="secondary">Secondary</option>
             <option value="secondary-2">Secondary alt</option>
@@ -45,22 +24,14 @@ export function SelectsPageContent() {
             <option value="danger">Danger</option>
             <option value="danger-2">Danger alt</option>
           </Select>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
 
-      <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack direction="column" render={<section />} gap={2} align="start">
+        <Typography textSize="lg">
           Size and disabled
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <Select name="size-default" defaultValue="medium">
             <option value="small">Small</option>
             <option value="medium">Medium</option>
@@ -76,8 +47,8 @@ export function SelectsPageContent() {
           <Select name="disabled" variant="danger" disabled defaultValue="disabled-option">
             <option value="disabled-option">Disabled select</option>
           </Select>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
     </Paper>
   );
 }

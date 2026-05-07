@@ -40,9 +40,10 @@ export interface FlexConfig {
   justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
   gap?: number;
   padding?: number;
+  wrap?: boolean;
 }
 
-export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {}): string => {
+export const flex = ({ direction, align, justify, gap, padding, wrap }: FlexConfig = {}): string => {
   const alignItems = align === "start" ? "flex-start" : align === "end" ? "flex-end" : align;
   const justifyContent = justify
     ? {
@@ -62,6 +63,7 @@ export const flex = ({ direction, align, justify, gap, padding }: FlexConfig = {
     ${justifyContent ? `justify-content: ${justifyContent};` : ""}
     ${gap !== undefined ? `gap: ${tokens.x(gap)};` : ""}
     ${padding !== undefined ? `padding: ${tokens.x(padding)};` : ""}
+    ${wrap ? "flex-wrap: wrap;" : ""}
   `;
 };
 

@@ -1,16 +1,11 @@
-import { css } from "hono/css";
-import { FormField, Input, Paper, Textarea, utility } from "../../mod.ts";
+import { FormField, Input, Paper, Textarea, Typography } from "../../mod.ts";
 
 export function FormsPageContent() {
   return (
-    <Paper inlines={[utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })]}>
-      <h3
-        class={css`
-          ${utility.textSize("2xl")};
-        `}
-      >
+    <Paper flexDirection="column" gap={4} padding={3} align="start">
+      <Typography textSize="2xl" render={<h3 />}>
         Forms
-      </h3>
+      </Typography>
 
       <FormField
         id="name"

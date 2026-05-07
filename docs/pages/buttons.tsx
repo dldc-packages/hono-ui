@@ -1,109 +1,61 @@
-import { css } from "hono/css";
 import { House } from "lucide-static";
-import { Button, ButtonLike, ButtonLink, Icon, Paper, utility } from "../../mod.ts";
+import { Button, ButtonLike, ButtonLink, Icon, Paper, Typography } from "../../mod.ts";
+import { Stack } from "../../src/components/Stack.tsx";
 
 export function ButtonsPageContent() {
-  const rowClassName = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  `;
-
   return (
-    <Paper
-      inlines={[
-        utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" }),
-      ]}
-    >
-      <p
-        class={css`
-          ${utility.textSize("2xl")};
-        `}
-      >
+    <Paper flexDirection="column" gap={4} padding={3} align="start">
+      <Typography textSize="2xl">
         Button
-      </p>
+      </Typography>
 
-      <section
-        inlines={[
-          utility.flex({ gap: 2, direction: "column", align: "start" }),
-        ]}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">
           Button variants
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <Button variant="secondary">
             <Icon icon={House} />
             Secondary
           </Button>
           <Button variant="primary">Primary</Button>
           <Button variant="danger">Danger</Button>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
 
-      <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">
           Sizes and disabled
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <Button>Default</Button>
           <Button size={10}>Size 10</Button>
           <Button variant="primary" disabled>Disabled primary</Button>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
 
-      <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">
           ButtonLink variants
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <ButtonLink href="/" variant="secondary">Secondary link</ButtonLink>
           <ButtonLink href="/" variant="primary">Primary link</ButtonLink>
           <ButtonLink href="/" variant="danger">Danger link</ButtonLink>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
 
-      <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
-      >
-        <p
-          class={css`
-            ${utility.textSize("lg")};
-          `}
-        >
+      <Stack render={<section />} direction="column" align="start" gap={2}>
+        <Typography textSize="lg">
           ButtonLike (div) variants
-        </p>
-        <div class={rowClassName}>
+        </Typography>
+        <Stack direction="row" align="center" gap={2} wrap>
           <ButtonLike variant="secondary">Secondary div</ButtonLike>
           <ButtonLike variant="primary">Primary div</ButtonLike>
           <ButtonLike variant="danger">Danger div</ButtonLike>
           <ButtonLike variant="primary" disabled>Disabled div</ButtonLike>
-        </div>
-      </section>
+        </Stack>
+      </Stack>
     </Paper>
   );
 }

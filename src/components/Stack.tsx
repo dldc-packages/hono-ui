@@ -13,13 +13,14 @@ export function Stack({
   justify,
   gap,
   padding,
+  wrap,
   class: classProp,
   inlines,
   render,
   ...rest
 }: StackProps): JSX.Element {
   const className = css`
-    ${flex({ direction, align, justify, gap, padding })};
+    ${flex({ direction, align, justify, gap, padding, wrap })};
   `;
 
   return createRender("div", render, {

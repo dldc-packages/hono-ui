@@ -1,18 +1,11 @@
-import { css } from "hono/css";
-import { Input, Paper, utility } from "../../mod.ts";
+import { Input, Paper, Typography } from "../../mod.ts";
 
 export function InputsPageContent() {
   return (
-    <Paper
-      inlines={[utility.flex({ gap: 3, direction: "column", padding: 3, align: "start" })]}
-    >
-      <p
-        class={css`
-          ${utility.textSize("2xl")};
-        `}
-      >
+    <Paper flexDirection="column" gap={3} padding={3} align="start">
+      <Typography textSize="2xl">
         Input
-      </p>
+      </Typography>
       <Input placeholder="Default" />
       <Input size={10} placeholder="Size 10" />
       <Input value="Disabled input" disabled />

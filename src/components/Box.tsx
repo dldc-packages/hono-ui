@@ -11,11 +11,6 @@ export function Box({
   render,
   ...rest
 }: BoxProps): JSX.Element {
-  console.log(createRender("div", render, {
-    class: mergeInlines(inlines, classProp),
-    ...rest,
-  }));
-
   return createRender("div", render, {
     class: mergeInlines(inlines, classProp),
     ...rest,

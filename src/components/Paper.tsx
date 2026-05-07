@@ -10,15 +10,25 @@ export type PaperProps = Merge<JSX.IntrinsicElements["div"], {
   rounded?: number;
   style?: CSSProperties;
   inlines?: Inlines;
+
+  // Flex
+  flexDirection?: "none" | "row" | "column";
+  align?: "start" | "center" | "end" | "stretch";
+  justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
+  gap?: number;
+  padding?: number;
 }>;
 
-export function Paper({ children, rounded = 2, style: styleProp, class: classProp, inlines, ...rest }: PaperProps): JSX.Element {
+export function Paper(
+  { children, rounded = 2, style: styleProp, class: classProp, inlines, flexDirection, align, justify, gap, padding, ...rest }: PaperProps,
+): JSX.Element {
   const className = css`
     ${utility.cornerShape.superellipse};
+    ${utility.bg("neutral.900")};
     border-width: 0.5px;
     border-color: ${utility.opacity(tokens.c("white"), 10)};
-    ${utility.bg("neutral.900")};
     border-radius: var(--paper-radius);
+    ${flexDirection !== "none" ? utility.flex({ direction: flexDirection, align, justify, gap, padding }) : ""};
   `;
 
   const style: CSSProperties = {
