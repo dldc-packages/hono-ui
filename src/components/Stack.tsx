@@ -3,9 +3,15 @@ import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { flex, type FlexConfig } from "../utility.ts";
 import { type Inlines, mergeInlines } from "../utils.ts";
-import { createRender } from "../utils/create-render.ts";
+import { createRender, type RenderProp } from "../utils/create-render.ts";
 
-export type StackProps = Merge<JSX.IntrinsicElements["div"], FlexConfig & { inlines?: Inlines; render?: JSX.Element }>;
+export type StackProps = Merge<
+  JSX.IntrinsicElements["div"],
+  FlexConfig & {
+    inlines?: Inlines;
+    render?: RenderProp;
+  }
+>;
 
 export function Stack({
   direction,

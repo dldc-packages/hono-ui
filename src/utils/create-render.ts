@@ -1,6 +1,8 @@
-import { createElement, isValidElement } from "hono/jsx";
+import { cloneElement, createElement, isValidElement } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { mergeProps } from "./merge-props.ts";
+
+export type RenderProp = JSX.Element | keyof JSX.IntrinsicElements | undefined;
 
 /**
  * From: https://github.com/ariakit/ariakit/blob/a31b051bf4bdcce793351cf9209c9311785d6856/site/src/examples/_lib/react-utils/create-render.ts
@@ -15,17 +17,22 @@ import { mergeProps } from "./merge-props.ts";
 export function createRender(
   // deno-lint-ignore ban-types
   Component: string | Function,
-  props?: Record<string, any> | JSX.Element,
+  props?: RenderProp,
   defaultProps?: Record<string, any>,
 ): JSX.Element {
-  if (props == null || (typeof props === "object" && "then" in props)) {
+  if (props == null) {
+    console.log("null");
     return createElementWithChildren(Component, defaultProps as any) as any;
   }
+  if (typeof props === "string") {
+    return createElementWithChildren(props, defaultProps as any) as any;
+  }
   if (isValidElement(props)) {
+    console.log("isValidElement");
     const element = props;
     if (defaultProps) {
       const mergedProps = mergeProps(defaultProps, element.props);
-      return createElementWithChildren(element as any, mergedProps) as any;
+      return cloneElement(element, mergedProps) as any;
     }
     return element as any;
   }
