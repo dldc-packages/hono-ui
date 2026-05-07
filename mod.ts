@@ -16,6 +16,7 @@ export * from "./src/components/Select.tsx";
 export * from "./src/components/Stack.tsx";
 export * from "./src/components/TabLink.tsx";
 export * from "./src/components/TabsGroup.tsx";
+export * from "./src/components/Tag.tsx";
 export * from "./src/components/Textarea.tsx";
 export * from "./src/components/Title.tsx";
 export * from "./src/components/UniversalLayout.tsx";
