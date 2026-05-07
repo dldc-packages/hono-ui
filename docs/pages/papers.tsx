@@ -5,12 +5,7 @@ import { Paper, utility } from "../../mod.ts";
 export function PapersPageContent() {
   return (
     <Fragment>
-      <Paper
-        class={css`
-          ${utility.flex({ gap: 3, direction: "column" })};
-          ${utility.p(3)};
-        `}
-      >
+      <Paper inlines={[utility.flex({ gap: 3, direction: "column" }), utility.p(3)]}>
         <p
           class={css`
             ${utility.textSize("2xl")};

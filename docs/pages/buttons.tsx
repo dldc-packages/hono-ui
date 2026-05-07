@@ -13,9 +13,9 @@ export function ButtonsPageContent() {
 
   return (
     <Paper
-      class={css`
-        ${utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })};
-      `}
+      inlines={[
+        utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" }),
+      ]}
     >
       <p
         class={css`
@@ -26,9 +26,9 @@ export function ButtonsPageContent() {
       </p>
 
       <section
-        class={css`
-          ${utility.flex({ gap: 2, direction: "column", align: "start" })};
-        `}
+        inlines={[
+          utility.flex({ gap: 2, direction: "column", align: "start" }),
+        ]}
       >
         <p
           class={css`

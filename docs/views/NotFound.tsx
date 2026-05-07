@@ -13,11 +13,7 @@ export function NotFound() {
 
   return (
     <Layout>
-      <Paper
-        class={css`
-          ${utility.flex({ gap: 2, padding: 3, direction: "column" })};
-        `}
-      >
+      <Paper inlines={[utility.flex({ gap: 2, padding: 3, direction: "column" })]}>
         <h1 class={titleClass}>404</h1>
         <p
           class={css`

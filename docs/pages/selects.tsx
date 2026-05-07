@@ -11,11 +11,7 @@ export function SelectsPageContent() {
   `;
 
   return (
-    <Paper
-      class={css`
-        ${utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })};
-      `}
-    >
+    <Paper inlines={[utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })]}>
       <p
         class={css`
           ${utility.textSize("2xl")};

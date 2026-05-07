@@ -4,9 +4,7 @@ import { Input, Paper, utility } from "../../mod.ts";
 export function InputsPageContent() {
   return (
     <Paper
-      class={css`
-        ${utility.flex({ gap: 3, direction: "column", padding: 3, align: "start" })};
-      `}
+      inlines={[utility.flex({ gap: 3, direction: "column", padding: 3, align: "start" })]}
     >
       <p
         class={css`

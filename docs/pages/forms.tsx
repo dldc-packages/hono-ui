@@ -3,11 +3,7 @@ import { FormField, Input, Paper, Textarea, utility } from "../../mod.ts";
 
 export function FormsPageContent() {
   return (
-    <Paper
-      class={css`
-        ${utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })};
-      `}
-    >
+    <Paper inlines={[utility.flex({ gap: 4, direction: "column", padding: 3, align: "start" })]}>
       <h3
         class={css`
           ${utility.textSize("2xl")};
