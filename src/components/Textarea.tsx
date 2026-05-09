@@ -24,7 +24,7 @@ export function Textarea({
   const wrapperClassName = getInputClassName(disabled, classProp, error);
 
   const textareaClassName = css`
-    width: 100%;
+    min-width: calc(var(--input-size) * 5);
     border: none;
     background: transparent;
     color: inherit;
@@ -35,7 +35,7 @@ export function Textarea({
     padding-bottom: calc(var(--input-padding) * 1.1);
     padding-left: calc(var(--input-padding) * 1.5);
     padding-right: calc(var(--input-padding) * 1.5);
-    resize: vertical;
+    resize: both;
 
     &::placeholder {
       color: color-mix(in oklab, var(--color-white) 30%, transparent);

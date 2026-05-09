@@ -1,5 +1,5 @@
 import { css } from "hono/css";
-import { Link, Paper, utility } from "../../mod.ts";
+import { Link, Paper, Typography, utility } from "../../mod.ts";
 import { fontWeight, textColor, textSize } from "../../src/utility.ts";
 import { Layout } from "./Layout.tsx";
 
@@ -15,14 +15,9 @@ export function NotFound() {
     <Layout>
       <Paper inlines={[utility.flex({ gap: 2, padding: 3, direction: "column" })]}>
         <h1 class={titleClass}>404</h1>
-        <p
-          class={css`
-            ${textSize("xl")};
-            ${textColor("gray.200")};
-          `}
-        >
-          Page non trouvée.
-        </p>
+        <Typography textSize="xl" textColor="gray.200">
+          Page non trouvée
+        </Typography>
         <Link href="/">Retour à l'accueil</Link>
       </Paper>
     </Layout>

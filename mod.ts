@@ -20,6 +20,7 @@ export * from "./src/components/TabsGroup.tsx";
 export * from "./src/components/Tag.tsx";
 export * from "./src/components/Textarea.tsx";
 export * from "./src/components/Title.tsx";
+export * from "./src/components/Toggle.tsx";
 export * from "./src/components/Typography.tsx";
 export * from "./src/components/UniversalLayout.tsx";
 
