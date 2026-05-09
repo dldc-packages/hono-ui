@@ -14,6 +14,7 @@ export * from "./src/components/Label.tsx";
 export * from "./src/components/Link.tsx";
 export * from "./src/components/Paper.tsx";
 export * from "./src/components/Select.tsx";
+export * from "./src/components/SrOnly.tsx";
 export * from "./src/components/Stack.tsx";
 export * from "./src/components/TabLink.tsx";
 export * from "./src/components/TabsGroup.tsx";
