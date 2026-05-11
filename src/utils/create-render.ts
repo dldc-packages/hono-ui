@@ -30,7 +30,7 @@ export function createRender(
     const element = props;
     if (defaultProps) {
       const mergedProps = mergeProps(defaultProps, element.props);
-      return cloneElement(element, mergedProps) as any;
+      return cloneElement(element, mergedProps, element.children) as any;
     }
     return element as any;
   }

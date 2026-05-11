@@ -26,5 +26,6 @@ export * from "./src/components/Typography.tsx";
 export * from "./src/components/UniversalLayout.tsx";
 
 export { globalStyles } from "./src/global.ts";
+export { type HTMLX, htmlx } from "./src/htmlx.ts";
 
 export { tokens, utility };

@@ -1,6 +1,8 @@
-import { Box, Paper, Stack, Typography, utility } from "../../mod.ts";
+import { Box, htmlx, Paper, Stack, Typography, utility } from "../../mod.ts";
 
 export function StackPageContent() {
+  console.log(<htmlx.ul />);
+
   return (
     <Paper flexDirection="column" gap={4} padding={3} align="start">
       <Typography textSize="2xl">
@@ -34,8 +36,17 @@ export function StackPageContent() {
         </Stack>
       </Stack>
 
-      <Stack render={<section />} gap={2} align="start">
+      <Stack render={<section />} gap={2} align="start" direction="column">
         <Typography textSize="lg">Custom render element</Typography>
+        <Stack render={<ul />} gap={1}>
+          <li>Uses semantic list markup</li>
+          <li>Keeps Stack spacing props</li>
+          <li>Useful for menus and timelines</li>
+        </Stack>
+      </Stack>
+
+      <Typography textSize="lg">Custom render element</Typography>
+      <Stack render={<htmlx.ul />} gap={2} align="start" direction="column">
         <Stack render={<ul />} gap={1}>
           <li>Uses semantic list markup</li>
           <li>Keeps Stack spacing props</li>

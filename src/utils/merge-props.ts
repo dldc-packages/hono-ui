@@ -1,4 +1,4 @@
-import { cx } from "hono/jsx/dom/css";
+import { cx } from "hono/css";
 
 /**
  * Merges two props objects with special handling for class, style
