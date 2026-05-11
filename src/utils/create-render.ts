@@ -1,5 +1,6 @@
 import { cloneElement, createElement, isValidElement } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
+import { HtmlEscapedString } from "hono/utils/html";
 import { mergeProps } from "./merge-props.ts";
 
 export type RenderProp = JSX.Element | keyof JSX.IntrinsicElements | undefined;
@@ -20,34 +21,29 @@ export function createRender(
   props?: RenderProp,
   defaultProps?: Record<string, any>,
 ): JSX.Element {
-  if (props == null) {
-    return createElementWithChildren(Component, defaultProps as any) as any;
-  }
+  const defaultPropsChildren = normalizeChildren(defaultProps?.children);
+
   if (typeof props === "string") {
-    return createElementWithChildren(props, defaultProps as any) as any;
+    return createElement(props, defaultProps ?? null, ...defaultPropsChildren) as any;
   }
   if (isValidElement(props)) {
     const element = props;
     if (defaultProps) {
+      const children = element.children.length === 0 ? defaultPropsChildren : element.children;
       const mergedProps = mergeProps(defaultProps, element.props);
-      return cloneElement(element, mergedProps, element.children) as any;
+      return cloneElement(element, mergedProps, ...children) as any;
     }
     return element as any;
   }
-  if (typeof props !== "object" || isIterable(props)) {
-    return createElementWithChildren(Component, defaultProps as any) as any;
+  return createElement(Component, defaultProps ?? null, ...defaultPropsChildren) as any;
+}
+
+function normalizeChildren(value: unknown): (string | number | HtmlEscapedString)[] {
+  if (value === null || value === undefined) {
+    return [];
   }
-  const mergedProps = defaultProps ? mergeProps(defaultProps, props) : props;
-  return createElementWithChildren(Component, mergedProps) as any;
-}
-
-function isIterable(obj: any): obj is Iterable<any> {
-  if (obj == null) return false;
-  return typeof obj[Symbol.iterator] === "function";
-}
-
-// deno-lint-ignore ban-types
-function createElementWithChildren(Component: string | Function, props: Record<string, any>): JSX.Element {
-  const { children, ...rest } = props;
-  return createElement(Component, rest as any, ...(Array.isArray(children) ? children : [children])) as any;
+  if (Array.isArray(value)) {
+    return value.flatMap(normalizeChildren);
+  }
+  return [value as string | number | HtmlEscapedString];
 }

@@ -53,6 +53,13 @@ export function StackPageContent() {
           <li>Useful for menus and timelines</li>
         </Stack>
       </Stack>
+
+      <Typography textSize="lg">Stack rendered as form</Typography>
+      <Stack render={<htmlx.form method="post" action="/login" />} gap={2} align="start">
+        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>First name</Box>
+        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Last name</Box>
+        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Email</Box>
+      </Stack>
     </Paper>
   );
 }
