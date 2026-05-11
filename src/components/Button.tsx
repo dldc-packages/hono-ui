@@ -29,7 +29,7 @@ export function Button({
   ...rest
 }: ButtonProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const className = getButtonClassName(disabled, classProp, variant);
+  const className = getButtonClassName(disabled, classProp, variant, !disabled);
 
   return (
     <button type={type} class={className} disabled={disabled} style={style} data-group-item="true" {...rest}>

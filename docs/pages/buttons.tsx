@@ -20,6 +20,7 @@ export function ButtonsPageContent() {
           </Button>
           <Button variant="primary">Primary</Button>
           <Button variant="danger">Danger</Button>
+          <Button variant="ghost">Ghost</Button>
         </Stack>
       </Stack>
 
@@ -31,6 +32,7 @@ export function ButtonsPageContent() {
           <Button>Default</Button>
           <Button size={10}>Size 10</Button>
           <Button variant="primary" disabled>Disabled primary</Button>
+          <Button variant="ghost" disabled>Disabled ghost</Button>
         </Stack>
       </Stack>
 
@@ -42,6 +44,7 @@ export function ButtonsPageContent() {
           <ButtonLink href="/" variant="secondary">Secondary link</ButtonLink>
           <ButtonLink href="/" variant="primary">Primary link</ButtonLink>
           <ButtonLink href="/" variant="danger">Danger link</ButtonLink>
+          <ButtonLink href="/" variant="ghost">Ghost link</ButtonLink>
         </Stack>
       </Stack>
 
@@ -53,6 +56,7 @@ export function ButtonsPageContent() {
           <ButtonLike variant="secondary">Secondary div</ButtonLike>
           <ButtonLike variant="primary">Primary div</ButtonLike>
           <ButtonLike variant="danger">Danger div</ButtonLike>
+          <ButtonLike variant="ghost">Ghost div</ButtonLike>
           <ButtonLike variant="primary" disabled>Disabled div</ButtonLike>
         </Stack>
       </Stack>

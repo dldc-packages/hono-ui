@@ -3,7 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import * as tokens from "../tokens.ts";
 import * as utility from "../utility.ts";
 
-export type ButtonVariant = "secondary" | "primary" | "danger";
+export type ButtonVariant = "secondary" | "primary" | "danger" | "ghost";
 
 export function getButtonClassName(
   disabled?: boolean,
@@ -48,7 +48,8 @@ export function getButtonClassName(
       content: "";
       position: absolute;
       inset: 0;
-      border-width: 0.5px;
+      border-width: var(--button-border-width, 0.5px);
+      border-style: solid;
       border-color: var(--button-border);
     }
   `;
@@ -74,6 +75,14 @@ export function getButtonClassName(
       --button-bg-hover: ${tokens.c("red.600")};
       --button-fg-hover: ${tokens.c("white")};
       --button-border: ${utility.opacity(tokens.c("red.400"), 40)};
+    `,
+    ghost: css`
+      --button-bg: transparent;
+      --button-fg: ${tokens.c("neutral.200")};
+      --button-bg-hover: ${utility.opacity(tokens.c("white"), 8)};
+      --button-fg-hover: ${tokens.c("neutral.100")};
+      --button-border: transparent;
+      --button-border-width: 0;
     `,
   };
 
