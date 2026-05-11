@@ -1,6 +1,6 @@
 import { cloneElement, createElement, isValidElement } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import { HtmlEscapedString } from "hono/utils/html";
+import type { HtmlEscapedString } from "hono/utils/html";
 import { mergeProps } from "./merge-props.ts";
 
 export type RenderProp = JSX.Element | keyof JSX.IntrinsicElements | undefined;
