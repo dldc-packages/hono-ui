@@ -34,12 +34,12 @@ export function TabsGroup({
     scrollbar-width: none;
     -ms-overflow-style: none;
     border-radius: var(--tabs-group-rounded);
-    ${utility.cornerShape.superellipse};
+    ${utility.border.shape.superellipse};
     padding: var(--tabs-group-padding);
     gap: var(--tabs-group-padding);
     border-width: 0.5px;
-    border-color: ${utility.opacity(tokens.c("white"), 10)};
-    ${utility.bg("neutral.900")};
+    border-color: ${tokens.opacity(tokens.c("white"), 10)};
+    ${utility.bg.c("neutral.900")};
 
     /* Keep scroll behavior but hide native horizontal scrollbar UI */
     &::-webkit-scrollbar {

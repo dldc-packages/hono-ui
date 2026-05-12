@@ -12,8 +12,8 @@ export const Tag: FC<TagProps> = ({ children, color = "neutral.300" }) => {
   const colorVar = tokens.c(color);
 
   const tagClass = css`
-    ${utility.textSize("xs")};
-    ${utility.fontWeight("semibold")};
+    ${utility.font.size("xs")};
+    ${utility.font.weight("semibold")};
     border-radius: 999px;
     padding: 0.2rem 0.55rem;
     border: 1px solid;

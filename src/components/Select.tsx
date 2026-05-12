@@ -2,6 +2,7 @@ import { css } from "hono/css";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
+import * as utility from "../utility.ts";
 import type { ButtonSharedProps } from "./Button.tsx";
 
 export type SelectProps = Merge<
@@ -23,18 +24,18 @@ export function Select({
 
   const selectClassName = css`
     appearance: auto;
-    border: none;
-    background: transparent;
-    color: inherit;
-    outline: none;
+    ${utility.border.none};
+    ${utility.bg.transparent};
+    ${utility.color.inherit};
+    ${utility.outline.none};
     min-height: var(--button-size);
-    width: 100%;
+    ${utility.w.full};
     font: inherit;
     line-height: inherit;
     cursor: pointer;
 
     &:disabled {
-      cursor: not-allowed;
+      ${utility.cursor.notAllowed};
     }
   `;
 

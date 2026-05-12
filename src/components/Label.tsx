@@ -26,22 +26,22 @@ export function Label({
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    ${utility.rowGap(1)};
-    ${utility.textColor("neutral.200")};
-    ${utility.textSize("sm")};
+    ${utility.gap.row(1)};
+    ${utility.color.c("neutral.200")};
+    ${utility.font.size("sm")};
     font-weight: 600;
   `;
 
   const labelTextClassName = css`
     display: inline-flex;
     align-items: center;
-    ${utility.columnGap(1)};
+    ${utility.gap.column(1)};
   `;
 
   const hintClassName = css`
-    ${utility.textColor("neutral.400")};
+    ${utility.color.c("neutral.400")};
     font-weight: 400;
-    ${utility.ml(1)};
+    ${utility.m.l(1)};
   `;
 
   return (

@@ -71,7 +71,7 @@ export function FormField({
             render={<p />}
             textSize="sm"
             textColor="neutral.400"
-            inlines={["margin: 0", utility.ml(1)]}
+            inlines={["margin: 0", utility.m.l(1)]}
           >
             {hint}
           </Typography>
@@ -84,7 +84,7 @@ export function FormField({
             render={<p />}
             textSize="sm"
             textColor="red.500"
-            inlines={["margin: 0", utility.ml(1)]}
+            inlines={["margin: 0", utility.m.l(1)]}
           >
             {error}
           </Typography>

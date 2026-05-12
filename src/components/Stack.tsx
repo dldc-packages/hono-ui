@@ -26,7 +26,7 @@ export function Stack({
   ...rest
 }: StackProps): JSX.Element {
   const className = css`
-    ${flex({ direction, align, justify, gap, padding, wrap })};
+    ${flex.config({ direction, align, justify, gap, padding, wrap })};
   `;
 
   return createRender("div", render, {

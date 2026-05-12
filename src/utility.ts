@@ -1,37 +1,74 @@
 import * as tokens from "./tokens.ts";
 
-export const p = (size: number): string => `padding: ${tokens.x(size)}`;
-export const px = (size: number): string => `padding-left: ${tokens.x(size)}; padding-right: ${tokens.x(size)}`;
-export const py = (size: number): string => `padding-top: ${tokens.x(size)}; padding-bottom: ${tokens.x(size)}`;
-export const pt = (size: number): string => `padding-top: ${tokens.x(size)}`;
-export const pr = (size: number): string => `padding-right: ${tokens.x(size)}`;
-export const pb = (size: number): string => `padding-bottom: ${tokens.x(size)}`;
-export const pl = (size: number): string => `padding-left: ${tokens.x(size)}`;
+export const p = {
+  all: (size: number): string => `padding: ${tokens.x(size)}`,
+  x: (size: number): string => `padding-left: ${tokens.x(size)}; padding-right: ${tokens.x(size)}`,
+  y: (size: number): string => `padding-top: ${tokens.x(size)}; padding-bottom: ${tokens.x(size)}`,
+  t: (size: number): string => `padding-top: ${tokens.x(size)}`,
+  r: (size: number): string => `padding-right: ${tokens.x(size)}`,
+  b: (size: number): string => `padding-bottom: ${tokens.x(size)}`,
+  l: (size: number): string => `padding-left: ${tokens.x(size)}`,
+};
 
-export const m = (size: number): string => `margin: ${tokens.x(size)}`;
-export const mx = (size: number): string => `margin-left: ${tokens.x(size)}; margin-right: ${tokens.x(size)}`;
-export const my = (size: number): string => `margin-top: ${tokens.x(size)}; margin-bottom: ${tokens.x(size)}`;
-export const mt = (size: number): string => `margin-top: ${tokens.x(size)}`;
-export const mr = (size: number): string => `margin-right: ${tokens.x(size)}`;
-export const mb = (size: number): string => `margin-bottom: ${tokens.x(size)}`;
-export const ml = (size: number): string => `margin-left: ${tokens.x(size)}`;
+export const m = {
+  all: (size: number): string => `margin: ${tokens.x(size)}`,
+  x: (size: number): string => `margin-left: ${tokens.x(size)}; margin-right: ${tokens.x(size)}`,
+  y: (size: number): string => `margin-top: ${tokens.x(size)}; margin-bottom: ${tokens.x(size)}`,
+  t: (size: number): string => `margin-top: ${tokens.x(size)}`,
+  r: (size: number): string => `margin-right: ${tokens.x(size)}`,
+  b: (size: number): string => `margin-bottom: ${tokens.x(size)}`,
+  l: (size: number): string => `margin-left: ${tokens.x(size)}`,
+};
 
-export const gap = (size: number): string => `gap: ${tokens.x(size)}`;
-export const rowGap = (size: number): string => `row-gap: ${tokens.x(size)}`;
-export const columnGap = (size: number): string => `column-gap: ${tokens.x(size)}`;
+export const gap = {
+  all: (size: number): string => `gap: ${tokens.x(size)}`,
+  column: (size: number): string => `column-gap: ${tokens.x(size)}`,
+  row: (size: number): string => `row-gap: ${tokens.x(size)}`,
+};
 
-export const bg = (color: tokens.ColorKey): string => `background-color: ${tokens.c(color)}`;
-export const textColor = (color: tokens.ColorKey): string => `color: ${tokens.c(color)}`;
+export const border = {
+  radius: (size: number): string => `border-radius: ${tokens.x(size)}`,
+  shape: {
+    superellipse: "corner-shape: superellipse(1.5)",
+    inherits: "corner-shape: inherit",
+  },
+  width: (size: number): string => `border-width: ${tokens.x(size)}`,
+  color: (color: tokens.ColorKey): string => `border-color: ${tokens.c(color)}`,
+  none: "border: none",
+  raw: (value: string): string => `border: ${value}`,
+};
 
-export const textSize = (size: tokens.TextSizeKey): string =>
-  `font-size: ${tokens.textSize[size].var}; line-height: var(--tw-leading, ${tokens.lineHeight[size].var})`;
+export const bg = {
+  c: (color: tokens.ColorKey): string => `background-color: ${tokens.c(color)}`,
+  transparent: "background: transparent",
+  raw: (value: string): string => `background: ${value}`,
+};
 
-export const fontWeight = (weight: tokens.FontWeightKey): string => `font-weight: ${tokens.fontWeight[weight].var}`;
+export const color = {
+  c: (color: tokens.ColorKey): string => `color: ${tokens.c(color)}`,
+  inherit: "color: inherit",
+  raw: (value: string): string => `color: ${value}`,
+};
 
-export const opacity = (colorVar: string, value: number): string => `color-mix(in oklab, ${colorVar} ${value.toFixed()}%, transparent)`;
-export const cornerShape = {
-  superellipse: "corner-shape: superellipse(1.5)",
-  inherits: "corner-shape: inherit",
+export const font = {
+  weight: (weight: tokens.FontWeightKey): string => `font-weight: ${tokens.fontWeight[weight].var}`,
+  family: (font: tokens.FontKey): string => `font-family: ${tokens.font[font].var}`,
+  size: (size: tokens.TextSizeKey): string =>
+    `font-size: ${tokens.textSize[size].var}; line-height: var(--tw-leading, ${tokens.lineHeight[size].var})`,
+};
+
+export const outline = { none: "outline: none" };
+
+export const cursor = { notAllowed: "cursor: not-allowed" };
+
+export const w = {
+  x: (size: number): string => `width: ${tokens.x(size)}`,
+  full: "width: 100%",
+};
+
+export const h = {
+  x: (size: number): string => `height: ${tokens.x(size)}`,
+  full: "height: 100%",
 };
 
 export interface FlexConfig {
@@ -43,20 +80,38 @@ export interface FlexConfig {
   wrap?: boolean;
 }
 
-export const flex = ({ direction, align, justify, gap, padding, wrap }: FlexConfig = {}): string => {
-  const alignItems = align === "start" ? "flex-start" : align === "end" ? "flex-end" : align;
-  const justifyContent = justify
-    ? {
-      start: "flex-start",
-      center: "center",
-      end: "flex-end",
-      between: "space-between",
-      around: "space-around",
-      evenly: "space-evenly",
-    }[justify]
-    : null;
+export const flex = {
+  grow: (value: number): string => `flex-grow: ${value}`,
+  shrink: (value: number): string => `flex-shrink: ${value}`,
+  alignItems: {
+    start: "align-items: flex-start",
+    center: "align-items: center",
+    end: "align-items: flex-end",
+    stretch: "align-items: stretch",
+  },
+  justifyContent: {
+    start: "justify-content: flex-start",
+    center: "justify-content: center",
+    end: "justify-content: flex-end",
+    between: "justify-content: space-between",
+    around: "justify-content: space-around",
+    evenly: "justify-content: space-evenly",
+  },
+  wrap: "flex-wrap: wrap",
+  config: ({ direction, align, justify, gap, padding, wrap }: FlexConfig = {}): string => {
+    const alignItems = align === "start" ? "flex-start" : align === "end" ? "flex-end" : align;
+    const justifyContent = justify
+      ? {
+        start: "flex-start",
+        center: "center",
+        end: "flex-end",
+        between: "space-between",
+        around: "space-around",
+        evenly: "space-evenly",
+      }[justify]
+      : null;
 
-  return `
+    return `
     display: flex;
     ${direction ? `flex-direction: ${direction};` : ""}
     ${alignItems ? `align-items: ${alignItems};` : ""}
@@ -65,6 +120,7 @@ export const flex = ({ direction, align, justify, gap, padding, wrap }: FlexConf
     ${padding !== undefined ? `padding: ${tokens.x(padding)};` : ""}
     ${wrap ? "flex-wrap: wrap;" : ""}
   `;
+  },
 };
 
 export const flexGrow = (value: number): string => `flex-grow: ${value}`;

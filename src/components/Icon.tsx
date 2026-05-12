@@ -3,6 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as tokens from "../tokens.ts";
+import * as utility from "../utility.ts";
 import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type IconProps = Merge<
@@ -41,8 +42,8 @@ export function Icon({
     line-height: 0;
 
     & > svg {
-      width: 100%;
-      height: 100%;
+      ${utility.w.full};
+      ${utility.h.full};
       display: block;
       color: var(--icon-color, currentColor);
     }

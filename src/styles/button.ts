@@ -17,7 +17,7 @@ export function getButtonClassName(
     align-items: center;
     outline: none;
     position: relative;
-    ${utility.cornerShape.superellipse};
+    ${utility.border.shape.superellipse};
     background-color: var(--button-bg);
     border-radius: calc(var(--button-size) / 4);
     min-height: var(--button-size);
@@ -33,7 +33,7 @@ export function getButtonClassName(
     /* Used for focus and highlight border */
     &::after {
       border-radius: inherit;
-      ${utility.cornerShape.inherits};
+      ${utility.border.shape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;
@@ -43,7 +43,7 @@ export function getButtonClassName(
     /* Used for visual border for input and surface variants */
     &::before {
       border-radius: inherit;
-      ${utility.cornerShape.inherits};
+      ${utility.border.shape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;
@@ -56,30 +56,30 @@ export function getButtonClassName(
 
   const variantClasses: Record<ButtonVariant, string | Promise<string>> = {
     secondary: css`
-      --button-bg: ${utility.opacity(tokens.c("white"), 5)};
+      --button-bg: ${tokens.opacity(tokens.c("white"), 5)};
       --button-fg: ${tokens.c("neutral.200")};
-      --button-bg-hover: ${utility.opacity(tokens.c("white"), 10)};
+      --button-bg-hover: ${tokens.opacity(tokens.c("white"), 10)};
       --button-fg-hover: ${tokens.c("neutral.100")};
-      --button-border: ${utility.opacity(tokens.c("white"), 10)};
+      --button-border: ${tokens.opacity(tokens.c("white"), 10)};
     `,
     primary: css`
       --button-bg: ${tokens.c("blue.700")};
       --button-fg: ${tokens.c("white")};
       --button-bg-hover: ${tokens.c("blue.600")};
       --button-fg-hover: ${tokens.c("white")};
-      --button-border: ${utility.opacity(tokens.c("blue.400"), 40)};
+      --button-border: ${tokens.opacity(tokens.c("blue.400"), 40)};
     `,
     danger: css`
       --button-bg: ${tokens.c("red.700")};
       --button-fg: ${tokens.c("white")};
       --button-bg-hover: ${tokens.c("red.600")};
       --button-fg-hover: ${tokens.c("white")};
-      --button-border: ${utility.opacity(tokens.c("red.400"), 40)};
+      --button-border: ${tokens.opacity(tokens.c("red.400"), 40)};
     `,
     ghost: css`
       --button-bg: transparent;
       --button-fg: ${tokens.c("neutral.200")};
-      --button-bg-hover: ${utility.opacity(tokens.c("white"), 8)};
+      --button-bg-hover: ${tokens.opacity(tokens.c("white"), 8)};
       --button-fg-hover: ${tokens.c("neutral.100")};
       --button-border: transparent;
       --button-border-width: 0;
@@ -95,7 +95,7 @@ export function getButtonClassName(
 
   const disabledClass = css`
     opacity: 0.5;
-    cursor: not-allowed;
+    ${utility.cursor.notAllowed};
   `;
 
   const variantClass = variantClasses[variant];

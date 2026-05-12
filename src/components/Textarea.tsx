@@ -2,6 +2,8 @@ import { css } from "hono/css";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import { getInputClassName, getInputStyle } from "../styles/input.ts";
+import * as tokens from "../tokens.ts";
+import * as utility from "../utility.ts";
 import { type Inlines, mergeInlines } from "../utils.ts";
 import type { InputSharedProps } from "./Input.tsx";
 
@@ -25,10 +27,10 @@ export function Textarea({
 
   const textareaClassName = css`
     min-width: calc(var(--input-size) * 5);
-    border: none;
-    background: transparent;
-    color: inherit;
-    outline: none;
+    ${utility.border.none};
+    ${utility.bg.transparent};
+    ${utility.color.inherit};
+    ${utility.outline.none};
     line-height: calc(var(--input-content-size) * 0.8 * 1.4);
     font-size: calc(var(--input-content-size) * 0.8);
     padding-top: calc(var(--input-padding) * 1.1);
@@ -38,16 +40,16 @@ export function Textarea({
     resize: both;
 
     &::placeholder {
-      color: color-mix(in oklab, var(--color-white) 30%, transparent);
+      color: ${tokens.opacity(tokens.c("white"), 30)};
     }
 
     &:disabled {
-      cursor: not-allowed;
+      ${utility.cursor.notAllowed};
       caret-color: transparent;
     }
 
     &:disabled::placeholder {
-      color: color-mix(in oklab, var(--color-white) 15%, transparent);
+      color: ${tokens.opacity(tokens.c("white"), 15)};
     }
   `;
 

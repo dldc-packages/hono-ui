@@ -3,6 +3,7 @@ import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { Merge } from "type-fest";
 import * as tokens from "../tokens.ts";
+import * as utility from "../utility.ts";
 import { type Inlines, mergeInlines } from "../utils.ts";
 
 export type ToggleSharedProps = {
@@ -50,8 +51,8 @@ export function Toggle({
       margin: 0;
       opacity: 0;
       cursor: inherit;
-      width: 100%;
-      height: 100%;
+      ${utility.w.full};
+      ${utility.h.full};
       z-index: 1;
     }
 
@@ -96,7 +97,7 @@ export function Toggle({
     }
 
     & > input:disabled {
-      cursor: not-allowed;
+      ${utility.cursor.notAllowed};
     }
   `;
 

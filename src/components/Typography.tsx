@@ -27,9 +27,9 @@ export function Typography({
   const className = mergeInlines(
     [
       ...(inlines ?? []),
-      textSize ? utility.textSize(textSize) : null,
-      textColor ? utility.textColor(textColor) : null,
-      fontWeight ? utility.fontWeight(fontWeight) : null,
+      textSize ? utility.font.size(textSize) : null,
+      textColor ? utility.color.c(textColor) : null,
+      fontWeight ? utility.font.weight(fontWeight) : null,
     ],
     classProp,
   );

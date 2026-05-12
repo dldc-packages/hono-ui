@@ -23,12 +23,12 @@ export function Paper(
   { children, rounded = 2, style: styleProp, class: classProp, inlines, flexDirection, align, justify, gap, padding, ...rest }: PaperProps,
 ): JSX.Element {
   const className = css`
-    ${utility.cornerShape.superellipse};
-    ${utility.bg("neutral.900")};
+    ${utility.border.shape.superellipse};
+    ${utility.bg.c("neutral.900")};
     border-width: 0.5px;
-    border-color: ${utility.opacity(tokens.c("white"), 10)};
+    border-color: ${tokens.opacity(tokens.c("white"), 10)};
     border-radius: var(--paper-radius);
-    ${flexDirection !== "none" ? utility.flex({ direction: flexDirection, align, justify, gap, padding }) : ""};
+    ${flexDirection !== "none" ? utility.flex.config({ direction: flexDirection, align, justify, gap, padding }) : ""};
   `;
 
   const style: CSSProperties = {

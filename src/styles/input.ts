@@ -8,10 +8,10 @@ export function getInputClassName(disabled?: boolean, classProp?: string | Promi
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    outline: none;
+    ${utility.outline.none};
     position: relative;
-    ${utility.cornerShape.superellipse};
-    background-color: ${utility.opacity(tokens.c("black"), 20)};
+    ${utility.border.shape.superellipse};
+    background-color: ${tokens.opacity(tokens.c("black"), 20)};
     border-radius: calc(var(--input-size) / 4);
     min-height: var(--input-size);
     --input-padding: calc(max(round(down, -0.74 + 0.36 * (var(--input-size) / 0.25rem), 0.25)) * 0.25rem);
@@ -20,19 +20,19 @@ export function getInputClassName(disabled?: boolean, classProp?: string | Promi
     min-width: calc(var(--input-size) * 5);
 
     &:hover {
-      background-color: ${utility.opacity(tokens.c("black"), 5)};
+      background-color: ${tokens.opacity(tokens.c("black"), 5)};
       color: ${tokens.c("neutral.100")};
     }
 
     &:focus-within {
-      background-color: ${utility.opacity(tokens.c("black"), 5)};
+      background-color: ${tokens.opacity(tokens.c("black"), 5)};
       color: ${tokens.c("neutral.100")};
     }
 
     /* Used for focus and highlight border */
     &::after {
       border-radius: inherit;
-      ${utility.cornerShape.inherits};
+      ${utility.border.shape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;
@@ -41,36 +41,36 @@ export function getInputClassName(disabled?: boolean, classProp?: string | Promi
 
     &:focus-within::after {
       border-width: 1px;
-      border-color: ${utility.opacity(tokens.c("neutral.300"), 40)};
+      border-color: ${tokens.opacity(tokens.c("neutral.300"), 40)};
     }
 
     /* Used for visual border */
     &::before {
       display: block;
       border-radius: inherit;
-      ${utility.cornerShape.inherits};
+      ${utility.border.shape.inherits};
       pointer-events: none;
       content: "";
       position: absolute;
       inset: 0;
       border-width: 1px;
-      border-color: ${utility.opacity(tokens.c("black"), 30)};
+      border-color: ${tokens.opacity(tokens.c("black"), 30)};
     }
   `;
 
   const disabledClass = css`
-    color: ${utility.opacity(tokens.c("neutral.200"), 15)};
-    background-color: ${utility.opacity(tokens.c("black"), 22)};
-    cursor: not-allowed;
+    color: ${tokens.opacity(tokens.c("neutral.200"), 15)};
+    background-color: ${tokens.opacity(tokens.c("black"), 22)};
+    ${utility.cursor.notAllowed};
 
     &:hover,
     &:focus-within {
-      color: ${utility.opacity(tokens.c("neutral.200"), 15)};
-      background-color: ${utility.opacity(tokens.c("black"), 22)};
+      color: ${tokens.opacity(tokens.c("neutral.200"), 15)};
+      background-color: ${tokens.opacity(tokens.c("black"), 22)};
     }
 
     &::before {
-      border-color: ${utility.opacity(tokens.c("black"), 20)};
+      border-color: ${tokens.opacity(tokens.c("black"), 20)};
     }
 
     &::after {
@@ -79,33 +79,33 @@ export function getInputClassName(disabled?: boolean, classProp?: string | Promi
   `;
 
   const errorClass = css`
-    background-color: ${utility.opacity(tokens.c("red.950"), 30)};
+    background-color: ${tokens.opacity(tokens.c("red.950"), 30)};
 
     &:hover,
     &:focus-within {
-      background-color: ${utility.opacity(tokens.c("red.950"), 20)};
+      background-color: ${tokens.opacity(tokens.c("red.950"), 20)};
     }
 
     &::before {
-      border-color: ${utility.opacity(tokens.c("red.500"), 60)};
+      border-color: ${tokens.opacity(tokens.c("red.500"), 60)};
     }
 
     &:focus-within::after {
-      border-color: ${utility.opacity(tokens.c("red.300"), 70)};
+      border-color: ${tokens.opacity(tokens.c("red.300"), 70)};
     }
   `;
 
   const readOnlyClass = css`
-    background-color: ${utility.opacity(tokens.c("black"), 18)};
+    background-color: ${tokens.opacity(tokens.c("black"), 18)};
 
     &:hover,
     &:focus-within {
-      background-color: ${utility.opacity(tokens.c("black"), 18)};
+      background-color: ${tokens.opacity(tokens.c("black"), 18)};
       color: ${tokens.c("neutral.200")};
     }
 
     &:focus-within::after {
-      border-color: ${utility.opacity(tokens.c("neutral.300"), 20)};
+      border-color: ${tokens.opacity(tokens.c("neutral.300"), 20)};
     }
   `;
 
@@ -120,28 +120,28 @@ export function getInputClassName(disabled?: boolean, classProp?: string | Promi
 
 export function getInputFieldClassName() {
   return css`
-    width: 100%;
+    ${utility.w.full};
     min-height: var(--input-size);
-    border: none;
-    background: transparent;
-    color: inherit;
-    outline: none;
+    ${utility.border.none};
+    ${utility.bg.transparent};
+    ${utility.color.inherit};
+    ${utility.outline.none};
     line-height: var(--input-content-size);
     font-size: calc(var(--input-content-size) * 0.8);
     padding-left: calc(var(--input-padding) * 1.5);
     padding-right: calc(var(--input-padding) * 1.5);
 
     &::placeholder {
-      color: ${utility.opacity(tokens.c("white"), 30)};
+      ${utility.color.raw(tokens.opacity(tokens.c("white"), 30))};
     }
 
     &:disabled {
-      cursor: not-allowed;
+      ${utility.cursor.notAllowed};
       caret-color: transparent;
     }
 
     &:disabled::placeholder {
-      color: ${utility.opacity(tokens.c("white"), 15)};
+      ${utility.color.raw(tokens.opacity(tokens.c("white"), 15))};
     }
 
     &:read-only {

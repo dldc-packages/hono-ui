@@ -23,10 +23,10 @@ export function Title({
   ...rest
 }: PropsWithChildren<TitleProps>): JSX.Element {
   const titleClassName = css`
-    ${utility.textSize("4xl")};
-    ${utility.textColor("neutral.100")};
-    ${utility.fontWeight("bold")};
-    ${utility.m(0)};
+    ${utility.font.size("4xl")};
+    ${utility.color.c("neutral.100")};
+    ${utility.font.weight("bold")};
+    ${utility.m.all(0)};
   `;
 
   const linkClassName = css`

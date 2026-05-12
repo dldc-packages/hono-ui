@@ -28,25 +28,25 @@ export function TabLink({
     align-items: center;
     text-decoration: none;
     border-radius: var(--tablink-rounded, 9999px);
-    ${utility.cornerShape.superellipse};
+    ${utility.border.shape.superellipse};
     transition: color 120ms ease-out, background-color 120ms ease-out;
-    ${utility.px(3)};
-    ${utility.py(1)};
-    ${utility.textColor("neutral.500")};
-    ${utility.textSize("xl")};
+    ${utility.p.x(3)};
+    ${utility.p.y(1)};
+    ${utility.color.c("neutral.500")};
+    ${utility.font.size("xl")};
 
     &:hover {
-      ${utility.bg("neutral.800")};
-      ${utility.textColor("neutral.400")};
+      ${utility.bg.c("neutral.800")};
+      ${utility.color.c("neutral.400")};
     }
   `;
 
   const activeClassName = css`
-    ${utility.bg("neutral.700")};
-    ${utility.textColor("white")};
+    ${utility.bg.c("neutral.700")};
+    ${utility.color.c("white")};
     &:hover {
-      ${utility.bg("neutral.600")};
-      ${utility.textColor("white")};
+      ${utility.bg.c("neutral.600")};
+      ${utility.color.c("white")};
     }
   `;
 

@@ -625,6 +625,10 @@ export function c(name: ColorKey): string {
   return colors[name].var;
 }
 
+export function opacity(colorVar: string, value: number): string {
+  return `color-mix(in oklab, ${colorVar} ${value.toFixed()}%, transparent)`;
+}
+
 export const allColorsVars: CssVar[] = Object.values(colors).reduce((acc, color) => {
   if ("name" in color) {
     acc.push(color);
