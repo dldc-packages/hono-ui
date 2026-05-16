@@ -14,7 +14,7 @@ const baseClassName = css({
   flex: "0 0 auto",
   alignItems: "center",
   textDecoration: "none",
-  rounded: c.var("--tablink-rounded", "9999px"),
+  borderRadius: c.var("--tablink-borderRadius", "9999px"),
   cornerShape: "superellipse",
   transition: "color 120ms ease-out, background-color 120ms ease-out",
   paddingX: 3,

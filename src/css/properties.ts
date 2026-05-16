@@ -15,7 +15,7 @@ const color: Datatype = {
   staticValues: { transparent: "transparent", inherit: "inherit", currentcolor: "currentcolor" },
 };
 
-const rounded: Datatype = {
+const borderRadius: Datatype = {
   mappers: [d.raw, d.cssVar, d.cssExpr, d.x],
   staticValues: { inherit: "inherit", full: "9999px", none: "0" },
 };
@@ -152,13 +152,13 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
 
   cornerShape: { toCss: "corner-shape", datatype: cornerShape },
 
-  rounded: { toCss: "border-radius", datatype: rounded },
-  roundedStart: { toCss: ["border-start-start-radius", "border-end-start-radius"], datatype: rounded },
-  roundedEnd: { toCss: ["border-start-end-radius", "border-end-end-radius"], datatype: rounded },
-  roundedTop: { toCss: ["border-top-left-radius", "border-top-right-radius"], datatype: rounded },
-  roundedBottom: { toCss: ["border-bottom-left-radius", "border-bottom-right-radius"], datatype: rounded },
-  roundedRight: { toCss: ["border-top-right-radius", "border-bottom-right-radius"], datatype: rounded },
-  roundedLeft: { toCss: ["border-top-left-radius", "border-bottom-left-radius"], datatype: rounded },
+  borderRadius: { toCss: "border-radius", datatype: borderRadius },
+  borderRadiusStart: { toCss: ["border-start-start-radius", "border-end-start-radius"], datatype: borderRadius },
+  borderRadiusEnd: { toCss: ["border-start-end-radius", "border-end-end-radius"], datatype: borderRadius },
+  borderRadiusTop: { toCss: ["border-top-left-radius", "border-top-right-radius"], datatype: borderRadius },
+  borderRadiusBottom: { toCss: ["border-bottom-left-radius", "border-bottom-right-radius"], datatype: borderRadius },
+  borderRadiusRight: { toCss: ["border-top-right-radius", "border-bottom-right-radius"], datatype: borderRadius },
+  borderRadiusLeft: { toCss: ["border-top-left-radius", "border-bottom-left-radius"], datatype: borderRadius },
 
   border: { toCss: "border", datatype: border },
   borderWidth: { toCss: "border-width", datatype: borderWidth },

@@ -12,7 +12,7 @@ const baseClassName = css({
   position: "relative",
   cornerShape: "superellipse",
   background: "black/20",
-  rounded: c.divide(c.var("--input-size"), 4),
+  borderRadius: c.divide(c.var("--input-size"), 4),
   minHeight: "var(--input-size)",
   vars: {
     "--input-padding": c.multiply(
@@ -41,7 +41,7 @@ const baseClassName = css({
       color: "neutral-100",
     },
     "&::after": {
-      rounded: "inherit",
+      borderRadius: "inherit",
       cornerShape: "inherit",
       pointerEvents: "none",
       content: "empty",
@@ -54,7 +54,7 @@ const baseClassName = css({
     },
     "&::before": {
       display: "block",
-      rounded: "inherit",
+      borderRadius: "inherit",
       cornerShape: "inherit",
       pointerEvents: "none",
       content: "empty",

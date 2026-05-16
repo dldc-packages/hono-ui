@@ -95,7 +95,7 @@ export const resetCssContent: GlobalCssObj = {
           fontVariationSettings: "inherit",
           letterSpacing: "inherit",
           color: "inherit",
-          rounded: "none",
+          borderRadius: "none",
           backgroundColor: "transparent",
           opacity: 1,
         },

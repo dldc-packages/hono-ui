@@ -13,10 +13,10 @@ const baseClassName = css({
   alignItems: "stretch",
   selectors: {
     "& > [data-group-item]:not(:first-child)": {
-      roundedStart: "none",
+      borderRadiusStart: "none",
     },
     "& > [data-group-item]:not(:last-child)": {
-      roundedEnd: "none",
+      borderRadiusEnd: "none",
     },
   },
 });

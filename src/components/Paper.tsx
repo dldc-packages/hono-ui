@@ -8,7 +8,7 @@ import type { ComponentPropsMerge } from "../utils/types.ts";
 export type PaperProps = ComponentPropsMerge<
   Pick<CssObj, "alignItems" | "justifyContent" | "gap" | "padding"> & {
     flexDirection?: "row" | "column" | "none";
-    rounded?: number;
+    borderRadius?: number;
   }
 >;
 
@@ -17,15 +17,15 @@ const className = css({
   background: "neutral-900",
   borderWidth: "0.5px",
   borderColor: "white/10",
-  rounded: "var(--paper-radius)",
+  borderRadius: "var(--paper-radius)",
 });
 
 export function Paper(
-  { children, rounded = 2, style: styleProp, class: classProp, flexDirection, alignItems, justifyContent, gap, padding, ...rest }:
+  { children, borderRadius = 2, style: styleProp, class: classProp, flexDirection, alignItems, justifyContent, gap, padding, ...rest }:
     PaperProps,
 ): JSX.Element {
   const style: CSSProperties = {
-    ["--paper-radius"]: tokens.x(rounded),
+    ["--paper-radius"]: tokens.x(borderRadius),
     ...styleProp,
   };
 

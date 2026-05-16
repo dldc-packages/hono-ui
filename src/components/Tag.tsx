@@ -10,7 +10,7 @@ type TagProps = {
 const tagClass = css({
   fontSize: "xs",
   fontWeight: "semibold",
-  rounded: "full",
+  borderRadius: "full",
   paddingX: 2,
   paddingY: 0.25,
   borderWidth: "1px",

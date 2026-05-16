@@ -14,7 +14,7 @@ const baseClassName = css({
   position: "relative",
   cornerShape: "superellipse",
   background: "var(--button-bg)",
-  rounded: c.divide(c.var("--button-size"), 4),
+  borderRadius: c.divide(c.var("--button-size"), 4),
   minHeight: "var(--button-size)",
   vars: {
     "--button-padding": c.multiply(
@@ -40,7 +40,7 @@ const baseClassName = css({
   selectors: {
     "&::after": {
       // Used for focus and highlight border
-      rounded: "inherit",
+      borderRadius: "inherit",
       content: "empty",
       cornerShape: "inherit",
       pointerEvents: "none",
@@ -49,7 +49,7 @@ const baseClassName = css({
     },
     "&::before": {
       // Used for visual border for input and surface variants
-      rounded: "inherit",
+      borderRadius: "inherit",
       cornerShape: "inherit",
       pointerEvents: "none",
       content: "empty",

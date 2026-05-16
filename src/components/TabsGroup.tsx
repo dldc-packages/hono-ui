@@ -6,7 +6,7 @@ import { resolveClassNames } from "../utils/resolveClassNames.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type TabsGroupProps = ComponentPropsMerge<{
-  rounded?: number;
+  borderRadius?: number;
   padding?: number;
   gap?: number;
 }>;
@@ -20,7 +20,7 @@ const className = css({
   overflowY: "hidden",
   WebkitOverflowScrolling: "touch",
   scrollbarWidth: "none",
-  rounded: "var(--tabs-group-rounded)",
+  borderRadius: "var(--tabs-group-border-radius)",
   cornerShape: "superellipse",
   padding: "var(--tabs-group-padding)",
   gap: "var(--tabs-group-padding)",
@@ -42,16 +42,16 @@ const className = css({
 
 export function TabsGroup({
   children,
-  rounded = 6,
+  borderRadius = 6,
   padding = 1.5,
   style: styleProp,
   class: classProp,
   ...rest
 }: TabsGroupProps): JSX.Element {
   const style: CSSProperties = {
-    ["--tabs-group-rounded"]: tokens.x(rounded),
+    ["--tabs-group-border-radius"]: tokens.x(borderRadius),
     ["--tabs-group-padding"]: tokens.x(padding),
-    ["--tablink-rounded"]: `calc(${tokens.x(rounded)} - ${tokens.x(padding)})`,
+    ["--tablink-border-radius"]: `calc(${tokens.x(borderRadius)} - ${tokens.x(padding)})`,
     ...styleProp,
   };
 
