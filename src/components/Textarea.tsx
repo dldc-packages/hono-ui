@@ -1,16 +1,67 @@
-import { css } from "hono/css";
+import * as c from "@dldc/css-builder";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css } from "../css.ts";
 import { getInputClassName, getInputStyle } from "../styles/input.ts";
-import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { InputSharedProps } from "./Input.tsx";
 
-export type TextareaProps = Merge<
-  JSX.IntrinsicElements["textarea"],
-  InputSharedProps & { inlines?: Inlines }
+export type TextareaProps = ComponentPropsMerge<
+  InputSharedProps & {
+    rows?: number;
+  }
 >;
+
+const textareaClassName = css({
+  minWidth: c.multiply(
+    c.var("--input-size"),
+    5,
+  ),
+  border: "none",
+  background: "transparent",
+  color: "inherit",
+  outline: "none",
+  lineHeight: c.multiply(
+    c.var("--input-content-size"),
+    0.8,
+    1.4,
+  ),
+  fontSize: c.multiply(
+    c.var("--input-content-size"),
+    0.8,
+  ),
+  paddingTop: c.multiply(
+    c.var("--input-padding"),
+    1.1,
+  ),
+  paddingBottom: c.multiply(
+    c.var("--input-padding"),
+    1.1,
+  ),
+  paddingLeft: c.multiply(
+    c.var("--input-padding"),
+    1.5,
+  ),
+  paddingRight: c.multiply(
+    c.var("--input-padding"),
+    1.5,
+  ),
+  resize: "both",
+  selectors: {
+    "&::placeholder": {
+      color: "white/30",
+    },
+
+    "&:disabled": {
+      cursor: "not-allowed",
+      caretColor: "transparent",
+    },
+
+    "&:disabled::placeholder": {
+      color: "white/15",
+    },
+  },
+});
 
 export function Textarea({
   disabled,
@@ -19,42 +70,13 @@ export function Textarea({
   rows = 4,
   style: styleProp,
   class: classProp,
-  inlines,
   ...rest
 }: TextareaProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
-  const wrapperClassName = getInputClassName(disabled, classProp, error);
-
-  const textareaClassName = css`
-    min-width: calc(var(--input-size) * 5);
-    ${utility.border.none};
-    ${utility.bg.transparent};
-    ${utility.color.inherit};
-    ${utility.outline.none};
-    line-height: calc(var(--input-content-size) * 0.8 * 1.4);
-    font-size: calc(var(--input-content-size) * 0.8);
-    padding-top: calc(var(--input-padding) * 1.1);
-    padding-bottom: calc(var(--input-padding) * 1.1);
-    padding-left: calc(var(--input-padding) * 1.5);
-    padding-right: calc(var(--input-padding) * 1.5);
-    resize: both;
-
-    &::placeholder {
-      color: ${tokens.opacity(tokens.c("white"), 30)};
-    }
-
-    &:disabled {
-      ${utility.cursor.notAllowed};
-      caret-color: transparent;
-    }
-
-    &:disabled::placeholder {
-      color: ${tokens.opacity(tokens.c("white"), 15)};
-    }
-  `;
+  const wrapperClassName = getInputClassName(disabled, error);
 
   return (
-    <div class={mergeInlines(inlines, wrapperClassName, classProp)} style={style} data-group-item="true">
+    <div class={resolveClassNames(classProp, wrapperClassName)} style={style} data-group-item="true">
       <textarea
         class={textareaClassName}
         disabled={disabled}

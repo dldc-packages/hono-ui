@@ -52,9 +52,9 @@ export const color = {
 
 export const font = {
   weight: (weight: tokens.FontWeightKey): string => `font-weight: ${tokens.fontWeight[weight].var}`,
-  family: (font: tokens.FontKey): string => `font-family: ${tokens.font[font].var}`,
-  size: (size: tokens.TextSizeKey): string =>
-    `font-size: ${tokens.textSize[size].var}; line-height: var(--tw-leading, ${tokens.lineHeight[size].var})`,
+  family: (font: tokens.FontFamilyKey): string => `font-family: ${tokens.fontFamily[font].var}`,
+  size: (size: tokens.FontSizeKey): string =>
+    `font-size: ${tokens.fontSize[size].var}; line-height: var(--tw-leading, ${tokens.lineHeight[size].var})`,
 };
 
 export const outline = { none: "outline: none" };
@@ -69,6 +69,47 @@ export const w = {
 export const h = {
   x: (size: number): string => `height: ${tokens.x(size)}`,
   full: "height: 100%",
+};
+
+export const display = {
+  block: "display: block",
+  flex: "display: flex",
+  inlineFlex: "display: inline-flex",
+  grid: "display: grid",
+  none: "display: none",
+};
+
+export const position = {
+  relative: "position: relative",
+  absolute: "position: absolute",
+};
+
+export const inset = {
+  all0: "inset: 0",
+};
+
+export const pointerEvents = {
+  none: "pointer-events: none",
+};
+
+export const content = {
+  empty: "content: ''",
+};
+
+export const textDecoration = {
+  none: "text-decoration: none",
+  underline: "text-decoration: underline",
+};
+
+export const overflow = {
+  x: {
+    auto: "overflow-x: auto",
+    hidden: "overflow-x: hidden",
+  },
+  y: {
+    auto: "overflow-y: auto",
+    hidden: "overflow-y: hidden",
+  },
 };
 
 export interface FlexConfig {
@@ -96,6 +137,7 @@ export const flex = {
     between: "justify-content: space-between",
     around: "justify-content: space-around",
     evenly: "justify-content: space-evenly",
+    stretch: "justify-content: stretch",
   },
   wrap: "flex-wrap: wrap",
   config: ({ direction, align, justify, gap, padding, wrap }: FlexConfig = {}): string => {
@@ -138,4 +180,4 @@ export const srOnly: string = `
   border-width: 0;
 `;
 
-export const fontFamily = (font: tokens.FontKey): string => `font-family: ${tokens.font[font].var}`;
+export const fontFamily = (font: tokens.FontFamilyKey): string => `font-family: ${tokens.fontFamily[font].var}`;

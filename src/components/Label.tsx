@@ -1,51 +1,48 @@
-import { css } from "hono/css";
 import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { css } from "../css.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
-export type LabelProps = Merge<
-  JSX.IntrinsicElements["label"],
+export type LabelProps = ComponentPropsMerge<
   {
     required?: boolean;
     hint?: Child;
-    inlines?: Inlines;
+    htmlFor?: string;
   }
 >;
+
+const baseClassName = css({
+  display: "inline-flex",
+  flexDirection: "column",
+  alignItems: "start",
+  gap: 1,
+  color: "neutral-200",
+  fontSize: "sm",
+  fontWeight: "semibold",
+});
+
+const labelTextClassName = css({
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 1,
+});
+
+const hintClassName = css({
+  color: "neutral-400",
+  fontWeight: "normal",
+  marginLeft: 1,
+});
 
 export function Label({
   children,
   required,
   hint,
   class: classProp,
-  inlines,
   ...rest
 }: LabelProps): JSX.Element {
-  const className = css`
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    ${utility.gap.row(1)};
-    ${utility.color.c("neutral.200")};
-    ${utility.font.size("sm")};
-    font-weight: 600;
-  `;
-
-  const labelTextClassName = css`
-    display: inline-flex;
-    align-items: center;
-    ${utility.gap.column(1)};
-  `;
-
-  const hintClassName = css`
-    ${utility.color.c("neutral.400")};
-    font-weight: 400;
-    ${utility.m.l(1)};
-  `;
-
   return (
-    <label class={mergeInlines(inlines, className, classProp)} {...rest}>
+    <label class={resolveClassNames(classProp, baseClassName)} {...rest}>
       <span class={labelTextClassName}>
         {children}
         {required ? <span>*</span> : null}

@@ -41,8 +41,8 @@ import { Paper, Typography } from "../../mod.ts";
 
 export function TypographyPageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography render="h2" textSize="xl" fontWeight="bold">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography render="h2" fontSize="xl" fontWeight="bold">
         This Typography renders as an h2
       </Typography>
     </Paper>

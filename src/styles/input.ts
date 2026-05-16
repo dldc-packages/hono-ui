@@ -1,154 +1,161 @@
-import { css, cx } from "hono/css";
+import * as c from "@dldc/css-builder";
+import { cx } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
+import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
 
-export function getInputClassName(disabled?: boolean, classProp?: string | Promise<string>, error?: boolean, readOnly?: boolean) {
-  const baseClassName = css`
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    ${utility.outline.none};
-    position: relative;
-    ${utility.border.shape.superellipse};
-    background-color: ${tokens.opacity(tokens.c("black"), 20)};
-    border-radius: calc(var(--input-size) / 4);
-    min-height: var(--input-size);
-    --input-padding: calc(max(round(down, -0.74 + 0.36 * (var(--input-size) / 0.25rem), 0.25)) * 0.25rem);
-    --input-content-size: calc(var(--input-size) - var(--input-padding) * 2);
-    color: ${tokens.c("neutral.200")};
-    min-width: calc(var(--input-size) * 5);
+const baseClassName = css({
+  display: "inline-flex",
+  flexDirection: "row",
+  alignItems: "center",
+  outline: "none",
+  position: "relative",
+  cornerShape: "superellipse",
+  background: "black/20",
+  rounded: c.divide(c.var("--input-size"), 4),
+  minHeight: "var(--input-size)",
+  vars: {
+    "--input-padding": c.multiply(
+      c.round(
+        "down",
+        c.add(
+          -0.74,
+          c.multiply(0.36, c.divide(c.var("--input-size"), "0.25rem")),
+        ),
+        0.25,
+      ),
+      c.value("0.25rem"),
+    ),
+    "--input-content-size": c.subtract(c.var("--input-size"), c.multiply(c.var("--input-padding"), 2)),
+  },
+  color: "neutral-200",
+  minWidth: c.multiply(c.var("--input-size"), 5),
 
-    &:hover {
-      background-color: ${tokens.opacity(tokens.c("black"), 5)};
-      color: ${tokens.c("neutral.100")};
-    }
+  selectors: {
+    "&:hover": {
+      background: "black/5",
+      color: "neutral-100",
+    },
+    "&:focus-within": {
+      background: "black/5",
+      color: "neutral-100",
+    },
+    "&::after": {
+      rounded: "inherit",
+      cornerShape: "inherit",
+      pointerEvents: "none",
+      content: "empty",
+      position: "absolute",
+      inset: 0,
+    },
+    "&:focus-within::after": {
+      borderWidth: "1px",
+      borderColor: "neutral-300/40",
+    },
+    "&::before": {
+      display: "block",
+      rounded: "inherit",
+      cornerShape: "inherit",
+      pointerEvents: "none",
+      content: "empty",
+      position: "absolute",
+      inset: 0,
+      borderWidth: "1px",
+      borderColor: "black/30",
+    },
+  },
+});
 
-    &:focus-within {
-      background-color: ${tokens.opacity(tokens.c("black"), 5)};
-      color: ${tokens.c("neutral.100")};
-    }
+const disabledClass = css({
+  color: "neutral-200/15",
+  background: "black/20",
+  cursor: "not-allowed",
+  selectors: {
+    "&:hover, &:focus-within": {
+      color: "neutral-200/15",
+      background: "black/20",
+    },
+    "&::before": {
+      borderColor: "black/20",
+    },
+    "&::after": {
+      borderWidth: "none",
+    },
+  },
+});
 
-    /* Used for focus and highlight border */
-    &::after {
-      border-radius: inherit;
-      ${utility.border.shape.inherits};
-      pointer-events: none;
-      content: "";
-      position: absolute;
-      inset: 0;
-    }
+const errorClass = css({
+  background: "red-950/30",
+  selectors: {
+    "&:hover, &:focus-within": {
+      background: "red-950/20",
+    },
+    "&::before": {
+      borderColor: "red-500/60",
+    },
+    "&:focus-within::after": {
+      borderColor: "red-300/70",
+    },
+  },
+});
 
-    &:focus-within::after {
-      border-width: 1px;
-      border-color: ${tokens.opacity(tokens.c("neutral.300"), 40)};
-    }
+const readOnlyClass = css({
+  background: "black/20",
+  selectors: {
+    "&:hover, &:focus-within": {
+      background: "black/20",
+      color: "neutral-200",
+    },
+    "&:focus-within::after": {
+      borderColor: "neutral-300/20",
+    },
+  },
+});
 
-    /* Used for visual border */
-    &::before {
-      display: block;
-      border-radius: inherit;
-      ${utility.border.shape.inherits};
-      pointer-events: none;
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-width: 1px;
-      border-color: ${tokens.opacity(tokens.c("black"), 30)};
-    }
-  `;
+const inputFiledClassName = css({
+  width: "full",
+  minHeight: "var(--input-size)",
+  border: "none",
+  background: "transparent",
+  color: "inherit",
+  outline: "none",
+  lineHeight: "var(--input-content-size)",
+  fontSize: c.multiply(c.var("--input-content-size"), 0.8),
+  paddingLeft: c.multiply(c.var("--input-padding"), 1.5),
+  paddingRight: c.multiply(c.var("--input-padding"), 1.5),
 
-  const disabledClass = css`
-    color: ${tokens.opacity(tokens.c("neutral.200"), 15)};
-    background-color: ${tokens.opacity(tokens.c("black"), 22)};
-    ${utility.cursor.notAllowed};
+  selectors: {
+    "&::placeholder": {
+      color: "white/30",
+    },
 
-    &:hover,
-    &:focus-within {
-      color: ${tokens.opacity(tokens.c("neutral.200"), 15)};
-      background-color: ${tokens.opacity(tokens.c("black"), 22)};
-    }
+    "&:disabled": {
+      cursor: "not-allowed",
+      caretColor: "transparent",
+    },
 
-    &::before {
-      border-color: ${tokens.opacity(tokens.c("black"), 20)};
-    }
+    "&:disabled::placeholder": {
+      color: "white/15",
+    },
 
-    &::after {
-      border-width: 0;
-    }
-  `;
+    "&:read-only": {
+      cursor: "default",
+      caretColor: "transparent",
+    },
+  },
+});
 
-  const errorClass = css`
-    background-color: ${tokens.opacity(tokens.c("red.950"), 30)};
-
-    &:hover,
-    &:focus-within {
-      background-color: ${tokens.opacity(tokens.c("red.950"), 20)};
-    }
-
-    &::before {
-      border-color: ${tokens.opacity(tokens.c("red.500"), 60)};
-    }
-
-    &:focus-within::after {
-      border-color: ${tokens.opacity(tokens.c("red.300"), 70)};
-    }
-  `;
-
-  const readOnlyClass = css`
-    background-color: ${tokens.opacity(tokens.c("black"), 18)};
-
-    &:hover,
-    &:focus-within {
-      background-color: ${tokens.opacity(tokens.c("black"), 18)};
-      color: ${tokens.c("neutral.200")};
-    }
-
-    &:focus-within::after {
-      border-color: ${tokens.opacity(tokens.c("neutral.300"), 20)};
-    }
-  `;
-
+export function getInputClassName(disabled?: boolean, error?: boolean, readOnly?: boolean) {
   return cx(
     baseClassName,
     disabled ? disabledClass : undefined,
     !disabled && !error && readOnly ? readOnlyClass : undefined,
     !disabled && error ? errorClass : undefined,
-    classProp,
   );
 }
 
 export function getInputFieldClassName() {
-  return css`
-    ${utility.w.full};
-    min-height: var(--input-size);
-    ${utility.border.none};
-    ${utility.bg.transparent};
-    ${utility.color.inherit};
-    ${utility.outline.none};
-    line-height: var(--input-content-size);
-    font-size: calc(var(--input-content-size) * 0.8);
-    padding-left: calc(var(--input-padding) * 1.5);
-    padding-right: calc(var(--input-padding) * 1.5);
-
-    &::placeholder {
-      ${utility.color.raw(tokens.opacity(tokens.c("white"), 30))};
-    }
-
-    &:disabled {
-      ${utility.cursor.notAllowed};
-      caret-color: transparent;
-    }
-
-    &:disabled::placeholder {
-      ${utility.color.raw(tokens.opacity(tokens.c("white"), 15))};
-    }
-
-    &:read-only {
-      cursor: default;
-      caret-color: transparent;
-    }
-  `;
+  return inputFiledClassName;
 }
 
 export function getInputStyle(size: number, styleProp?: CSSProperties): CSSProperties {

@@ -2,16 +2,16 @@ import { Paper, Select, Stack, Typography } from "../../mod.ts";
 
 export function SelectsPageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl">
         Select
       </Typography>
 
-      <Stack direction="column" render={<section />} gap={2} align="start">
-        <Typography textSize="lg">
+      <Stack flexDirection="column" render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">
           Select variants
         </Typography>
-        <Stack direction="row" align="center" gap={2} wrap>
+        <Stack flexDirection="row" alignItems="center" gap={2} flexWrap="wrap">
           <Select name="variant-secondary" variant="secondary" defaultValue="secondary">
             <option value="secondary">Secondary</option>
             <option value="secondary-2">Secondary alt</option>
@@ -27,11 +27,11 @@ export function SelectsPageContent() {
         </Stack>
       </Stack>
 
-      <Stack direction="column" render={<section />} gap={2} align="start">
-        <Typography textSize="lg">
+      <Stack flexDirection="column" render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">
           Size and disabled
         </Typography>
-        <Stack direction="row" align="center" gap={2} wrap>
+        <Stack flexDirection="row" alignItems="center" gap={2} flexWrap="wrap">
           <Select name="size-default" defaultValue="medium">
             <option value="small">Small</option>
             <option value="medium">Medium</option>

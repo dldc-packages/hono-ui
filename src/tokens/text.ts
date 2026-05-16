@@ -1,8 +1,8 @@
 import { type CssVar, cssVar } from "./utils.ts";
 
-export type FontKey = "sans" | "serif" | "mono";
+export type FontFamilyKey = "sans" | "serif" | "mono";
 
-export const font: Record<FontKey, CssVar> = {
+export const fontFamily: Record<FontFamilyKey, CssVar> = {
   sans: cssVar(
     "font-sans",
     'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
@@ -17,38 +17,38 @@ export const font: Record<FontKey, CssVar> = {
   ),
 };
 
-export type TextSizeKey = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl";
+export type FontSizeKey = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl";
 
-export const textSize: Record<TextSizeKey, CssVar> = {
-  xs: cssVar("text-xs", "0.75rem"),
-  sm: cssVar("text-sm", "0.875rem"),
-  base: cssVar("text-base", "1rem"),
-  lg: cssVar("text-lg", "1.125rem"),
-  xl: cssVar("text-xl", "1.25rem"),
-  "2xl": cssVar("text-2xl", "1.5rem"),
-  "3xl": cssVar("text-3xl", "1.875rem"),
-  "4xl": cssVar("text-4xl", "2.25rem"),
-  "5xl": cssVar("text-5xl", "3rem"),
-  "6xl": cssVar("text-6xl", "3.75rem"),
-  "7xl": cssVar("text-7xl", "4.5rem"),
-  "8xl": cssVar("text-8xl", "6rem"),
-  "9xl": cssVar("text-9xl", "8rem"),
+export const fontSize: Record<FontSizeKey, CssVar> = {
+  xs: cssVar("font-size-xs", "0.75rem"),
+  sm: cssVar("font-size-sm", "0.875rem"),
+  base: cssVar("font-size-base", "1rem"),
+  lg: cssVar("font-size-lg", "1.125rem"),
+  xl: cssVar("font-size-xl", "1.25rem"),
+  "2xl": cssVar("font-size-2xl", "1.5rem"),
+  "3xl": cssVar("font-size-3xl", "1.875rem"),
+  "4xl": cssVar("font-size-4xl", "2.25rem"),
+  "5xl": cssVar("font-size-5xl", "3rem"),
+  "6xl": cssVar("font-size-6xl", "3.75rem"),
+  "7xl": cssVar("font-size-7xl", "4.5rem"),
+  "8xl": cssVar("font-size-8xl", "6rem"),
+  "9xl": cssVar("font-size-9xl", "8rem"),
 };
 
-export const lineHeight: Record<TextSizeKey, CssVar> = {
-  xs: cssVar("text-xs--line-height", "calc(1 / 0.75)"),
-  sm: cssVar("text-sm--line-height", "calc(1.25 / 0.875)"),
-  base: cssVar("text-base--line-height", "calc(1.5 / 1)"),
-  lg: cssVar("text-lg--line-height", "calc(1.75 / 1.125)"),
-  xl: cssVar("text-xl--line-height", "calc(1.75 / 1.25)"),
-  "2xl": cssVar("text-2xl--line-height", "calc(2 / 1.5)"),
-  "3xl": cssVar("text-3xl--line-height", "calc(2.25 / 1.875)"),
-  "4xl": cssVar("text-4xl--line-height", "calc(2.5 / 2.25)"),
-  "5xl": cssVar("text-5xl--line-height", "1"),
-  "6xl": cssVar("text-6xl--line-height", "1"),
-  "7xl": cssVar("text-7xl--line-height", "1"),
-  "8xl": cssVar("text-8xl--line-height", "1"),
-  "9xl": cssVar("text-9xl--line-height", "1"),
+export const lineHeight: Record<FontSizeKey, CssVar> = {
+  xs: cssVar("font-size-xs--line-height", "calc(1 / 0.75)"),
+  sm: cssVar("font-size-sm--line-height", "calc(1.25 / 0.875)"),
+  base: cssVar("font-size-base--line-height", "calc(1.5 / 1)"),
+  lg: cssVar("font-size-lg--line-height", "calc(1.75 / 1.125)"),
+  xl: cssVar("font-size-xl--line-height", "calc(1.75 / 1.25)"),
+  "2xl": cssVar("font-size-2xl--line-height", "calc(2 / 1.5)"),
+  "3xl": cssVar("font-size-3xl--line-height", "calc(2.25 / 1.875)"),
+  "4xl": cssVar("font-size-4xl--line-height", "calc(2.5 / 2.25)"),
+  "5xl": cssVar("font-size-5xl--line-height", "1"),
+  "6xl": cssVar("font-size-6xl--line-height", "1"),
+  "7xl": cssVar("font-size-7xl--line-height", "1"),
+  "8xl": cssVar("font-size-8xl--line-height", "1"),
+  "9xl": cssVar("font-size-9xl--line-height", "1"),
 };
 
 export type FontWeightKey = "thin" | "extraLight" | "light" | "normal" | "medium" | "semibold" | "bold" | "extraBold" | "black";
@@ -106,8 +106,8 @@ export const textShadow: Record<TextShadowKey, CssVar> = {
 };
 
 export const allTextVars: CssVar[] = [
-  ...Object.values(font),
-  ...Object.values(textSize),
+  ...Object.values(fontFamily),
+  ...Object.values(fontSize),
   ...Object.values(lineHeight),
   ...Object.values(fontWeight),
   ...Object.values(tracking),

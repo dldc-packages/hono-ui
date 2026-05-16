@@ -1,10 +1,10 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { ButtonSharedProps } from "./Button.tsx";
 
-export type ButtonLinkProps = Merge<
-  Omit<JSX.IntrinsicElements["a"], "href">,
+export type ButtonLinkProps = ComponentPropsMerge<
   ButtonSharedProps & {
     href: string;
   }
@@ -21,12 +21,12 @@ export function ButtonLink({
   ...rest
 }: ButtonLinkProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const className = getButtonClassName(disabled, classProp, variant);
+  const className = getButtonClassName(disabled, variant);
 
   return (
     <a
       href={disabled ? "#" : href}
-      class={className}
+      class={resolveClassNames(classProp, className)}
       onclick={disabled ? (e: Event) => e.preventDefault() : undefined}
       aria-disabled={disabled ? "true" : undefined}
       style={style}

@@ -1,18 +1,44 @@
-import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
-export type TabsGroupProps = Merge<JSX.IntrinsicElements["div"], {
+export type TabsGroupProps = ComponentPropsMerge<{
   rounded?: number;
   padding?: number;
   gap?: number;
-  style?: CSSProperties;
-  inlines?: Inlines;
 }>;
+
+const className = css({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  width: "full",
+  overflowX: "auto",
+  overflowY: "hidden",
+  WebkitOverflowScrolling: "touch",
+  scrollbarWidth: "none",
+  rounded: "var(--tabs-group-rounded)",
+  cornerShape: "superellipse",
+  padding: "var(--tabs-group-padding)",
+  gap: "var(--tabs-group-padding)",
+  borderWidth: "0.5px",
+  borderColor: "white/10",
+  background: "neutral-900",
+  selectors: {
+    /* Keep tabs on one row while allowing horizontal scroll */
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+
+    /* Ensure child tabs don't shrink and wrap to multiple rows when container is too narrow */
+    "& > *": {
+      flex: "0 0 auto",
+    },
+  },
+});
 
 export function TabsGroup({
   children,
@@ -20,38 +46,8 @@ export function TabsGroup({
   padding = 1.5,
   style: styleProp,
   class: classProp,
-  inlines,
   ...rest
 }: TabsGroupProps): JSX.Element {
-  const className = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    border-radius: var(--tabs-group-rounded);
-    ${utility.border.shape.superellipse};
-    padding: var(--tabs-group-padding);
-    gap: var(--tabs-group-padding);
-    border-width: 0.5px;
-    border-color: ${tokens.opacity(tokens.c("white"), 10)};
-    ${utility.bg.c("neutral.900")};
-
-    /* Keep scroll behavior but hide native horizontal scrollbar UI */
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Keep tabs on one row while allowing horizontal scroll */
-    & > * {
-      flex: 0 0 auto;
-    }
-  `;
-
   const style: CSSProperties = {
     ["--tabs-group-rounded"]: tokens.x(rounded),
     ["--tabs-group-padding"]: tokens.x(padding),
@@ -60,7 +56,7 @@ export function TabsGroup({
   };
 
   return (
-    <div class={mergeInlines(inlines, className, classProp)} style={style} {...rest}>
+    <div class={resolveClassNames(classProp, className)} style={style} {...rest}>
       {children}
     </div>
   );

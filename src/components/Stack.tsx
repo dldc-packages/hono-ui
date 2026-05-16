@@ -1,36 +1,36 @@
-import { css } from "hono/css";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
-import { flex, type FlexConfig } from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
-import { createRender, type RenderProp } from "../utils/create-render.ts";
+import { css, type CssObj } from "../css.ts";
+import { createRender } from "../utils/create-render.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
-export type StackProps = Merge<
-  JSX.IntrinsicElements["div"],
-  FlexConfig & {
-    inlines?: Inlines;
-    render?: RenderProp;
-  }
+export type StackProps = ComponentPropsMerge<
+  Pick<CssObj, "alignItems" | "flexDirection" | "justifyContent" | "gap" | "padding" | "flexWrap">
 >;
 
 export function Stack({
-  direction,
-  align,
-  justify,
+  flexDirection,
+  alignItems,
+  justifyContent,
   gap,
   padding,
-  wrap,
+  flexWrap,
   class: classProp,
-  inlines,
   render,
   ...rest
 }: StackProps): JSX.Element {
-  const className = css`
-    ${flex.config({ direction, align, justify, gap, padding, wrap })};
-  `;
+  const className = css({
+    display: "flex",
+    flexDirection,
+    alignItems,
+    justifyContent,
+    gap,
+    padding,
+    flexWrap,
+  });
 
   return createRender("div", render, {
-    class: mergeInlines(inlines, className, classProp),
+    class: resolveClassNames(classProp, className),
     ...rest,
   });
 }

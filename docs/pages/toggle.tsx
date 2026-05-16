@@ -2,8 +2,8 @@ import { FormField, Paper, Toggle, Typography } from "../../mod.ts";
 
 export function TogglePageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl">
         Toggle
       </Typography>
 

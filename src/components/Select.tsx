@@ -1,14 +1,34 @@
-import { css } from "hono/css";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css } from "../css.ts";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
-import * as utility from "../utility.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { ButtonSharedProps } from "./Button.tsx";
 
-export type SelectProps = Merge<
-  JSX.IntrinsicElements["select"],
-  ButtonSharedProps
+export type SelectProps = ComponentPropsMerge<
+  ButtonSharedProps & {
+    name?: string;
+    defaultValue?: string;
+  }
 >;
+
+const selectClassName = css({
+  appearance: "auto",
+  border: "none",
+  background: "transparent",
+  color: "inherit",
+  outline: "none",
+  minHeight: "var(--button-size)",
+  width: "full",
+  font: "inherit",
+  lineHeight: "inherit",
+  cursor: "pointer",
+  selectors: {
+    "&:disabled": {
+      cursor: "not-allowed",
+    },
+  },
+});
 
 export function Select({
   children,
@@ -20,27 +40,10 @@ export function Select({
   ...rest
 }: SelectProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const wrapperClassName = getButtonClassName(disabled, classProp, variant);
-
-  const selectClassName = css`
-    appearance: auto;
-    ${utility.border.none};
-    ${utility.bg.transparent};
-    ${utility.color.inherit};
-    ${utility.outline.none};
-    min-height: var(--button-size);
-    ${utility.w.full};
-    font: inherit;
-    line-height: inherit;
-    cursor: pointer;
-
-    &:disabled {
-      ${utility.cursor.notAllowed};
-    }
-  `;
+  const wrapperClassName = getButtonClassName(disabled, variant);
 
   return (
-    <div class={wrapperClassName} style={style} data-group-item="true">
+    <div class={resolveClassNames(classProp, wrapperClassName)} style={style} data-group-item="true">
       <select class={selectClassName} disabled={disabled} {...rest}>
         {children}
       </select>

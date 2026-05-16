@@ -1,6 +1,7 @@
-import { type FC, Fragment } from "hono/jsx";
-import { Html, TabsGroup, Title, UniversalLayout, utility } from "../../mod.ts";
+import { type Child, type FC, Fragment } from "hono/jsx";
+import { Html, TabsGroup, Title, UniversalLayout } from "../../mod.ts";
 import { TabLink } from "../../src/components/TabLink.tsx";
+import { css } from "../../src/css.ts";
 
 export type LayoutTab = {
   name: string;
@@ -9,7 +10,7 @@ export type LayoutTab = {
 
 type LayoutProps = {
   title?: string;
-  children: unknown;
+  children: Child;
   activeTab?: string;
   tabs?: LayoutTab[];
 };
@@ -27,7 +28,7 @@ export const Layout: FC<LayoutProps> = ({ title, children, activeTab, tabs = [] 
         </Fragment>
       }
     >
-      <UniversalLayout inlines={[utility.rowGap(4)]}>
+      <UniversalLayout class={css({ rowGap: 4 })}>
         <Title>
           Hono UI
         </Title>

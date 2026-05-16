@@ -1,124 +1,144 @@
-import { css } from "hono/css";
-import type { CSSProperties } from "hono/jsx";
+import * as c from "@dldc/css-builder";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type ToggleSharedProps = {
+  name?: string;
   color?: tokens.ColorKey;
   error?: boolean;
-  inlines?: Inlines;
   size?: number;
-  style?: CSSProperties;
+  checked?: boolean;
+  disabled?: boolean;
 };
 
-export type ToggleProps = Merge<
-  Omit<JSX.IntrinsicElements["input"], "type">,
+export type ToggleProps = ComponentPropsMerge<
   ToggleSharedProps
 >;
 
+const rootClassName = css({
+  vars: {
+    "--toggle-gap": c.multiply(
+      c.var("--toggle-size"),
+      0.125,
+    ),
+    "--toggle-width": c.multiply(
+      c.var("--toggle-size"),
+      1.9,
+    ),
+  },
+  position: "relative",
+  display: "inline-flex",
+  width: "var(--toggle-width)",
+  height: "var(--toggle-size)",
+  flex: "0 0 auto",
+  cursor: "pointer",
+  verticalAlign: "middle",
+
+  selectors: {
+    "& > input": {
+      position: "absolute",
+      inset: 0,
+      margin: 0,
+      opacity: 0,
+      cursor: "inherit",
+      width: "full",
+      height: "full",
+      zIndex: 1,
+    },
+
+    "& > span": {
+      position: "relative",
+      display: "block",
+      width: "full",
+      height: "full",
+      rounded: "full",
+      background: "neutral-700",
+      transition: "background-color 160ms ease",
+    },
+
+    "& > span::after": {
+      content: "empty",
+      position: "absolute",
+      top: "var(--toggle-gap)",
+      left: "var(--toggle-gap)",
+      width: c.subtract(c.var("--toggle-size"), c.multiply(c.var("--toggle-gap"), 2)),
+      height: c.subtract(c.var("--toggle-size"), c.multiply(c.var("--toggle-gap"), 2)),
+      rounded: "full",
+      background: "neutral-100",
+      transition: "transform 160ms ease, background-color 160ms ease",
+    },
+
+    "& > input:checked + span": {
+      background: "var(--toggle-color)",
+    },
+
+    "& > input:checked + span::after": {
+      transform: "translateX(calc(var(--toggle-width) - var(--toggle-size)))",
+      background: "white",
+    },
+
+    "& > input:focus-visible + span": {
+      outlineOffset: "2px",
+      outlineStyle: "solid",
+      outlineWidth: "2px",
+      outlineColor: `[${tokens.opacity("var(--toggle-color)", 75)}]`,
+    },
+
+    "& > input:disabled + span": {
+      opacity: 0.6,
+    },
+
+    "& > input:disabled": {
+      cursor: "not-allowed",
+    },
+  },
+});
+
+const errorClassName = css({
+  selectors: {
+    "&[data-error='true'] > input:not(:checked) + span": {
+      background: `[${tokens.opacity(tokens.c("red-500"), 30)}]`,
+    },
+
+    "&[data-error='true'] > input:checked + span": {
+      background: "red-500",
+    },
+
+    "&[data-error='true'] > input:focus-visible + span": {
+      outlineStyle: "solid",
+      outlineWidth: "2px",
+      outlineColor: `[${tokens.opacity(tokens.c("red-400"), 70)}]`,
+      outlineOffset: "2px",
+    },
+  },
+});
+
 export function Toggle({
   checked,
-  color = "blue.500",
+  color = "blue-500",
   disabled,
   error,
-  inlines,
   size = 6,
   style,
   class: classProp,
   ...rest
 }: ToggleProps): JSX.Element {
-  const colorVar = tokens.c(color);
-
-  const rootClassName = css`
-    --toggle-size: ${tokens.x(size)};
-    --toggle-gap: calc(var(--toggle-size) * 0.125);
-    --toggle-width: calc(var(--toggle-size) * 1.9);
-
-    position: relative;
-    display: inline-flex;
-    width: var(--toggle-width);
-    height: var(--toggle-size);
-    flex: 0 0 auto;
-    cursor: pointer;
-    vertical-align: middle;
-
-    & > input {
-      position: absolute;
-      inset: 0;
-      margin: 0;
-      opacity: 0;
-      cursor: inherit;
-      ${utility.w.full};
-      ${utility.h.full};
-      z-index: 1;
-    }
-
-    & > span {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 9999px;
-      background: color-mix(in oklab, ${tokens.c("neutral.700")} 75%, ${tokens.c("neutral.800")});
-      transition: background-color 160ms ease;
-    }
-
-    & > span::after {
-      content: "";
-      position: absolute;
-      top: var(--toggle-gap);
-      left: var(--toggle-gap);
-      width: calc(var(--toggle-size) - var(--toggle-gap) * 2);
-      height: calc(var(--toggle-size) - var(--toggle-gap) * 2);
-      border-radius: 9999px;
-      background: ${tokens.c("neutral.100")};
-      transition: transform 160ms ease, background-color 160ms ease;
-    }
-
-    & > input:checked + span {
-      background: ${colorVar};
-    }
-
-    & > input:checked + span::after {
-      transform: translateX(calc(var(--toggle-width) - var(--toggle-size)));
-      background: ${tokens.c("white")};
-    }
-
-    & > input:focus-visible + span {
-      outline: 2px solid color-mix(in oklab, ${colorVar} 75%, transparent);
-      outline-offset: 2px;
-    }
-
-    & > input:disabled + span {
-      opacity: 0.6;
-    }
-
-    & > input:disabled {
-      ${utility.cursor.notAllowed};
-    }
-  `;
-
-  const errorClassName = css`
-    &[data-error="true"] > input:not(:checked) + span {
-      background: color-mix(in oklab, ${tokens.c("red.500")} 30%, ${tokens.c("neutral.900")});
-    }
-
-    &[data-error="true"] > input:checked + span {
-      background: ${tokens.c("red.500")};
-    }
-
-    &[data-error="true"] > input:focus-visible + span {
-      outline: 2px solid color-mix(in oklab, ${tokens.c("red.400")} 70%, transparent);
-      outline-offset: 2px;
-    }
-  `;
-
   return (
     <span
-      class={mergeInlines(inlines, rootClassName, error ? errorClassName : undefined, classProp)}
+      class={resolveClassNames(
+        classProp,
+        css({
+          vars: {
+            "--toggle-size": tokens.x(size),
+            "--toggle-color": tokens.c(color),
+          },
+        }),
+        rootClassName,
+        error ? errorClassName : undefined,
+      )}
       style={style}
       data-error={error ? "true" : undefined}
       data-group-item="true"

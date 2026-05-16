@@ -1,13 +1,12 @@
-import { css } from "hono/css";
+import * as c from "@dldc/css-builder";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
-export type IconProps = Merge<
-  Omit<JSX.IntrinsicElements["span"], "dangerouslySetInnerHTML" | "children">,
+export type IconProps = ComponentPropsMerge<
   {
     /**
      * Raw SVG markup.
@@ -17,38 +16,36 @@ export type IconProps = Merge<
      */
     icon: string;
     size?: number;
-    style?: CSSProperties;
-    inlines?: Inlines;
     color?: string;
   }
 >;
+
+const className = css({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: c.var("--icon-size", c.var("--button-content-size", tokens.x(5))),
+  height: c.var("--icon-size", c.var("--button-content-size", tokens.x(5))),
+  color: c.var("--icon-color", "inherit"),
+  lineHeight: "none",
+  selectors: {
+    "& > svg": {
+      width: "full",
+      height: "full",
+      display: "block",
+      color: c.var("--icon-color", "currentColor"),
+    },
+  },
+});
 
 export function Icon({
   icon,
   size,
   style: styleProp,
   class: classProp,
-  inlines,
   color,
   ...rest
 }: IconProps): JSX.Element {
-  const className = css`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--icon-size, var(--button-content-size, ${tokens.x(5)}));
-    height: var(--icon-size, var(--button-content-size, ${tokens.x(5)}));
-    color: var(--icon-color, inherit);
-    line-height: 0;
-
-    & > svg {
-      ${utility.w.full};
-      ${utility.h.full};
-      display: block;
-      color: var(--icon-color, currentColor);
-    }
-  `;
-
   const style: CSSProperties = {
     ...(size !== undefined ? { ["--icon-size"]: tokens.x(size) } : {}),
     ...(color !== undefined ? { ["--icon-color"]: color } : {}),
@@ -57,7 +54,7 @@ export function Icon({
 
   return (
     <span
-      class={mergeInlines(inlines, className, classProp)}
+      class={resolveClassNames(classProp, className)}
       style={style}
       dangerouslySetInnerHTML={{ __html: icon }}
       aria-hidden="true"

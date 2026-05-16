@@ -2,13 +2,13 @@ import { FormField, Paper, Stack, Textarea, Typography } from "../../mod.ts";
 
 export function TextareaPageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl">
         Textarea
       </Typography>
 
-      <Stack direction="column" render={<section />} gap={2} align="start">
-        <Typography textSize="lg">
+      <Stack flexDirection="column" render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">
           Basic
         </Typography>
         <Textarea
@@ -18,11 +18,11 @@ export function TextareaPageContent() {
         />
       </Stack>
 
-      <Stack direction="column" render={<section />} gap={2} align="start">
-        <Typography textSize="lg">
+      <Stack flexDirection="column" render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">
           Size and rows
         </Typography>
-        <Stack direction="column" gap={2} align="start" style={{ width: "100%" }}>
+        <Stack flexDirection="column" gap={2} alignItems="start" style={{ width: "100%" }}>
           <Textarea
             id="textarea-size-default"
             placeholder="Default size"
@@ -37,8 +37,8 @@ export function TextareaPageContent() {
         </Stack>
       </Stack>
 
-      <Stack direction="column" render={<section />} gap={2} align="start">
-        <Typography textSize="lg">
+      <Stack flexDirection="column" render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">
           States
         </Typography>
 

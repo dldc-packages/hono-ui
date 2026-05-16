@@ -1,43 +1,45 @@
-import { Box, htmlx, Paper, Stack, Typography, utility } from "../../mod.ts";
+import { Box, htmlx, Paper, Stack, Typography } from "../../mod.ts";
+import { css } from "../../src/css.ts";
 
 export function StackPageContent() {
   console.log(<htmlx.ul />);
 
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl">
         Stack
       </Typography>
 
-      <Stack render={<section />} gap={2} align="start">
-        <Typography textSize="lg">Vertical spacing</Typography>
+      <Stack render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">Vertical spacing</Typography>
         <Stack gap={2}>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Project overview</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Recent activity</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Team updates</Box>
+          {/* <Box inlines={[utility.p.all(2), utility.bg.c("neutral-700"), utility.color.c("neutral-200")]}>Project overview</Box> */}
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Project overview</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Recent activity</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Team updates</Box>
         </Stack>
       </Stack>
 
-      <Stack render={<section />} gap={2} align="start">
-        <Typography textSize="lg">Horizontal layout</Typography>
-        <Stack direction="row" gap={2} wrap>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Draft</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Review</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Ready</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Published</Box>
+      <Stack render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">Horizontal layout</Typography>
+        <Stack flexDirection="row" gap={2} flexWrap="wrap">
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Draft</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Review</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Ready</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Published</Box>
         </Stack>
       </Stack>
 
-      <Stack render={<section />} gap={2} align="start">
-        <Typography textSize="lg">Alignment and justification</Typography>
-        <Stack align="center" justify="center" gap={2} padding={4} inlines={[utility.bg("neutral.800")]}>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Centered one</Box>
-          <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Centered two</Box>
+      <Stack render={<section />} gap={2} alignItems="start">
+        <Typography fontSize="lg">Alignment and justification</Typography>
+        <Stack alignItems="center" justifyContent="center" gap={2} padding={4} class={css({ background: "neutral-800" })}>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Centered one</Box>
+          <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Centered two</Box>
         </Stack>
       </Stack>
 
-      <Stack render={<section />} gap={2} align="start" direction="column">
-        <Typography textSize="lg">Custom render element</Typography>
+      <Stack render={<section />} gap={2} alignItems="start" flexDirection="column">
+        <Typography fontSize="lg">Custom render element</Typography>
         <Stack render={<ul />} gap={1}>
           <li>Uses semantic list markup</li>
           <li>Keeps Stack spacing props</li>
@@ -45,8 +47,8 @@ export function StackPageContent() {
         </Stack>
       </Stack>
 
-      <Typography textSize="lg">Custom render element</Typography>
-      <Stack render={<htmlx.ul />} gap={2} align="start" direction="column">
+      <Typography fontSize="lg">Custom render element</Typography>
+      <Stack render={<htmlx.ul />} gap={2} alignItems="start" flexDirection="column">
         <Stack render={<ul />} gap={1}>
           <li>Uses semantic list markup</li>
           <li>Keeps Stack spacing props</li>
@@ -54,11 +56,11 @@ export function StackPageContent() {
         </Stack>
       </Stack>
 
-      <Typography textSize="lg">Stack rendered as form</Typography>
-      <Stack render={<htmlx.form method="post" action="/login" />} gap={2} align="start">
-        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>First name</Box>
-        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Last name</Box>
-        <Box inlines={[utility.p(2), utility.bg("neutral.700"), utility.textColor("neutral.200")]}>Email</Box>
+      <Typography fontSize="lg">Stack rendered as form</Typography>
+      <Stack render={<htmlx.form method="post" action="/login" />} gap={2} alignItems="start">
+        <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>First name</Box>
+        <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Last name</Box>
+        <Box class={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Email</Box>
       </Stack>
     </Paper>
   );

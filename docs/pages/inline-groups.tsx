@@ -2,13 +2,13 @@ import { Button, ButtonLike, ButtonLink, InlineGroup, Input, Paper, Select, Stac
 
 export function InlineGroupsPageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl">
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl">
         Inline Group
       </Typography>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Action cluster</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Action cluster</Typography>
         <InlineGroup>
           <ButtonLike variant="secondary">Secondary</ButtonLike>
           <ButtonLike variant="primary">Primary</ButtonLike>
@@ -16,8 +16,8 @@ export function InlineGroupsPageContent() {
         </InlineGroup>
       </Stack>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Navigation mix with links</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Navigation mix with links</Typography>
         <InlineGroup>
           <ButtonLink href="/" variant="primary">Overview</ButtonLink>
           <ButtonLink href="/buttons" variant="primary">Components</ButtonLink>
@@ -25,8 +25,8 @@ export function InlineGroupsPageContent() {
         </InlineGroup>
       </Stack>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Input and action</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Input and action</Typography>
         <InlineGroup>
           <Select defaultValue="all">
             <option value="all">All</option>
@@ -38,8 +38,8 @@ export function InlineGroupsPageContent() {
         </InlineGroup>
       </Stack>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Variant select group</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Variant select group</Typography>
         <InlineGroup>
           <Select defaultValue="draft">
             <option value="draft">Draft</option>
@@ -56,8 +56,8 @@ export function InlineGroupsPageContent() {
         </InlineGroup>
       </Stack>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Same group with larger size</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Same group with larger size</Typography>
         <InlineGroup>
           <ButtonLike size={10}>Prev</ButtonLike>
           <Select size={10} defaultValue="10">
@@ -69,8 +69,8 @@ export function InlineGroupsPageContent() {
         </InlineGroup>
       </Stack>
 
-      <Stack render={<section />} direction="column" align="start" gap={2}>
-        <Typography textSize="lg">Wrapping group</Typography>
+      <Stack render={<section />} flexDirection="column" alignItems="start" gap={2}>
+        <Typography fontSize="lg">Wrapping group</Typography>
         <InlineGroup wrap>
           <Button>One</Button>
           <Button>Two</Button>

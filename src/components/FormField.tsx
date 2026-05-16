@@ -1,14 +1,13 @@
 import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
-import * as utility from "../utility.ts";
-import type { Inlines } from "../utils.ts";
+import { css } from "../css.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 import { Label, type LabelProps } from "./Label.tsx";
 import { Stack } from "./Stack.tsx";
 import { Typography } from "./Typography.tsx";
 
-export type FormFieldProps = Merge<
-  JSX.IntrinsicElements["div"],
+export type FormFieldProps = ComponentPropsMerge<
   {
     id: string;
     label: Child;
@@ -18,8 +17,6 @@ export type FormFieldProps = Merge<
     hintId?: string;
     errorId?: string;
     required?: boolean;
-    size?: number;
-    inlines?: Inlines;
     labelProps?: Omit<LabelProps, "children" | "htmlFor" | "required" | "hint" | "size">;
   }
 >;
@@ -33,8 +30,6 @@ export function FormField({
   hintId,
   errorId,
   required,
-  size = 8,
-  inlines,
   labelProps,
   children,
   class: classProp,
@@ -46,20 +41,19 @@ export function FormField({
 
   return (
     <Stack
-      direction="column"
+      flexDirection="column"
       gap={1}
-      inlines={["width: 100%", ...(inlines ?? [])]}
-      class={classProp}
+      class={resolveClassNames(classProp, css({ width: "full" }))}
       {...rest}
     >
       <Stack
-        direction={layout === "vertical" ? "column" : "row"}
-        align={layout === "vertical" ? "start" : "center"}
+        flexDirection={layout === "vertical" ? "column" : "row"}
+        alignItems={layout === "vertical" ? "start" : "center"}
         gap={layout === "vertical" ? 1 : 2}
-        inlines={["width: 100%"]}
+        class={css({ width: "full" })}
       >
         {renderInputFirst ? children : null}
-        <Label htmlFor={id} required={required} hint={undefined} size={size} {...labelProps}>
+        <Label htmlFor={id} required={required} hint={undefined} {...labelProps}>
           {label}
         </Label>
         {renderInputFirst ? null : children}
@@ -69,9 +63,9 @@ export function FormField({
           <Typography
             id={resolvedHintId}
             render={<p />}
-            textSize="sm"
-            textColor="neutral.400"
-            inlines={["margin: 0", utility.m.l(1)]}
+            fontSize="sm"
+            color="neutral-400"
+            class={[css({ margin: 0, marginLeft: 1 })]}
           >
             {hint}
           </Typography>
@@ -82,9 +76,9 @@ export function FormField({
           <Typography
             id={resolvedErrorId}
             render={<p />}
-            textSize="sm"
-            textColor="red.500"
-            inlines={["margin: 0", utility.m.l(1)]}
+            fontSize="sm"
+            color="red-500"
+            class={[css({ margin: 0, marginLeft: 1 })]}
           >
             {error}
           </Typography>

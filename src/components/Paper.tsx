@@ -1,43 +1,44 @@
-import { css } from "hono/css";
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
+import { css, type CssObj } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import * as utility from "../utility.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 
-export type PaperProps = Merge<JSX.IntrinsicElements["div"], {
-  rounded?: number;
-  style?: CSSProperties;
-  inlines?: Inlines;
+export type PaperProps = ComponentPropsMerge<
+  Pick<CssObj, "alignItems" | "justifyContent" | "gap" | "padding"> & {
+    flexDirection?: "row" | "column" | "none";
+    rounded?: number;
+  }
+>;
 
-  // Flex
-  flexDirection?: "none" | "row" | "column";
-  align?: "start" | "center" | "end" | "stretch";
-  justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
-  gap?: number;
-  padding?: number;
-}>;
+const className = css({
+  cornerShape: "superellipse",
+  background: "neutral-900",
+  borderWidth: "0.5px",
+  borderColor: "white/10",
+  rounded: "var(--paper-radius)",
+});
 
 export function Paper(
-  { children, rounded = 2, style: styleProp, class: classProp, inlines, flexDirection, align, justify, gap, padding, ...rest }: PaperProps,
+  { children, rounded = 2, style: styleProp, class: classProp, flexDirection, alignItems, justifyContent, gap, padding, ...rest }:
+    PaperProps,
 ): JSX.Element {
-  const className = css`
-    ${utility.border.shape.superellipse};
-    ${utility.bg.c("neutral.900")};
-    border-width: 0.5px;
-    border-color: ${tokens.opacity(tokens.c("white"), 10)};
-    border-radius: var(--paper-radius);
-    ${flexDirection !== "none" ? utility.flex.config({ direction: flexDirection, align, justify, gap, padding }) : ""};
-  `;
-
   const style: CSSProperties = {
     ["--paper-radius"]: tokens.x(rounded),
     ...styleProp,
   };
 
   return (
-    <div class={mergeInlines(inlines, className, classProp)} style={style} {...rest}>
+    <div
+      class={resolveClassNames(
+        classProp,
+        className,
+        flexDirection !== "none" ? css({ display: "flex", flexDirection, alignItems, justifyContent, gap, padding }) : undefined,
+      )}
+      style={style}
+      {...rest}
+    >
       {children}
     </div>
   );

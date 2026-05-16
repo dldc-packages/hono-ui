@@ -1,8 +1,9 @@
-import { Paper, Typography, utility } from "../../mod.ts";
+import { Paper, Typography } from "../../mod.ts";
+import { css } from "../../src/css.ts";
 
 export function HomePageContent() {
   return (
-    <Paper inlines={[utility.flex({ gap: 2, direction: "column", padding: 3 })]}>
+    <Paper class={css({ display: "flex", flexDirection: "column", gap: 2, padding: 3 })}>
       <Typography>
         A small component kit for Hono apps, focused on clean primitives and composable styles.
       </Typography>

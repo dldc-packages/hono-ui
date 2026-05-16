@@ -1,12 +1,15 @@
-import { Link, Paper, Typography, utility } from "../../mod.ts";
+import { Link, Paper, Typography } from "../../mod.ts";
+import { css } from "../../src/css.ts";
 import { Layout } from "./Layout.tsx";
 
 export function NotFound() {
   return (
     <Layout>
-      <Paper inlines={[utility.flex({ gap: 2, padding: 3, direction: "column" })]}>
-        <Typography textSize="3xl" fontWeight="bold" textColor="white">404</Typography>
-        <Typography textSize="xl" textColor="gray.200">
+      <Paper
+        class={css({ display: "flex", flexDirection: "column", gap: 2, padding: 2 })}
+      >
+        <Typography fontSize="3xl" fontWeight="bold" color="white">404</Typography>
+        <Typography fontSize="xl" color="gray-200">
           Page non trouvée
         </Typography>
         <Link href="/">Retour à l'accueil</Link>

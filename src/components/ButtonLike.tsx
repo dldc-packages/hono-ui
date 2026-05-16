@@ -1,10 +1,10 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { ButtonSharedProps } from "./Button.tsx";
 
-export type ButtonLikeProps = Merge<
-  JSX.IntrinsicElements["div"],
+export type ButtonLikeProps = ComponentPropsMerge<
   ButtonSharedProps
 >;
 
@@ -18,11 +18,11 @@ export function ButtonLike({
   ...rest
 }: ButtonLikeProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const className = getButtonClassName(disabled, classProp, variant, false);
+  const className = getButtonClassName(disabled, variant, false);
 
   return (
     <div
-      class={className}
+      class={resolveClassNames(classProp, className)}
       style={style}
       aria-disabled={disabled ? "true" : undefined}
       data-group-item="true"

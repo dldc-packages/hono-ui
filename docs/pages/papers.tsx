@@ -1,21 +1,22 @@
 import { Fragment } from "hono/jsx";
-import { Box, Paper, Typography, utility } from "../../mod.ts";
+import { Box, Paper, Typography } from "../../mod.ts";
+import { css } from "../../src/css.ts";
 
 export function PapersPageContent() {
   return (
     <Fragment>
       <Paper flexDirection="column" gap={3} padding={3}>
-        <Typography textSize="2xl">
+        <Typography fontSize="2xl">
           Paper
         </Typography>
-        <Box inlines={[`height: 200px`, utility.bg("neutral.700")]} />
+        <Box class={css({ height: "200px", background: "neutral-700" })} />
       </Paper>
 
       <Paper>
         Regular card
       </Paper>
 
-      <Paper inlines={[`grid-column: 1 / -1`]}>
+      <Paper class={css({ gridColumn: "1 / -1" })}>
         Full width card
       </Paper>
     </Fragment>

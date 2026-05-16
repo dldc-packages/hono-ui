@@ -2,8 +2,8 @@ import { FormField, Input, Paper, Textarea, Typography } from "../../mod.ts";
 
 export function FormsPageContent() {
   return (
-    <Paper flexDirection="column" gap={4} padding={3} align="start">
-      <Typography textSize="2xl" render={<h3 />}>
+    <Paper flexDirection="column" gap={4} padding={3} alignItems="start">
+      <Typography fontSize="2xl" render={<h3 />}>
         Forms
       </Typography>
 

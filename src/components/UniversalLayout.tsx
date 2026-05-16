@@ -1,42 +1,45 @@
-import { css } from "hono/css";
-import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
-import type { Merge } from "type-fest";
-import { tokens } from "../../mod.ts";
-import { type Inlines, mergeInlines } from "../utils.ts";
+import { css } from "../css.ts";
+import * as tokens from "../tokens.ts";
+import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import type { ComponentPropsBase } from "../utils/types.ts";
 
-export type UniversalLayoutProps = Merge<JSX.IntrinsicElements["div"], {
-  style?: CSSProperties;
-  inlines?: Inlines;
-}>;
+export type UniversalLayoutProps = ComponentPropsBase;
 
-export function UniversalLayout({ children, class: classProp, inlines, ...rest }: UniversalLayoutProps): JSX.Element {
-  const wrapperClassName = css`
-    min-height: 100dvh;
-    display: grid;
-    align-items: center;
-    justify-content: stretch;
-  `;
+const wrapperClassName = css({
+  minHeight: "full-dvh",
+  display: "grid",
+  alignItems: "center",
+  justifyContent: "stretch",
+});
 
-  const contentClassName = css`
-    display: grid;
-    --padding: ${tokens.x(8)};
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding);
-    @media (max-width: 640px) {
-      --padding: ${tokens.x(4)};
-    }
-    grid-template-columns: 1fr min(42rem, 100%) 1fr;
+const contentClassName = css({
+  display: "grid",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "var(--padding)",
+  gridTemplateColumns: "1fr min(42rem, 100%) 1fr",
+  vars: {
+    "--padding": tokens.x(8),
+  },
+  media: {
+    "@media (max-width: 640px)": {
+      vars: {
+        "--padding": tokens.x(4),
+      },
+    },
+  },
+  selectors: {
+    "& > *": {
+      gridColumn: "2",
+    },
+  },
+});
 
-    & > * {
-      grid-column: 2;
-    }
-  `;
-
+export function UniversalLayout({ children, class: classProp, ...rest }: UniversalLayoutProps): JSX.Element {
   return (
     <div class={wrapperClassName}>
-      <div class={mergeInlines(inlines, contentClassName, classProp)} {...rest}>
+      <div class={resolveClassNames(classProp, contentClassName)} {...rest}>
         {children}
       </div>
     </div>

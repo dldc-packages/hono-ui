@@ -1,8 +1,8 @@
-import { css, Style } from "hono/css";
+import { Style } from "hono/css";
 import type { Child, PropsWithChildren } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { globalStyles } from "../../src/global.ts";
-import * as tokens from "../../src/tokens.ts";
+import { css } from "../css.ts";
 
 export type HtmlProps = PropsWithChildren<{
   heads?: Child;
@@ -10,14 +10,14 @@ export type HtmlProps = PropsWithChildren<{
   lang?: string;
 }>;
 
-export function Html({ children, title, heads, lang = "en" }: HtmlProps): JSX.Element {
-  const htmlClassName = css`
-    height: 100%;
-    background: ${tokens.c("neutral.950")};
-    color: ${tokens.c("white")};
-    color-scheme: dark;
-  `;
+const htmlClassName = css({
+  height: "full",
+  background: "neutral-950",
+  color: "white",
+  colorScheme: "dark",
+});
 
+export function Html({ children, title, heads, lang = "en" }: HtmlProps): JSX.Element {
   return (
     <html lang={lang} class={htmlClassName}>
       <head>
