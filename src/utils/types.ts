@@ -15,6 +15,7 @@ export interface ComponentPropsBase {
   style?: CSSProperties;
   children?: Child | undefined;
   render?: RenderProp;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 export type ComponentPropsMerge<Props> = Merge<ComponentPropsBase, Props>;

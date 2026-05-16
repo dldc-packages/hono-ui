@@ -8,11 +8,14 @@ export type InputSharedProps = {
   disabled?: boolean;
   error?: boolean;
   size?: number;
+  name?: string;
   style?: CSSProperties;
   readOnly?: boolean;
   placeholder?: string;
   value?: string;
   type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";
+  children?: never;
+  render?: never;
 };
 
 export type InputProps = ComponentPropsMerge<
@@ -26,6 +29,8 @@ export function Input({
   size = 8,
   style: styleProp,
   class: classProp,
+  render: _render,
+  children: _children,
   ...rest
 }: InputProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
