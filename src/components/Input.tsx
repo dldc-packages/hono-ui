@@ -16,6 +16,7 @@ export type InputSharedProps = {
   type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";
   children?: never;
   render?: never;
+  required?: boolean;
 };
 
 export type InputProps = ComponentPropsMerge<
