@@ -316,6 +316,23 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   flexGrow: { toCss: "flex-grow", datatype: flexSize },
   flexShrink: { toCss: "flex-shrink", datatype: flexSize },
 
+  placeItems: {
+    toCss: "place-items",
+    datatype: {
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
+      staticValues: {
+        start: "start",
+        end: "end",
+        center: "center",
+        "safe end": "safe end",
+        "safe center": "safe center",
+        baseline: "baseline",
+        stretch: "stretch",
+        inherit: "inherit",
+      },
+    },
+  },
+
   colorScheme: {
     toCss: "color-scheme",
     datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { light: "light", dark: "dark", inherit: "inherit" } },

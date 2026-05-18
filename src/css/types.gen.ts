@@ -260,6 +260,19 @@ export interface CssObjProperties {
   flex?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
   flexGrow?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "auto" | "inherit";
   flexShrink?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "auto" | "inherit";
+  placeItems?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "start"
+    | "end"
+    | "center"
+    | "safe end"
+    | "safe center"
+    | "baseline"
+    | "stretch"
+    | "inherit";
   colorScheme?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "light" | "dark" | "inherit";
   appearance?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "auto" | "inherit" | "button";
   gridTemplateColumns?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | AnyStringValue | "none" | "auto";
