@@ -1,5 +1,5 @@
 import * as cssBuilder from "@dldc/css-builder";
-import { type CssVar, cssVar } from "./utils.ts";
+import { type CssVar, cssVar } from "../utils/css-var.ts";
 
 export const spacing: CssVar = cssVar("spacing", "0.25rem");
 

@@ -6,7 +6,7 @@ const outfile = resolve("src/css/types.gen.ts");
 
 const imports = [
   `import type { tokens } from "@dldc/hono-ui";`,
-  `import type { RawValue, CssVarValue, CssExprValue, PxValue, ColorOpacityValue, AnyStringValue } from "./datatypes.ts";`,
+  `import type { AnyStringValue, ColorOpacityValue, CssExprValue, CssVarStrValue, CssVarValue, PxValue, RawValue } from "./datatypes.ts";`,
 ];
 
 const content = [
@@ -19,7 +19,7 @@ const content = [
   }),
   `}`,
   ``,
-  `export type CssVar = ${datatypeTypes(VARIABLE_TYPE)};`,
+  `export type CssVarType = ${datatypeTypes(VARIABLE_TYPE)};`,
 ];
 
 function datatypeTypes(datatype: Datatype | undefined): string {

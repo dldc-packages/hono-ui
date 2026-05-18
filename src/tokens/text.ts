@@ -1,4 +1,4 @@
-import { type CssVar, cssVar } from "./utils.ts";
+import { type CssVar, cssVar } from "../utils/css-var.ts";
 
 export type FontFamilyKey = "sans" | "serif" | "mono";
 

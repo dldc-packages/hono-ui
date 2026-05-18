@@ -1,6 +1,6 @@
 import { Ast, serialize } from "@dldc/css-builder";
 import * as tokens from "../tokens.ts";
-import type { CssVar } from "../tokens/utils.ts";
+import { type CssVar, isCssVar } from "../utils/css-var.ts";
 import type { DatatypeMapper } from "./types.ts";
 
 export const x: DatatypeMapper = {
@@ -94,11 +94,22 @@ export const px: DatatypeMapper = {
   types: ["PxValue"],
 };
 
-export type CssVarValue = `var(--${string})`;
-export const cssVar: DatatypeMapper = {
+export type CssVarStrValue = `var(--${string})`;
+export const cssVarStr: DatatypeMapper = {
   mapper(value, next): string {
     if (typeof value === "string" && value.startsWith("var(--") && value.endsWith(")")) {
       return value;
+    }
+    return next(value);
+  },
+  types: ["CssVarStrValue"],
+};
+
+export type CssVarValue = CssVar;
+export const cssVar: DatatypeMapper = {
+  mapper(value, next): string {
+    if (isCssVar(value)) {
+      return value.toString();
     }
     return next(value);
   },

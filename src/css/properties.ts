@@ -2,56 +2,56 @@ import * as d from "./datatypes.ts";
 import type { Datatype, PropertiesMap } from "./types.ts";
 
 const spacing: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.x],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x],
 };
 
 const distance: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.x, d.px],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x, d.px],
   staticValues: { auto: "auto" },
 };
 
 const color: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.color, d.colorOpacity],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.color, d.colorOpacity],
   staticValues: { transparent: "transparent", inherit: "inherit", currentcolor: "currentcolor" },
 };
 
 const borderRadius: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.x],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x],
   staticValues: { inherit: "inherit", full: "9999px", none: "0" },
 };
 
 const size: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.x, d.px],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x, d.px],
   staticValues: { full: "100%", auto: "auto", "fit-content": "fit-content", "full-dvh": "100dvh", "full-dvw": "100dvw" },
 };
 
 const overflow: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: { auto: "auto", hidden: "hidden", scroll: "scroll", visible: "visible", inherit: "inherit" },
 };
 
 const flexSize: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.x],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x],
   staticValues: { auto: "auto", inherit: "inherit" },
 };
 
 const gridTemplate: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.repeat, d.anyString],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.repeat, d.anyString],
   staticValues: { none: "none", auto: "auto" },
 };
 
 const gridPosition: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
   staticValues: { auto: "auto" },
 };
 
 const borderWidth: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr, d.px],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.px],
   staticValues: { inherit: "inherit", full: "9999px", none: "0" },
 };
 
 const borderStyle: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: {
     none: "none",
     hidden: "hidden",
@@ -68,7 +68,7 @@ const borderStyle: Datatype = {
 };
 
 const textDecoration: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: {
     none: "none",
     underline: "underline",
@@ -83,14 +83,17 @@ const textDecoration: Datatype = {
 };
 
 const cornerShape: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: { superellipse: "superellipse(1.5)", inherit: "inherit" },
 };
 
-const border: Datatype = { mappers: [d.raw, d.cssVar, d.cssExpr, d.x], staticValues: { inherit: "inherit", full: "9999px", none: "0" } };
+const border: Datatype = {
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x],
+  staticValues: { inherit: "inherit", full: "9999px", none: "0" },
+};
 
 const display: Datatype = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: {
     block: "block",
     flex: "flex",
@@ -105,7 +108,7 @@ const display: Datatype = {
 };
 
 const appearance = {
-  mappers: [d.raw, d.cssVar, d.cssExpr],
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: {
     none: "none",
     auto: "auto",
@@ -170,33 +173,33 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
 
   font: {
     toCss: "font",
-    datatype: { mappers: [d.fontFamily, d.raw, d.cssVar], staticValues: { inherit: "inherit", initial: "initial", unset: "unset" } },
+    datatype: { mappers: [d.fontFamily, d.raw, d.cssVarStr], staticValues: { inherit: "inherit", initial: "initial", unset: "unset" } },
   },
   fontFamily: {
     toCss: "font-family",
     datatype: {
-      mappers: [d.fontFamily, d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.fontFamily, d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
   fontSize: {
     toCss: "font-size",
     datatype: {
-      mappers: [d.fontSize, d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.fontSize, d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
   fontWeight: {
     toCss: "font-weight",
     datatype: {
-      mappers: [d.fontWeight, d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.fontWeight, d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset", bolder: "bolder", lighter: "lighter" },
     },
   },
   lineHeight: {
     toCss: "line-height",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.number],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.number],
       staticValues: {
         inherit: "inherit",
         normal: "normal",
@@ -211,17 +214,20 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   textAlign: {
     toCss: "text-align",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { left: "left", right: "right", center: "center", justify: "justify", inherit: "inherit" },
     },
   },
 
-  outline: { toCss: "outline", datatype: { mappers: [d.raw, d.cssVar, d.cssExpr], staticValues: { none: "none", auto: "auto" } } },
+  outline: {
+    toCss: "outline",
+    datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { none: "none", auto: "auto" } },
+  },
 
   cursor: {
     toCss: "cursor",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { "not-allowed": "not-allowed", pointer: "pointer", default: "default", inherit: "inherit" },
     },
   },
@@ -238,7 +244,7 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   position: {
     toCss: "position",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { static: "static", relative: "relative", absolute: "absolute", fixed: "fixed", sticky: "sticky" },
     },
   },
@@ -247,10 +253,10 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
 
   pointerEvents: {
     toCss: "pointer-events",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr], staticValues: { auto: "auto", none: "none", inherit: "inherit" } },
+    datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { auto: "auto", none: "none", inherit: "inherit" } },
   },
 
-  content: { toCss: "content", datatype: { mappers: [d.anyString, d.cssVar, d.cssExpr], staticValues: { empty: '""' } } },
+  content: { toCss: "content", datatype: { mappers: [d.anyString, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { empty: '""' } } },
 
   textDecoration: { toCss: "text-decoration", datatype: textDecoration },
 
@@ -261,21 +267,21 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   flexDirection: {
     toCss: "flex-direction",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { row: "row", rowReverse: "row-reverse", column: "column", columnReverse: "column-reverse", inherit: "inherit" },
     },
   },
   alignItems: {
     toCss: "align-items",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { start: "start", end: "end", center: "center", baseline: "baseline", stretch: "stretch", inherit: "inherit" },
     },
   },
   justifyContent: {
     toCss: "justify-content",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: {
         inherit: "inherit",
         "flex-start": "flex-start",
@@ -295,14 +301,14 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   flexWrap: {
     toCss: "flex-wrap",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { nowrap: "nowrap", wrap: "wrap", wrapReverse: "wrap-reverse", inherit: "inherit" },
     },
   },
   flex: {
     toCss: "flex",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
@@ -312,7 +318,7 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
 
   colorScheme: {
     toCss: "color-scheme",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr], staticValues: { light: "light", dark: "dark", inherit: "inherit" } },
+    datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { light: "light", dark: "dark", inherit: "inherit" } },
   },
 
   appearance: {
@@ -329,24 +335,30 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   transition: {
     toCss: "transition",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
 
   opacity: {
     toCss: "opacity",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr, d.number], staticValues: { inherit: "inherit", initial: "initial", unset: "unset" } },
+    datatype: {
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.number],
+      staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+    },
   },
 
   scrollbarWidth: {
     toCss: "scrollbar-width",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr], staticValues: { none: "none", thin: "thin", auto: "auto", inherit: "inherit" } },
+    datatype: {
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
+      staticValues: { none: "none", thin: "thin", auto: "auto", inherit: "inherit" },
+    },
   },
   resize: {
     toCss: "resize",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { none: "none", both: "both", horizontal: "horizontal", vertical: "vertical", inherit: "inherit" },
     },
   },
@@ -354,25 +366,28 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   verticalAlign: {
     toCss: "vertical-align",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { baseline: "baseline", top: "top", middle: "middle", bottom: "bottom", inherit: "inherit" },
     },
   },
   zIndex: {
     toCss: "z-index",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr, d.number], staticValues: { inherit: "inherit", initial: "initial", unset: "unset" } },
+    datatype: {
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.number],
+      staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+    },
   },
   transform: {
     toCss: "transform",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
   translate: {
     toCss: "translate",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
     },
   },
@@ -383,7 +398,7 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   boxSizing: {
     toCss: "box-sizing",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
       staticValues: { "content-box": "content-box", "border-box": "border-box", inherit: "inherit" },
     },
   },
@@ -394,26 +409,37 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   borderCollapse: {
     toCss: "border-collapse",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { collapse: "collapse", separate: "separate", inherit: "inherit" },
     },
   },
   listStyle: {
     toCss: "list-style",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.anyString],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
       staticValues: { none: "none", disc: "disc", circle: "circle", square: "square", decimal: "decimal", inherit: "inherit" },
     },
   },
   boxShadow: {
     toCss: "box-shadow",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr, d.shadow], staticValues: { none: "none", inherit: "inherit" } },
+    datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.shadow], staticValues: { none: "none", inherit: "inherit" } },
   },
   letterSpacing: {
     toCss: "letter-spacing",
     datatype: {
-      mappers: [d.raw, d.cssVar, d.cssExpr, d.x],
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr, d.x],
       staticValues: { normal: "normal", inherit: "inherit" },
+    },
+  },
+  clip: {
+    toCss: "clip",
+    datatype: { mappers: [d.cssVarStr, d.cssVar, d.cssExpr, d.anyString], staticValues: { auto: "auto", inherit: "inherit" } },
+  },
+  whiteSpace: {
+    toCss: "white-space",
+    datatype: {
+      mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
+      staticValues: { normal: "normal", nowrap: "nowrap", pre: "pre", preLine: "pre-line", preWrap: "pre-wrap", inherit: "inherit" },
     },
   },
 
@@ -421,12 +447,12 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   WebkitTapHighlightColor: { toCss: "-webkit-tap-highlight-color" },
   WebkitOverflowScrolling: {
     toCss: "-webkit-overflow-scrolling",
-    datatype: { mappers: [d.raw, d.cssVar, d.cssExpr], staticValues: { auto: "auto", touch: "touch", inherit: "inherit" } },
+    datatype: { mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr], staticValues: { auto: "auto", touch: "touch", inherit: "inherit" } },
   },
   WebkitTextDecoration: { toCss: "-webkit-text-decoration", datatype: textDecoration },
   WebkitAppearance: { toCss: "-webkit-appearance", datatype: appearance },
 };
 
 export const VARIABLE_TYPE: Datatype = {
-  mappers: [d.cssVar, d.cssExpr, d.anyString],
+  mappers: [d.cssVarStr, d.cssVar, d.cssExpr, d.anyString],
 };

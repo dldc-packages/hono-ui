@@ -1,7 +1,5 @@
 import { type Child, type FC, Fragment } from "hono/jsx";
-import { Html, TabsGroup, Title, UniversalLayout } from "../../mod.ts";
-import { TabLink } from "../../src/components/TabLink.tsx";
-import { css } from "../../src/css.ts";
+import { css, Html, TabLink, TabsGroup, Title, UniversalLayout } from "../../mod.ts";
 
 export type LayoutTab = {
   name: string;

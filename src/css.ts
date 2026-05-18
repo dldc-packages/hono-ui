@@ -1,9 +1,9 @@
 import { css as honoCss } from "hono/css";
 import { PROPERTIES_CONFIG, VARIABLE_TYPE } from "./css/properties.ts";
-import type { CssObjProperties, CssVar } from "./css/types.gen.ts";
+import type { CssObjProperties, CssVarType } from "./css/types.gen.ts";
 import type { Datatype } from "./css/types.ts";
 
-export type CssObj_Vars = { [key: `--${string}`]: CssVar };
+export type CssObj_Vars = { [key: `--${string}`]: CssVarType };
 export type CssObj_Supports = { [key: `@supports ${string}`]: CssObj_1 };
 export type CssObj_1 = CssObjProperties & {
   vars?: CssObj_Vars;
@@ -173,7 +173,7 @@ function cssObjToString(obj: CssObj): string {
     }
     const key = keyStr as keyof CssObj;
     if (key === "vars" || key.startsWith("vars_")) {
-      Object.entries(value as Record<string, CssVar>).forEach(([varName, varValue]) => {
+      Object.entries(value as Record<string, CssVarType>).forEach(([varName, varValue]) => {
         cssStrings.push(`${varName}: ${applyDatatype(VARIABLE_TYPE, varValue, { property: varName })};`);
       });
       return;

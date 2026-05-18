@@ -1,5 +1,4 @@
 import * as tokens from "./src/tokens.ts";
-import * as utility from "./src/utility.ts";
 
 export * from "./src/components/Box.tsx";
 export * from "./src/components/Button.tsx";
@@ -28,5 +27,6 @@ export * from "./src/components/UniversalLayout.tsx";
 export * from "./src/css.ts";
 export { globalStyles } from "./src/global.ts";
 export { type HTMLX, htmlx } from "./src/htmlx.ts";
+export * from "./src/utils/css-var.ts";
 
-export { tokens, utility };
+export { tokens };
