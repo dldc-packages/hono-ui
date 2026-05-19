@@ -2,7 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@dldc/css-builder@^1.6.0": "1.6.0",
-    "jsr:@hono/hono@^4.12.19": "4.12.19",
+    "jsr:@hono/hono@^4.12.21": "4.12.21",
     "jsr:@std/internal@^1.0.12": "1.0.13",
     "jsr:@std/path@^1.1.4": "1.1.4",
     "npm:lucide-static@^1.16.0": "1.16.0",
@@ -12,8 +12,8 @@
     "@dldc/css-builder@1.6.0": {
       "integrity": "cae89cec79a7d2da3d988c993b83153906584f21bb5b6df6f8ff9a7f6ef1ef79"
     },
-    "@hono/hono@4.12.19": {
-      "integrity": "8c26d8a46ef1d4038a5ab697ad86f687ada25125c58016f28b493610484afc72"
+    "@hono/hono@4.12.21": {
+      "integrity": "27d39e6c93e123f206012b8ab3af70da887fe1da923ca945ec87d4b5f9ef5c94"
     },
     "@std/internal@1.0.13": {
       "integrity": "2f9546691d4ac2d32859c82dff284aaeac980ddeca38430d07941e7e288725c0"
@@ -42,7 +42,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@dldc/css-builder@^1.6.0",
-      "jsr:@hono/hono@^4.12.19",
+      "jsr:@hono/hono@^4.12.21",
       "jsr:@std/path@^1.1.4",
       "npm:lucide-static@^1.16.0",
       "npm:type-fest@^5.6.0"
