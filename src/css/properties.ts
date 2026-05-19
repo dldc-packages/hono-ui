@@ -107,13 +107,34 @@ const display: Datatype = {
   },
 };
 
-const appearance = {
+const appearance: Datatype = {
   mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
   staticValues: {
     none: "none",
     auto: "auto",
     inherit: "inherit",
     button: "button",
+  },
+};
+
+const positionArea: Datatype = {
+  mappers: [d.raw, d.cssVarStr, d.cssVar, d.cssExpr],
+  staticValues: {
+    none: "none",
+    center: "center",
+    top: "top",
+    bottom: "bottom",
+    left: "left",
+    right: "right",
+    "top left": "top left",
+    "top right": "top right",
+    "bottom left": "bottom left",
+    "bottom right": "bottom right",
+    "top span-all": "top span-all",
+    "bottom span-all": "bottom span-all",
+    inherit: "inherit",
+    initial: "initial",
+    unset: "unset",
   },
 };
 
@@ -459,6 +480,7 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
       staticValues: { normal: "normal", nowrap: "nowrap", pre: "pre", preLine: "pre-line", preWrap: "pre-wrap", inherit: "inherit" },
     },
   },
+  positionArea: { toCss: "position-area", datatype: positionArea },
 
   WebkitTextSizeAdjust: { toCss: "-webkit-text-size-adjust" },
   WebkitTapHighlightColor: { toCss: "-webkit-tap-highlight-color" },

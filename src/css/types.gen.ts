@@ -347,6 +347,26 @@ export interface CssObjProperties {
   letterSpacing?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "normal" | "inherit";
   clip?: CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "auto" | "inherit";
   whiteSpace?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "normal" | "nowrap" | "pre" | "preLine" | "preWrap" | "inherit";
+  positionArea?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "none"
+    | "center"
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top left"
+    | "top right"
+    | "bottom left"
+    | "bottom right"
+    | "top span-all"
+    | "bottom span-all"
+    | "inherit"
+    | "initial"
+    | "unset";
   WebkitTextSizeAdjust?: string | number;
   WebkitTapHighlightColor?: string | number;
   WebkitOverflowScrolling?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "touch" | "inherit";
