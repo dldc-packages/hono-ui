@@ -6,7 +6,7 @@ const outfile = resolve("src/css/types.gen.ts");
 
 const imports = [
   `import type { tokens } from "@dldc/hono-ui";`,
-  `import type { AnyStringValue, ColorOpacityValue, CssExprValue, CssVarStrValue, CssVarValue, PxValue, RawValue } from "./datatypes.ts";`,
+  `import type { AnyStringValue, ColorOpacityValue, CssExprValue, CssVarStrValue, CssVarValue, PxValue, RawValue } from "./mappers.ts";`,
 ];
 
 const content = [
