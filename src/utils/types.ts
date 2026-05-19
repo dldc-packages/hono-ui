@@ -12,6 +12,10 @@ export interface ComponentPropsBase {
   children?: Child | undefined;
   render?: RenderProp;
   dangerouslySetInnerHTML?: { __html: string };
+  popovertarget?: string;
+  inert?: boolean | undefined;
+  popover?: boolean | "auto" | "manual" | undefined;
+  tabindex?: number | undefined;
 }
 
 export type ComponentPropsMerge<Props> = Merge<ComponentPropsBase, Props>;
