@@ -17,7 +17,13 @@ export const color: Datatype = {
 
 export const borderRadius: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x],
-  staticValues: ["inherit", "full", "none"],
+  staticValues: {
+    inherit: "inherit",
+    initial: "initial",
+    unset: "unset",
+    full: "9999px",
+    none: "0",
+  },
 };
 
 export const size: Datatype = {

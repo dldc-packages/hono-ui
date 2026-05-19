@@ -127,13 +127,13 @@ export interface CssObjProperties {
     | "currentcolor";
   borderLeft?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderLeftWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
-  borderRadius?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusBottom?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusEnd?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusLeft?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusRight?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusStart?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
-  borderRadiusTop?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
+  borderRadius?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusBottom?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusEnd?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusLeft?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusRight?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusStart?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
+  borderRadiusTop?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset" | "full" | "none";
   borderRight?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderRightWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   borderStyle?:
