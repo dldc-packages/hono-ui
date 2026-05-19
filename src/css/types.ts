@@ -14,8 +14,9 @@ export interface Datatype {
 }
 
 export type PropertyConfig = {
-  datatype?: Datatype;
   toCss: PropertyToCss | string | string[];
+  // If omitted, any string value will be accepted, and passed as-is to the CSS output.
+  datatype?: Datatype;
 };
 
 export type PropertiesMap = Record<string, PropertyConfig>;

@@ -350,3 +350,242 @@ export const mixBlendMode: Datatype = {
     inherit: "inherit",
   },
 };
+
+export const backgroundPosition: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+};
+
+export const font: Datatype = {
+  mappers: [m.fontFamily, m.raw, m.cssVarStr],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const fontFamily: Datatype = {
+  mappers: [m.fontFamily, m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const fontSize: Datatype = {
+  mappers: [m.fontSize, m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const fontWeight: Datatype = {
+  mappers: [m.fontWeight, m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset", bolder: "bolder", lighter: "lighter" },
+};
+
+export const fontStyle: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { normal: "normal", italic: "italic", oblique: "oblique", inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const lineHeight: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.number],
+  staticValues: {
+    inherit: "inherit",
+    normal: "normal",
+    none: "none",
+    shorter: "1.25",
+    short: "1.375",
+    tall: "1.625",
+    taller: "2",
+  },
+};
+
+export const textAlign: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { left: "left", right: "right", center: "center", justify: "justify", inherit: "inherit" },
+};
+
+export const outline: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { none: "none", auto: "auto" },
+};
+
+export const cursor: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { "not-allowed": "not-allowed", pointer: "pointer", default: "default", inherit: "inherit" },
+};
+
+export const position: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { static: "static", relative: "relative", absolute: "absolute", fixed: "fixed", sticky: "sticky" },
+};
+
+export const pointerEvents: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { auto: "auto", none: "none", inherit: "inherit" },
+};
+
+export const content: Datatype = {
+  mappers: [m.anyString, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { empty: '""' },
+};
+
+export const flexDirection: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { row: "row", rowReverse: "row-reverse", column: "column", columnReverse: "column-reverse", inherit: "inherit" },
+};
+
+export const alignItems: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { start: "start", end: "end", center: "center", baseline: "baseline", stretch: "stretch", inherit: "inherit" },
+};
+
+export const justifyContent: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    inherit: "inherit",
+    "flex-start": "flex-start",
+    "flex-end": "flex-end",
+    "safe flex-end": "safe flex-end",
+    center: "center",
+    "safe center": "safe center",
+    "space-between": "space-between",
+    "space-around": "space-around",
+    "space-evenly": "space-evenly",
+    stretch: "stretch",
+    baseline: "baseline",
+    normal: "normal",
+  },
+};
+
+export const flexWrap: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { nowrap: "nowrap", wrap: "wrap", wrapReverse: "wrap-reverse", inherit: "inherit" },
+};
+
+export const flex: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const order: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.number],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const placeItems: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    start: "start",
+    end: "end",
+    center: "center",
+    "safe end": "safe end",
+    "safe center": "safe center",
+    baseline: "baseline",
+    stretch: "stretch",
+    inherit: "inherit",
+  },
+};
+
+export const colorScheme: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { light: "light", dark: "dark", inherit: "inherit" },
+};
+
+export const gridAutoFlow: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    row: "row",
+    column: "column",
+    dense: "dense",
+    "row dense": "row dense",
+    "column dense": "column dense",
+    inherit: "inherit",
+  },
+};
+
+export const transition: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const opacity: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.number],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const scrollbarWidth: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { none: "none", thin: "thin", auto: "auto", inherit: "inherit" },
+};
+
+export const resize: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { none: "none", both: "both", horizontal: "horizontal", vertical: "vertical", inherit: "inherit" },
+};
+
+export const verticalAlign: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { baseline: "baseline", top: "top", middle: "middle", bottom: "bottom", inherit: "inherit" },
+};
+
+export const zIndex: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.number],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const transform: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const translate: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { inherit: "inherit", initial: "initial", unset: "unset" },
+};
+
+export const boxSizing: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { "content-box": "content-box", "border-box": "border-box", inherit: "inherit" },
+};
+
+export const borderCollapse: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { collapse: "collapse", separate: "separate", inherit: "inherit" },
+};
+
+export const listStyle: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { none: "none", disc: "disc", circle: "circle", square: "square", decimal: "decimal", inherit: "inherit" },
+};
+
+export const boxShadow: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.shadow],
+  staticValues: { none: "none", inherit: "inherit" },
+};
+
+export const letterSpacing: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x],
+  staticValues: { normal: "normal", inherit: "inherit" },
+};
+
+export const clip: Datatype = {
+  mappers: [m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { auto: "auto", inherit: "inherit" },
+};
+
+export const whiteSpace: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { normal: "normal", nowrap: "nowrap", pre: "pre", preLine: "pre-line", preWrap: "pre-wrap", inherit: "inherit" },
+};
+
+export const gridTemplateAreas: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+};
+
+export const willChange: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+};
+
+export const objectPosition: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { inherit: "inherit" },
+};
+
+export const webkitOverflowScrolling: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { auto: "auto", touch: "touch", inherit: "inherit" },
+};
