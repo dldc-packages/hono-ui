@@ -7,17 +7,17 @@ export const spacing: Datatype = {
 
 export const distance: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x, m.px],
-  staticValues: { auto: "auto" },
+  staticValues: ["auto"],
 };
 
 export const color: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.color, m.colorOpacity],
-  staticValues: { transparent: "transparent", inherit: "inherit", currentcolor: "currentcolor" },
+  staticValues: ["transparent", "inherit", "currentcolor"],
 };
 
 export const borderRadius: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x],
-  staticValues: { inherit: "inherit", full: "9999px", none: "0" },
+  staticValues: ["inherit", "full", "none"],
 };
 
 export const size: Datatype = {
@@ -27,27 +27,27 @@ export const size: Datatype = {
 
 export const overflow: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
-  staticValues: { auto: "auto", hidden: "hidden", scroll: "scroll", visible: "visible", inherit: "inherit" },
+  staticValues: ["auto", "hidden", "scroll", "visible", "inherit"],
 };
 
 export const backgroundSize: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x, m.px, m.anyString],
-  staticValues: { auto: "auto", cover: "cover", contain: "contain", inherit: "inherit" },
+  staticValues: ["auto", "cover", "contain", "inherit"],
 };
 
 export const flexSize: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.x],
-  staticValues: { auto: "auto", inherit: "inherit" },
+  staticValues: ["auto", "inherit"],
 };
 
 export const gridTemplate: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.repeat, m.anyString],
-  staticValues: { none: "none", auto: "auto" },
+  staticValues: ["none", "auto"],
 };
 
 export const gridPosition: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
-  staticValues: { auto: "auto" },
+  staticValues: ["auto"],
 };
 
 export const borderWidth: Datatype = {
@@ -588,4 +588,134 @@ export const objectPosition: Datatype = {
 export const webkitOverflowScrolling: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
   staticValues: { auto: "auto", touch: "touch", inherit: "inherit" },
+};
+
+export const backgroundImage: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { none: "none", inherit: "inherit" },
+};
+
+export const backgroundClip: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    "border-box": "border-box",
+    "padding-box": "padding-box",
+    "content-box": "content-box",
+    text: "text",
+    inherit: "inherit",
+  },
+};
+
+export const backgroundRepeat: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    repeat: "repeat",
+    "no-repeat": "no-repeat",
+    "repeat-x": "repeat-x",
+    "repeat-y": "repeat-y",
+    round: "round",
+    space: "space",
+    inherit: "inherit",
+  },
+};
+
+export const backgroundAttachment: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { scroll: "scroll", fixed: "fixed", local: "local", inherit: "inherit" },
+};
+
+export const float: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    none: "none",
+    left: "left",
+    right: "right",
+    "inline-start": "inline-start",
+    "inline-end": "inline-end",
+    inherit: "inherit",
+  },
+};
+
+export const textShadow: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { none: "none", inherit: "inherit" },
+};
+
+export const textDecorationStyle: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { solid: "solid", double: "double", dotted: "dotted", dashed: "dashed", wavy: "wavy", inherit: "inherit" },
+};
+
+export const textWrap: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { wrap: "wrap", nowrap: "nowrap", balance: "balance", pretty: "pretty", stable: "stable", inherit: "inherit" },
+};
+
+export const hyphens: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { none: "none", manual: "manual", auto: "auto", inherit: "inherit" },
+};
+
+export const scrollbarColor: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { auto: "auto", inherit: "inherit" },
+};
+
+export const scrollbarGutter: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { auto: "auto", stable: "stable", "both-edges": "both-edges", inherit: "inherit" },
+};
+
+export const containerType: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { normal: "normal", size: "size", "inline-size": "inline-size", inherit: "inherit" },
+};
+
+export const fontStretch: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: {
+    "ultra-condensed": "ultra-condensed",
+    "extra-condensed": "extra-condensed",
+    condensed: "condensed",
+    "semi-condensed": "semi-condensed",
+    normal: "normal",
+    "semi-expanded": "semi-expanded",
+    expanded: "expanded",
+    "extra-expanded": "extra-expanded",
+    "ultra-expanded": "ultra-expanded",
+    inherit: "inherit",
+  },
+};
+
+export const writingMode: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { "horizontal-tb": "horizontal-tb", "vertical-rl": "vertical-rl", "vertical-lr": "vertical-lr", inherit: "inherit" },
+};
+
+export const imageRendering: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { auto: "auto", "crisp-edges": "crisp-edges", pixelated: "pixelated", inherit: "inherit" },
+};
+
+export const fieldSizing: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { fixed: "fixed", content: "content", inherit: "inherit" },
+};
+
+export const backfaceVisibility: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: { visible: "visible", hidden: "hidden", inherit: "inherit" },
+};
+
+export const touchAction: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
+  staticValues: {
+    auto: "auto",
+    none: "none",
+    "pan-x": "pan-x",
+    "pan-y": "pan-y",
+    manipulation: "manipulation",
+    "pinch-zoom": "pinch-zoom",
+    inherit: "inherit",
+  },
 };

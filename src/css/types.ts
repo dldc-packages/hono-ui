@@ -10,7 +10,7 @@ export type PropertyToCss = (value: string) => string;
 
 export interface Datatype {
   mappers: DatatypeMapper[];
-  staticValues?: Record<string, string>;
+  staticValues?: Record<string, string> | string[];
 }
 
 export type PropertyConfig = {

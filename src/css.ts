@@ -209,8 +209,13 @@ function applyDatatype(datatype: Datatype | undefined, value: unknown, infos: { 
   if (!datatype) {
     return String(value);
   }
-  if (datatype.staticValues && typeof value === "string" && datatype.staticValues[value]) {
-    return datatype.staticValues[value];
+  if (datatype.staticValues && typeof value === "string") {
+    if (Array.isArray(datatype.staticValues) && datatype.staticValues.includes(value)) {
+      return value;
+    }
+    if (!Array.isArray(datatype.staticValues) && datatype.staticValues[value] !== undefined) {
+      return datatype.staticValues[value];
+    }
   }
   const callNext = (index: number, value: unknown): string => {
     if (index >= datatype.mappers.length) {

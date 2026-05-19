@@ -26,7 +26,10 @@ function datatypeTypes(datatype: Datatype | undefined): string {
   if (!datatype) {
     return "string | number";
   }
-  const staticTypes = Object.keys(datatype.staticValues ?? {}).map((v) => `'${v}'`);
+  const staticValues = Array.isArray(datatype.staticValues)
+    ? Object.fromEntries(datatype.staticValues.map((v) => [v, v]))
+    : datatype.staticValues ?? {};
+  const staticTypes = Object.keys(staticValues).map((v) => `'${v}'`);
   const allTypes = [
     ...datatype.mappers.flatMap((mapper) => mapper.types),
     ...staticTypes,

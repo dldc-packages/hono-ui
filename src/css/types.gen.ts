@@ -41,8 +41,18 @@ export interface CssObjProperties {
     | "baseline"
     | "stretch"
     | "inherit";
+  animation?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
+  animationDelay?: string | number;
+  animationDirection?: string | number;
+  animationDuration?: string | number;
+  animationFillMode?: string | number;
+  animationIterationCount?: string | number;
+  animationName?: string | number;
+  animationPlayState?: string | number;
+  animationTimingFunction?: string | number;
   appearance?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "auto" | "inherit" | "button";
   aspectRatio?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | AnyStringValue | "auto" | "inherit" | "initial" | "unset";
+  backfaceVisibility?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "visible" | "hidden" | "inherit";
   backdropFilter?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   background?:
     | RawValue
@@ -64,7 +74,31 @@ export interface CssObjProperties {
     | "transparent"
     | "inherit"
     | "currentcolor";
+  backgroundAttachment?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "scroll" | "fixed" | "local" | "inherit";
+  backgroundClip?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "border-box"
+    | "padding-box"
+    | "content-box"
+    | "text"
+    | "inherit";
+  backgroundImage?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   backgroundPosition?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue;
+  backgroundRepeat?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "repeat"
+    | "no-repeat"
+    | "repeat-x"
+    | "repeat-y"
+    | "round"
+    | "space"
+    | "inherit";
   backgroundSize?:
     | RawValue
     | CssVarStrValue
@@ -78,6 +112,7 @@ export interface CssObjProperties {
     | "contain"
     | "inherit";
   border?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
+  borderBottom?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderBottomWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   borderCollapse?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "collapse" | "separate" | "inherit";
   borderColor?:
@@ -90,6 +125,7 @@ export interface CssObjProperties {
     | "transparent"
     | "inherit"
     | "currentcolor";
+  borderLeft?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderLeftWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   borderRadius?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderRadiusBottom?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
@@ -98,6 +134,7 @@ export interface CssObjProperties {
   borderRadiusRight?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderRadiusStart?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderRadiusTop?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
+  borderRight?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderRightWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   borderStyle?:
     | RawValue
@@ -115,6 +152,7 @@ export interface CssObjProperties {
     | "inset"
     | "outset"
     | "inherit";
+  borderTop?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "full" | "none";
   borderTopWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   borderWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   bottom?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
@@ -131,6 +169,7 @@ export interface CssObjProperties {
     | "inherit"
     | "currentcolor";
   clip?: CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "auto" | "inherit";
+  clipPath?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   color?:
     | RawValue
     | CssVarStrValue
@@ -143,6 +182,8 @@ export interface CssObjProperties {
     | "currentcolor";
   colorScheme?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "light" | "dark" | "inherit";
   columnGap?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
+  containerName?: string | number;
+  containerType?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "normal" | "size" | "inline-size" | "inherit";
   content?: AnyStringValue | CssVarStrValue | CssVarValue | CssExprValue | "empty";
   cornerShape?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "superellipse" | "inherit";
   cursor?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "not-allowed" | "pointer" | "default" | "inherit";
@@ -160,6 +201,7 @@ export interface CssObjProperties {
     | "inline"
     | "inlineBlock"
     | "inlineGrid";
+  fieldSizing?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "fixed" | "content" | "inherit";
   filter?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   flex?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
   flexBasis?:
@@ -178,10 +220,27 @@ export interface CssObjProperties {
   flexGrow?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "auto" | "inherit";
   flexShrink?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "auto" | "inherit";
   flexWrap?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "nowrap" | "wrap" | "wrapReverse" | "inherit";
+  float?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "left" | "right" | "inline-start" | "inline-end" | "inherit";
   font?: tokens.FontFamilyKey | RawValue | CssVarStrValue | "inherit" | "initial" | "unset";
   fontFamily?: tokens.FontFamilyKey | RawValue | CssVarStrValue | CssVarValue | CssExprValue | "inherit" | "initial" | "unset";
   fontFeatureSettings?: string | number;
   fontSize?: tokens.FontSizeKey | RawValue | CssVarStrValue | CssVarValue | CssExprValue | "inherit" | "initial" | "unset";
+  fontStretch?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | AnyStringValue
+    | "ultra-condensed"
+    | "extra-condensed"
+    | "condensed"
+    | "semi-condensed"
+    | "normal"
+    | "semi-expanded"
+    | "expanded"
+    | "extra-expanded"
+    | "ultra-expanded"
+    | "inherit";
   fontStyle?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "normal" | "italic" | "oblique" | "inherit" | "initial" | "unset";
   fontVariationSettings?: string | number;
   fontWeight?:
@@ -226,6 +285,8 @@ export interface CssObjProperties {
     | "fit-content"
     | "full-dvh"
     | "full-dvw";
+  hyphens?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "manual" | "auto" | "inherit";
+  imageRendering?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "crisp-edges" | "pixelated" | "inherit";
   inset?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
   insetBlock?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
   insetBlockEnd?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
@@ -421,6 +482,8 @@ export interface CssObjProperties {
   paddingTop?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
   paddingX?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
   paddingY?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
+  perspective?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
+  perspectiveOrigin?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   placeContent?:
     | RawValue
     | CssVarStrValue
@@ -484,7 +547,11 @@ export interface CssObjProperties {
     | "unset";
   resize?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "both" | "horizontal" | "vertical" | "inherit";
   right?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
+  rotate?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   rowGap?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
+  scale?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
+  scrollbarColor?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "auto" | "inherit";
+  scrollbarGutter?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "stable" | "both-edges" | "inherit";
   scrollbarWidth?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "thin" | "auto" | "inherit";
   scrollBehavior?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "smooth" | "inherit";
   scrollSnapAlign?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "start" | "end" | "center" | "inherit";
@@ -520,11 +587,49 @@ export interface CssObjProperties {
     | "underlineDotted"
     | "underlineDashed"
     | "underlineWavy";
+  textDecorationColor?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | tokens.ColorKey
+    | ColorOpacityValue
+    | "transparent"
+    | "inherit"
+    | "currentcolor";
+  textDecorationStyle?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "solid"
+    | "double"
+    | "dotted"
+    | "dashed"
+    | "wavy"
+    | "inherit";
+  textDecorationThickness?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
   textIndent?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
   textOverflow?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "clip" | "ellipsis" | "inherit";
+  textShadow?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   textTransform?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "capitalize" | "uppercase" | "lowercase" | "inherit";
+  textUnderlineOffset?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | PxValue | "inherit" | "full" | "none";
+  textWrap?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "wrap" | "nowrap" | "balance" | "pretty" | "stable" | "inherit";
   top?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | PxValue | "auto";
+  touchAction?:
+    | RawValue
+    | CssVarStrValue
+    | CssVarValue
+    | CssExprValue
+    | "auto"
+    | "none"
+    | "pan-x"
+    | "pan-y"
+    | "manipulation"
+    | "pinch-zoom"
+    | "inherit";
   transform?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
+  transformOrigin?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none" | "inherit";
   transition?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
   translate?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "inherit" | "initial" | "unset";
   userSelect?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "text" | "none" | "all" | "contain" | "inherit";
@@ -563,6 +668,8 @@ export interface CssObjProperties {
     | "full-dvw";
   willChange?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue;
   wordBreak?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "normal" | "break-all" | "keep-all" | "break-word" | "inherit";
+  wordSpacing?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number;
+  writingMode?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "horizontal-tb" | "vertical-rl" | "vertical-lr" | "inherit";
   zIndex?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | number | "inherit" | "initial" | "unset";
 }
 
