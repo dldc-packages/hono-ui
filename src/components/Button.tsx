@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import type { ButtonVariant } from "../styles/button.ts";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type ButtonSharedProps = {
@@ -32,7 +32,7 @@ export function Button({
   return (
     <button
       type={type}
-      class={resolveClassNames(baseClassName, classList)}
+      class={cxClassList(baseClassName, classList)}
       disabled={disabled}
       style={style}
       data-group-item="true"

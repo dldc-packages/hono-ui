@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css, type CssObj } from "../css.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import { createRender } from "../utils/create-render.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type StackProps = ComponentPropsMerge<
@@ -30,7 +30,7 @@ export function Stack({
   });
 
   return createRender("div", render, {
-    class: resolveClassNames(className, classList),
+    class: cxClassList(className, classList),
     ...rest,
   });
 }

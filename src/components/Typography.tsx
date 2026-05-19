@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css, type CssObj } from "../css.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import { createRender } from "../utils/create-render.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type TypographyProps = ComponentPropsMerge<
@@ -16,7 +16,7 @@ export function Typography({
   fontWeight,
   ...rest
 }: TypographyProps): JSX.Element {
-  const className = resolveClassNames(
+  const className = cxClassList(
     fontSize ? css({ fontSize: fontSize }) : null,
     color ? css({ color: color }) : null,
     fontWeight ? css({ fontWeight: fontWeight }) : null,

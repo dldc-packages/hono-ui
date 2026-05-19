@@ -2,7 +2,7 @@ import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css, type CssObj } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type PaperProps = ComponentPropsMerge<
@@ -30,7 +30,7 @@ export function Paper(
 
   return (
     <div
-      class={resolveClassNames(
+      class={cxClassList(
         className,
         flexDirection !== "none" ? css({ display: "flex", flexDirection, alignItems, justifyContent, gap, padding }) : undefined,
         classList,

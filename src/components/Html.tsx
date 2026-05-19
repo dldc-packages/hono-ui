@@ -3,8 +3,7 @@ import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { globalStyles } from "../../src/global.ts";
 import { css } from "../css.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
-import type { ClassListProp } from "../utils/types.ts";
+import { type ClassListProp, cxClassList } from "../utils/class-list.ts";
 
 export type HtmlProps = {
   heads?: Child;
@@ -23,7 +22,7 @@ const htmlClassName = css({
 
 export function Html({ children, title, heads, lang = "en", classList }: HtmlProps): JSX.Element {
   return (
-    <html lang={lang} class={resolveClassNames(htmlClassName, classList)}>
+    <html lang={lang} class={cxClassList(htmlClassName, classList)}>
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

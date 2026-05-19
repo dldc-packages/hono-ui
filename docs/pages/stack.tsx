@@ -14,27 +14,27 @@ export function StackPageContent() {
         <Typography fontSize="lg">Vertical spacing</Typography>
         <Stack gap={2}>
           {/* <Box inlines={[utility.p.all(2), utility.bg.c("neutral-700"), utility.color.c("neutral-200")]}>Project overview</Box> */}
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Project overview</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Recent activity</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Team updates</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Project overview</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Recent activity</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Team updates</Box>
         </Stack>
       </Stack>
 
       <Stack render={<section />} gap={2} alignItems="start">
         <Typography fontSize="lg">Horizontal layout</Typography>
         <Stack flexDirection="row" gap={2} flexWrap="wrap">
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Draft</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Review</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Ready</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Published</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Draft</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Review</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Ready</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Published</Box>
         </Stack>
       </Stack>
 
       <Stack render={<section />} gap={2} alignItems="start">
         <Typography fontSize="lg">Alignment and justification</Typography>
-        <Stack alignItems="center" justifyContent="center" gap={2} padding={4} classList={[css({ background: "neutral-800" })]}>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Centered one</Box>
-          <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Centered two</Box>
+        <Stack alignItems="center" justifyContent="center" gap={2} padding={4} classList={css({ background: "neutral-800" })}>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Centered one</Box>
+          <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Centered two</Box>
         </Stack>
       </Stack>
 
@@ -58,9 +58,9 @@ export function StackPageContent() {
 
       <Typography fontSize="lg">Stack rendered as form</Typography>
       <Stack render={<htmlx.form method="post" action="/login" />} gap={2} alignItems="start">
-        <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>First name</Box>
-        <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Last name</Box>
-        <Box classList={[css({ padding: 2, background: "neutral-700", color: "neutral-200" })]}>Email</Box>
+        <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>First name</Box>
+        <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Last name</Box>
+        <Box classList={css({ padding: 2, background: "neutral-700", color: "neutral-200" })}>Email</Box>
       </Stack>
     </Paper>
   );

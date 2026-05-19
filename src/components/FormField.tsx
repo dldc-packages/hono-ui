@@ -1,6 +1,7 @@
 import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
+import { flattenClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 import { Label, type LabelProps } from "./Label.tsx";
 import { Stack } from "./Stack.tsx";
@@ -42,14 +43,14 @@ export function FormField({
     <Stack
       flexDirection="column"
       gap={1}
-      classList={[css({ width: "full" }), ...classList]}
+      classList={[css({ width: "full" }), ...flattenClassList(classList)]}
       {...rest}
     >
       <Stack
         flexDirection={layout === "vertical" ? "column" : "row"}
         alignItems={layout === "vertical" ? "start" : "center"}
         gap={layout === "vertical" ? 1 : 2}
-        classList={[css({ width: "full" })]}
+        classList={css({ width: "full" })}
       >
         {renderInputFirst ? children : null}
         <Label htmlFor={id} required={required} hint={undefined} {...labelProps}>
@@ -64,7 +65,7 @@ export function FormField({
             render={<p />}
             fontSize="sm"
             color="neutral-400"
-            classList={[css({ margin: 0, marginLeft: 1 })]}
+            classList={css({ margin: 0, marginLeft: 1 })}
           >
             {hint}
           </Typography>
@@ -77,7 +78,7 @@ export function FormField({
             render={<p />}
             fontSize="sm"
             color="red-500"
-            classList={[css({ margin: 0, marginLeft: 1 })]}
+            classList={css({ margin: 0, marginLeft: 1 })}
           >
             {error}
           </Typography>

@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
 import { getButtonClassName, getButtonStyle } from "../styles/button.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { ButtonSharedProps } from "./Button.tsx";
 
@@ -43,7 +43,7 @@ export function Select({
   const wrapperClassName = getButtonClassName(disabled, variant);
 
   return (
-    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
+    <div class={cxClassList(wrapperClassName, classList)} style={style} data-group-item="true">
       <select class={selectClassName} disabled={disabled} {...rest}>
         {children}
       </select>

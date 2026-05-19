@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import { createRender } from "../utils/create-render.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
 import type { ComponentPropsBase } from "../utils/types.ts";
 
 export const srOnlyClass: Promise<string> = css({
@@ -24,7 +24,7 @@ export function SrOnly({
   ...rest
 }: SrOnlyProps): JSX.Element {
   return createRender("div", render, {
-    class: resolveClassNames(srOnlyClass, classList),
+    class: cxClassList(srOnlyClass, classList),
     ...rest,
   });
 }

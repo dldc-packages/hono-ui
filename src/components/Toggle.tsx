@@ -2,7 +2,7 @@ import * as c from "@dldc/css-builder";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type ToggleSharedProps = {
@@ -128,7 +128,7 @@ export function Toggle({
 }: ToggleProps): JSX.Element {
   return (
     <span
-      class={resolveClassNames(
+      class={cxClassList(
         css({
           vars: {
             "--toggle-size": tokens.x(size),

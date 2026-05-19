@@ -2,7 +2,7 @@ import * as c from "@dldc/css-builder";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
 import { getInputClassName, getInputStyle } from "../styles/input.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 import type { InputSharedProps } from "./Input.tsx";
 
@@ -76,7 +76,7 @@ export function Textarea({
   const wrapperClassName = getInputClassName(disabled, error);
 
   return (
-    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
+    <div class={cxClassList(wrapperClassName, classList)} style={style} data-group-item="true">
       <textarea
         class={textareaClassName}
         disabled={disabled}

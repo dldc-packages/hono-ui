@@ -1,7 +1,7 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsBase } from "../utils/types.ts";
 
 export type UniversalLayoutProps = ComponentPropsBase;
@@ -39,7 +39,7 @@ const contentClassName = css({
 export function UniversalLayout({ children, classList, ...rest }: UniversalLayoutProps): JSX.Element {
   return (
     <div class={wrapperClassName}>
-      <div class={resolveClassNames(contentClassName, classList)} {...rest}>
+      <div class={cxClassList(contentClassName, classList)} {...rest}>
         {children}
       </div>
     </div>

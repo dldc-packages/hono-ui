@@ -1,7 +1,7 @@
 import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { getInputClassName, getInputFieldClassName, getInputStyle } from "../styles/input.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type InputSharedProps = {
@@ -39,7 +39,7 @@ export function Input({
   const inputClassName = getInputFieldClassName();
 
   return (
-    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
+    <div class={cxClassList(wrapperClassName, classList)} style={style} data-group-item="true">
       <input
         class={inputClassName}
         disabled={disabled}

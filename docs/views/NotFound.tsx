@@ -5,7 +5,7 @@ import { Layout } from "./Layout.tsx";
 export function NotFound() {
   return (
     <Layout>
-      <Paper classList={[css({ display: "flex", flexDirection: "column", gap: 2, padding: 2 })]}>
+      <Paper classList={css({ display: "flex", flexDirection: "column", gap: 2, padding: 2 })}>
         <Typography fontSize="3xl" fontWeight="bold" color="white">404</Typography>
         <Typography fontSize="xl" color="gray-200">
           Page non trouvée

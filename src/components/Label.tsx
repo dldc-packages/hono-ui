@@ -1,7 +1,7 @@
 import type { Child } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type LabelProps = ComponentPropsMerge<
@@ -42,7 +42,7 @@ export function Label({
   ...rest
 }: LabelProps): JSX.Element {
   return (
-    <label class={resolveClassNames(baseClassName, classList)} {...rest}>
+    <label class={cxClassList(baseClassName, classList)} {...rest}>
       <span class={labelTextClassName}>
         {children}
         {required ? <span>*</span> : null}

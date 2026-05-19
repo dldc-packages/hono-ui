@@ -1,6 +1,6 @@
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type InlineGroupProps = ComponentPropsMerge<
@@ -32,7 +32,7 @@ export function InlineGroup({
   ...rest
 }: InlineGroupProps): JSX.Element {
   return (
-    <div class={resolveClassNames(baseClassName, wrap ? wrapClassName : undefined, classList)} {...rest}>
+    <div class={cxClassList(baseClassName, wrap ? wrapClassName : undefined, classList)} {...rest}>
       {children}
     </div>
   );

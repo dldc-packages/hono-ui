@@ -2,7 +2,7 @@ import * as c from "@dldc/css-builder";
 import type { PropsWithChildren } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type TabLinkProps = ComponentPropsMerge<
@@ -51,7 +51,7 @@ export function TabLink({
     <a
       href={link}
       aria-current={active ? "page" : undefined}
-      class={resolveClassNames(baseClassName, active ? activeClassName : undefined, classList)}
+      class={cxClassList(baseClassName, active ? activeClassName : undefined, classList)}
       {...rest}
     >
       {children}

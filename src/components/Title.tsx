@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type TitleProps = ComponentPropsMerge<
@@ -33,7 +33,7 @@ export function Title({
   ...rest
 }: PropsWithChildren<TitleProps>): JSX.Element {
   return (
-    <h1 class={resolveClassNames(titleClassName, classList)} {...rest}>
+    <h1 class={cxClassList(titleClassName, classList)} {...rest}>
       {href ? <a href={href} class={linkClassName}>{children}</a> : children}
     </h1>
   );

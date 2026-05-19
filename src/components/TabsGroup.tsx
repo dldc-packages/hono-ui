@@ -2,7 +2,7 @@ import type { CSSProperties } from "hono/jsx";
 import type { JSX } from "hono/jsx/jsx-runtime";
 import { css } from "../css.ts";
 import * as tokens from "../tokens.ts";
-import { resolveClassNames } from "../utils/resolveClassNames.ts";
+import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type TabsGroupProps = ComponentPropsMerge<{
@@ -56,7 +56,7 @@ export function TabsGroup({
   };
 
   return (
-    <div class={resolveClassNames(className, classList)} style={style} {...rest}>
+    <div class={cxClassList(className, classList)} style={style} {...rest}>
       {children}
     </div>
   );
