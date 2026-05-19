@@ -12,6 +12,7 @@ const baseClassName = css({
   alignItems: "center",
   outline: "none",
   position: "relative",
+  cursor: "pointer",
   cornerShape: "superellipse",
   background: "var(--button-bg)",
   borderRadius: c.divide(c.var("--button-size"), 4),

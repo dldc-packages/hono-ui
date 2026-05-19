@@ -21,8 +21,7 @@ const className = css({
 });
 
 export function Paper(
-  { children, borderRadius = 2, style: styleProp, class: classProp, flexDirection, alignItems, justifyContent, gap, padding, ...rest }:
-    PaperProps,
+  { children, borderRadius = 2, style: styleProp, classList, flexDirection, alignItems, justifyContent, gap, padding, ...rest }: PaperProps,
 ): JSX.Element {
   const style: CSSProperties = {
     ["--paper-radius"]: tokens.x(borderRadius),
@@ -32,9 +31,9 @@ export function Paper(
   return (
     <div
       class={resolveClassNames(
-        classProp,
         className,
         flexDirection !== "none" ? css({ display: "flex", flexDirection, alignItems, justifyContent, gap, padding }) : undefined,
+        classList,
       )}
       style={style}
       {...rest}

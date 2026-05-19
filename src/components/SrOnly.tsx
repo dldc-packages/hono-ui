@@ -19,12 +19,12 @@ export const srOnlyClass: Promise<string> = css({
 export type SrOnlyProps = ComponentPropsBase;
 
 export function SrOnly({
-  class: classProp,
+  classList,
   render,
   ...rest
 }: SrOnlyProps): JSX.Element {
   return createRender("div", render, {
-    class: resolveClassNames(classProp, srOnlyClass),
+    class: resolveClassNames(srOnlyClass, classList),
     ...rest,
   });
 }

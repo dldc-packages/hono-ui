@@ -36,14 +36,14 @@ export function Select({
   variant = "secondary",
   size = 8,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: SelectProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
   const wrapperClassName = getButtonClassName(disabled, variant);
 
   return (
-    <div class={resolveClassNames(classProp, wrapperClassName)} style={style} data-group-item="true">
+    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
       <select class={selectClassName} disabled={disabled} {...rest}>
         {children}
       </select>

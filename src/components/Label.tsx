@@ -38,11 +38,11 @@ export function Label({
   children,
   required,
   hint,
-  class: classProp,
+  classList,
   ...rest
 }: LabelProps): JSX.Element {
   return (
-    <label class={resolveClassNames(classProp, baseClassName)} {...rest}>
+    <label class={resolveClassNames(baseClassName, classList)} {...rest}>
       <span class={labelTextClassName}>
         {children}
         {required ? <span>*</span> : null}

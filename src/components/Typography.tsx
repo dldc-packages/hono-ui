@@ -9,7 +9,7 @@ export type TypographyProps = ComponentPropsMerge<
 >;
 
 export function Typography({
-  class: classProp,
+  classList,
   render,
   fontSize,
   color,
@@ -17,10 +17,10 @@ export function Typography({
   ...rest
 }: TypographyProps): JSX.Element {
   const className = resolveClassNames(
-    classProp,
     fontSize ? css({ fontSize: fontSize }) : null,
     color ? css({ color: color }) : null,
     fontWeight ? css({ fontWeight: fontWeight }) : null,
+    classList,
   );
 
   return createRender("p", render, {

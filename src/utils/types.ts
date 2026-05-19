@@ -7,11 +7,11 @@ export type RenderProp = JSX.Element | keyof JSX.IntrinsicElements | undefined;
 
 export type CxArgs = Parameters<typeof cx>;
 
-export type ClassValue = string | Promise<string> | undefined | CxArgs;
+export type ClassListProp = undefined | CxArgs;
 
 export interface ComponentPropsBase {
   id?: string;
-  class?: ClassValue;
+  classList?: ClassListProp;
   style?: CSSProperties;
   children?: Child | undefined;
   render?: RenderProp;

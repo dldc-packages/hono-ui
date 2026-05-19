@@ -17,7 +17,7 @@ export function ButtonLink({
   variant = "secondary",
   size = 8,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: ButtonLinkProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
@@ -26,7 +26,7 @@ export function ButtonLink({
   return (
     <a
       href={disabled ? "#" : href}
-      class={resolveClassNames(classProp, className)}
+      class={resolveClassNames(className, classList)}
       onclick={disabled ? (e: Event) => e.preventDefault() : undefined}
       aria-disabled={disabled ? "true" : undefined}
       style={style}

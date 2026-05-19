@@ -23,14 +23,21 @@ export function Button({
   variant = "secondary",
   size = 8,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: ButtonProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
-  const className = getButtonClassName(disabled, variant, !disabled);
+  const baseClassName = getButtonClassName(disabled, variant, !disabled);
 
   return (
-    <button type={type} class={resolveClassNames(classProp, className)} disabled={disabled} style={style} data-group-item="true" {...rest}>
+    <button
+      type={type}
+      class={resolveClassNames(baseClassName, classList)}
+      disabled={disabled}
+      style={style}
+      data-group-item="true"
+      {...rest}
+    >
       {children}
     </button>
   );

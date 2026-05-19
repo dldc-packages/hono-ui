@@ -28,11 +28,11 @@ const wrapClassName = css({
 export function InlineGroup({
   children,
   wrap = false,
-  class: classProp,
+  classList,
   ...rest
 }: InlineGroupProps): JSX.Element {
   return (
-    <div class={resolveClassNames(classProp, baseClassName, wrap ? wrapClassName : undefined)} {...rest}>
+    <div class={resolveClassNames(baseClassName, wrap ? wrapClassName : undefined, classList)} {...rest}>
       {children}
     </div>
   );

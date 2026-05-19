@@ -15,7 +15,7 @@ export function Stack({
   gap,
   padding,
   flexWrap,
-  class: classProp,
+  classList,
   render,
   ...rest
 }: StackProps): JSX.Element {
@@ -30,7 +30,7 @@ export function Stack({
   });
 
   return createRender("div", render, {
-    class: resolveClassNames(classProp, className),
+    class: resolveClassNames(className, classList),
     ...rest,
   });
 }

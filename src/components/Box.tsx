@@ -6,12 +6,12 @@ import type { ComponentPropsBase } from "../utils/types.ts";
 export type BoxProps = ComponentPropsBase;
 
 export function Box({
-  class: classProp,
+  classList,
   render,
   ...rest
 }: BoxProps): JSX.Element {
   return createRender("div", render, {
-    class: resolveClassNames(classProp),
+    class: resolveClassNames(classList),
     ...rest,
   });
 }

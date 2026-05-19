@@ -42,7 +42,7 @@ export function Icon({
   icon,
   size,
   style: styleProp,
-  class: classProp,
+  classList,
   color,
   ...rest
 }: IconProps): JSX.Element {
@@ -54,7 +54,7 @@ export function Icon({
 
   return (
     <span
-      class={resolveClassNames(classProp, className)}
+      class={resolveClassNames(className, classList)}
       style={style}
       dangerouslySetInnerHTML={{ __html: icon }}
       aria-hidden="true"

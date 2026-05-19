@@ -14,7 +14,7 @@ export function ButtonLike({
   variant = "secondary",
   size = 8,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: ButtonLikeProps): JSX.Element {
   const style = getButtonStyle(size, styleProp);
@@ -22,7 +22,7 @@ export function ButtonLike({
 
   return (
     <div
-      class={resolveClassNames(classProp, className)}
+      class={resolveClassNames(className, classList)}
       style={style}
       aria-disabled={disabled ? "true" : undefined}
       data-group-item="true"

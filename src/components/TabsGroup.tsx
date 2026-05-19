@@ -45,7 +45,7 @@ export function TabsGroup({
   borderRadius = 6,
   padding = 1.5,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: TabsGroupProps): JSX.Element {
   const style: CSSProperties = {
@@ -56,7 +56,7 @@ export function TabsGroup({
   };
 
   return (
-    <div class={resolveClassNames(classProp, className)} style={style} {...rest}>
+    <div class={resolveClassNames(className, classList)} style={style} {...rest}>
       {children}
     </div>
   );

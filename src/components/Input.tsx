@@ -29,7 +29,7 @@ export function Input({
   error,
   size = 8,
   style: styleProp,
-  class: classProp,
+  classList,
   render: _render,
   children: _children,
   ...rest
@@ -39,7 +39,7 @@ export function Input({
   const inputClassName = getInputFieldClassName();
 
   return (
-    <div class={resolveClassNames(classProp, wrapperClassName)} style={style} data-group-item="true">
+    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
       <input
         class={inputClassName}
         disabled={disabled}

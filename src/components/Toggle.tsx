@@ -123,13 +123,12 @@ export function Toggle({
   error,
   size = 6,
   style,
-  class: classProp,
+  classList,
   ...rest
 }: ToggleProps): JSX.Element {
   return (
     <span
       class={resolveClassNames(
-        classProp,
         css({
           vars: {
             "--toggle-size": tokens.x(size),
@@ -138,6 +137,7 @@ export function Toggle({
         }),
         rootClassName,
         error ? errorClassName : undefined,
+        classList,
       )}
       style={style}
       data-error={error ? "true" : undefined}

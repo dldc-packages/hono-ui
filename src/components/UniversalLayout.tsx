@@ -36,10 +36,10 @@ const contentClassName = css({
   },
 });
 
-export function UniversalLayout({ children, class: classProp, ...rest }: UniversalLayoutProps): JSX.Element {
+export function UniversalLayout({ children, classList, ...rest }: UniversalLayoutProps): JSX.Element {
   return (
     <div class={wrapperClassName}>
-      <div class={resolveClassNames(classProp, contentClassName)} {...rest}>
+      <div class={resolveClassNames(contentClassName, classList)} {...rest}>
         {children}
       </div>
     </div>

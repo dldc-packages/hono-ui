@@ -69,14 +69,14 @@ export function Textarea({
   size = 8,
   rows = 4,
   style: styleProp,
-  class: classProp,
+  classList,
   ...rest
 }: TextareaProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
   const wrapperClassName = getInputClassName(disabled, error);
 
   return (
-    <div class={resolveClassNames(classProp, wrapperClassName)} style={style} data-group-item="true">
+    <div class={resolveClassNames(wrapperClassName, classList)} style={style} data-group-item="true">
       <textarea
         class={textareaClassName}
         disabled={disabled}

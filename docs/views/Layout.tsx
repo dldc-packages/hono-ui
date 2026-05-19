@@ -26,7 +26,7 @@ export const Layout: FC<LayoutProps> = ({ title, children, activeTab, tabs = [] 
         </Fragment>
       }
     >
-      <UniversalLayout class={css({ rowGap: 4 })}>
+      <UniversalLayout classList={[css({ rowGap: 4 })]}>
         <Title>
           Hono UI
         </Title>

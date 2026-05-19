@@ -29,11 +29,11 @@ const linkClassName = css({
 export function Title({
   href,
   children,
-  class: classProp,
+  classList,
   ...rest
 }: PropsWithChildren<TitleProps>): JSX.Element {
   return (
-    <h1 class={resolveClassNames(classProp, titleClassName)} {...rest}>
+    <h1 class={resolveClassNames(titleClassName, classList)} {...rest}>
       {href ? <a href={href} class={linkClassName}>{children}</a> : children}
     </h1>
   );

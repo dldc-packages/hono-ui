@@ -44,14 +44,14 @@ export function TabLink({
   active,
   link,
   children,
-  class: classProp,
+  classList,
   ...rest
 }: PropsWithChildren<TabLinkProps>): JSX.Element {
   return (
     <a
       href={link}
       aria-current={active ? "page" : undefined}
-      class={resolveClassNames(classProp, baseClassName, active ? activeClassName : undefined)}
+      class={resolveClassNames(baseClassName, active ? activeClassName : undefined, classList)}
       {...rest}
     >
       {children}
