@@ -5,20 +5,26 @@ import { cxClassList } from "../utils/class-list.ts";
 import type { ComponentPropsMerge } from "../utils/types.ts";
 
 export type InputSharedProps = {
-  disabled?: boolean;
+  // Custom props
   error?: boolean;
-  size?: number;
-  name?: string;
-  style?: CSSProperties;
-  readOnly?: boolean;
-  spellCheck?: boolean;
-  autocomplete?: string | undefined;
-  placeholder?: string;
-  value?: string;
-  type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";
   children?: never;
   render?: never;
+  style?: CSSProperties;
+
+  // Native input props
+  autocomplete?: string | undefined;
+  autofocus?: boolean | undefined;
+  checked?: boolean;
+  disabled?: boolean;
+  form?: string | undefined;
+  name?: string;
+  placeholder?: string;
+  readonly?: boolean | undefined;
   required?: boolean;
+  size?: number;
+  spellCheck?: boolean;
+  type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";
+  value?: string;
 };
 
 export type InputProps = ComponentPropsMerge<
@@ -27,7 +33,7 @@ export type InputProps = ComponentPropsMerge<
 
 export function Input({
   disabled,
-  readOnly,
+  readonly,
   error,
   size = 8,
   style: styleProp,
@@ -37,7 +43,7 @@ export function Input({
   ...rest
 }: InputProps): JSX.Element {
   const style = getInputStyle(size, styleProp);
-  const wrapperClassName = getInputClassName(disabled, error, readOnly);
+  const wrapperClassName = getInputClassName(disabled, error, readonly);
   const inputClassName = getInputFieldClassName();
 
   return (
@@ -45,7 +51,7 @@ export function Input({
       <input
         class={inputClassName}
         disabled={disabled}
-        readOnly={readOnly}
+        readOnly={readonly}
         aria-invalid={error ? "true" : undefined}
         {...rest}
       />
