@@ -4,20 +4,22 @@
   "exports": {
     ".": "./mod.ts"
   },
-  "imports": {
-    "@dldc/css-builder": "jsr:@dldc/css-builder@^1.6.0",
-    "@std/path": "jsr:@std/path@^1.1.4",
-    "hono": "jsr:@hono/hono@^4.12.21",
-    "lucide-static": "npm:lucide-static@^1.16.0",
-    "type-fest": "npm:type-fest@^5.6.0"
-  },
   "tasks": {
     "bump": "deno run -A jsr:@mys/bump@1",
     "deps:outdated": "deno outdated",
     "deps:update": "deno outdated --update --latest --interactive",
     "check": "deno fmt --check . && deno check . && deno lint . ",
     "docs:dev": "deno run -A --unstable-kv --watch ./docs/main.tsx",
-    "script:css-properties": "deno run -A ./scripts/cssProperties.ts"
+    "script:css-properties": "deno run -A ./scripts/cssProperties.ts",
+    "test:run": "deno test --allow-all"
+  },
+  "imports": {
+    "@dldc/css-builder": "jsr:@dldc/css-builder@^1.6.0",
+    "@std/expect": "jsr:@std/expect@^1.0.19",
+    "@std/path": "jsr:@std/path@^1.1.4",
+    "hono": "jsr:@hono/hono@^4.12.21",
+    "lucide-static": "npm:lucide-static@^1.16.0",
+    "type-fest": "npm:type-fest@^5.6.0"
   },
   "fmt": {
     "lineWidth": 140

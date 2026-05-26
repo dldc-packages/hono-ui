@@ -635,6 +635,8 @@ export interface CssObjProperties {
   userSelect?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "text" | "none" | "all" | "contain" | "inherit";
   verticalAlign?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "baseline" | "top" | "middle" | "bottom" | "inherit";
   visibility?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "visible" | "hidden" | "collapse" | "inherit";
+  viewTransitionClass?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none";
+  viewTransitionName?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | AnyStringValue | "none";
   WebkitAppearance?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "none" | "auto" | "inherit" | "button";
   WebkitOverflowScrolling?: RawValue | CssVarStrValue | CssVarValue | CssExprValue | "auto" | "touch" | "inherit";
   WebkitTapHighlightColor?: string | number;

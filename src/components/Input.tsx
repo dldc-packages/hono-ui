@@ -11,6 +11,7 @@ export type InputSharedProps = {
   name?: string;
   style?: CSSProperties;
   readOnly?: boolean;
+  spellCheck?: boolean;
   placeholder?: string;
   value?: string;
   type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";

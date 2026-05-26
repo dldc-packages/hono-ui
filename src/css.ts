@@ -5,11 +5,14 @@ import type { Datatype } from "./css/types.ts";
 
 export type CssObj_Vars = { [key: `--${string}`]: CssVarType };
 export type CssObj_Supports = { [key: `@supports ${string}`]: CssObj_1 };
+export type CssObjCustom = { [key: string]: string | number | undefined };
 export type CssObj_1 = CssObjProperties & {
   vars?: CssObj_Vars;
   supports?: CssObj_Supports;
+  custom?: CssObjCustom;
   [key: `vars_${string}`]: CssObj_Vars;
   [key: `supports_${string}`]: CssObj_Supports;
+  [key: `custom_${string}`]: CssObjCustom;
 };
 export type CssObj_2 = CssObj_1 & { selectors?: Record<string, CssObj_1>; [key: `selectors_${string}`]: Record<string, CssObj_1> };
 export type CssObj_Media = { [key: `@media ${string}`]: CssObj_2 };
@@ -96,7 +99,8 @@ export function mergeCss(...cssObjects: CssObj[]): CssObj {
     Object.entries(obj).forEach(([key, value]) => {
       if (
         key === "vars" || key.startsWith("vars_") || key === "media" || key.startsWith("media_") || key === "supports" ||
-        key.startsWith("supports_") || key === "selectors" || key.startsWith("selectors_")
+        key.startsWith("supports_") || key === "selectors" || key.startsWith("selectors_") ||
+        key === "custom" || key.startsWith("custom_")
       ) {
         const uniqKey = key + "_" + randomId();
         (result as any)[uniqKey] = value;
@@ -188,6 +192,17 @@ function cssObjToString(obj: CssObj): string {
       });
       return;
     }
+    if (key === "custom" || key.startsWith("custom_")) {
+      // Add property as is, without any processing
+      Object.entries(value as Record<string, string | number>).forEach(([customKey, customValue]) => {
+        if (customValue === undefined) {
+          return;
+        }
+        cssStrings.push(`${customKey}: ${customValue};`);
+      });
+      return;
+    }
+
     const propConfig = PROPERTIES_CONFIG[key];
     if (!propConfig) {
       throw new Error(`Unsupported CSS property: ${key}`);

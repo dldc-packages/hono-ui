@@ -207,6 +207,11 @@ export const effects: Datatype = {
   staticValues: { none: "none", inherit: "inherit" },
 };
 
+export const viewTransitionIdent: Datatype = {
+  mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr, m.anyString],
+  staticValues: { none: "none" },
+};
+
 export const alignContent: Datatype = {
   mappers: [m.raw, m.cssVarStr, m.cssVar, m.cssExpr],
   staticValues: {

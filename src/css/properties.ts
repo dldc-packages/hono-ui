@@ -190,6 +190,8 @@ export const PROPERTIES_CONFIG: PropertiesMap = {
   userSelect: { toCss: "user-select", datatype: d.userSelect },
   verticalAlign: { toCss: "vertical-align", datatype: d.verticalAlign },
   visibility: { toCss: "visibility", datatype: d.visibility },
+  viewTransitionClass: { toCss: "view-transition-class", datatype: d.viewTransitionIdent },
+  viewTransitionName: { toCss: "view-transition-name", datatype: d.viewTransitionIdent },
   WebkitAppearance: { toCss: "-webkit-appearance", datatype: d.appearance },
   WebkitOverflowScrolling: { toCss: "-webkit-overflow-scrolling", datatype: d.webkitOverflowScrolling },
   WebkitTapHighlightColor: { toCss: "-webkit-tap-highlight-color" },
