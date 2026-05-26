@@ -12,6 +12,7 @@ export type InputSharedProps = {
   style?: CSSProperties;
   readOnly?: boolean;
   spellCheck?: boolean;
+  autocomplete?: string | undefined;
   placeholder?: string;
   value?: string;
   type?: "text" | "password" | "email" | "number" | "search" | "tel" | "url";
